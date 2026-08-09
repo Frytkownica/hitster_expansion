@@ -4,71 +4,109 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hitster Expansion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://unpkg.com/html5-qrcode" defer></script>
-    <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
     <script src="config.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
-    <main class="app-shell">
-      <section class="hero">
-        <p class="eyebrow">Hitster Expansion</p>
-        <h1>Skanuj karte i odpal utwor</h1>
-        <p class="lead">
-          Aplikacja czyta QR w formacie <code>hitsterexp:000001</code>, szuka rekordu
-          po <code>qr_code_id</code> i otwiera odpowiadajacy utwor w Spotify.
-        </p>
-      </section>
+    <main class="app">
+      <section id="screen-home" class="screen screen-active">
+        <div class="ambient ambient-home"></div>
+        <div class="screen-inner home-layout">
+          <header class="brand-block">
+            <div class="brand-hitster">HITSTER</div>
+            <p class="brand-subtitle">Nieznane Utwory</p>
+          </header>
 
-      <section class="panel">
-        <div class="panel-header">
-          <h2>Skaner QR</h2>
-          <button id="scan-toggle" class="primary-button" type="button">Start skanowania</button>
-        </div>
-        <p id="status" class="status">Kamera jest zatrzymana.</p>
-        <div id="reader" class="reader" aria-label="Podglad kamery"></div>
-        <div id="flip-prompt" class="flip-prompt hidden" aria-live="polite">
-          <p class="flip-title">Please turn around the phone</p>
-          <p class="flip-copy">Po odczytaniu QR odtworzenie ruszy automatycznie po obroceniu telefonu.</p>
-        </div>
-      </section>
-
-      <section class="panel manual-panel">
-        <h2>Tryb reczny</h2>
-        <form id="manual-form" class="manual-form">
-          <label for="manual-code">Kod QR</label>
-          <input
-            id="manual-code"
-            name="manual-code"
-            type="text"
-            placeholder="hitsterexp:000001"
-            autocomplete="off"
-            spellcheck="false"
-          >
-          <button class="secondary-button" type="submit">Szukaj</button>
-        </form>
-      </section>
-
-      <section class="panel result-panel">
-        <h2>Aktualny utwor</h2>
-        <div id="result-empty" class="result-empty">
-          Zeskanuj kod albo wpisz go recznie, zeby wyswietlic dane utworu.
-        </div>
-        <article id="result-card" class="result-card hidden">
-          <p class="result-code" id="song-code"></p>
-          <h3 id="song-title"></h3>
-          <p id="song-artist" class="result-line"></p>
-          <p id="song-collab" class="result-line"></p>
-          <p id="song-year" class="result-line"></p>
-          <div id="spotify-player-shell" class="spotify-shell hidden">
-            <div id="spotify-player"></div>
+          <div class="speaker-wrap" aria-hidden="true">
+            <div class="speaker">
+              <div class="speaker-ring speaker-ring-outer"></div>
+              <div class="speaker-ring speaker-ring-mid"></div>
+              <div class="speaker-ring speaker-ring-inner"></div>
+              <div class="speaker-cap"></div>
+              <span class="speaker-bolt bolt-a"></span>
+              <span class="speaker-bolt bolt-b"></span>
+              <span class="speaker-bolt bolt-c"></span>
+              <span class="speaker-bolt bolt-d"></span>
+            </div>
           </div>
-          <a id="spotify-link" class="secondary-button hidden" target="_blank" rel="noopener noreferrer">
-            Otworz w Spotify
-          </a>
-        </article>
+
+          <button id="play-now-button" class="cta-button" type="button">ZAGRAJ TERAZ</button>
+        </div>
+      </section>
+
+      <section id="screen-scanner" class="screen hidden">
+        <div class="ambient ambient-main"></div>
+        <div class="screen-inner scanner-layout">
+          <button id="scanner-close-button" class="top-action" type="button">Powrot</button>
+          <div class="scanner-stage">
+            <div id="reader" class="reader"></div>
+            <div class="scanner-mask" aria-hidden="true">
+              <div class="scanner-frame"></div>
+            </div>
+          </div>
+          <p id="scanner-status" class="scanner-status">Nakieruj aparat na kod QR.</p>
+          <p id="scanner-error" class="scanner-error hidden"></p>
+        </div>
+      </section>
+
+      <section id="screen-turn" class="screen hidden">
+        <div class="ambient ambient-main"></div>
+        <div class="screen-inner turn-layout">
+          <div id="turn-phone" class="turn-phone" aria-hidden="true">
+            <div class="phone-glow"></div>
+            <div class="phone-frame">
+              <span class="phone-notch"></span>
+              <span class="phone-side side-left side-top"></span>
+              <span class="phone-side side-left side-mid"></span>
+              <span class="phone-side side-left side-low"></span>
+              <span class="phone-side side-right side-main"></span>
+              <span class="phone-side side-right side-low"></span>
+              <span class="phone-camera"></span>
+              <span class="note note-main">♪</span>
+              <span class="note note-small">♫</span>
+              <span class="note note-tiny">♪</span>
+            </div>
+          </div>
+          <div class="turn-copy">
+            <h2>ODWROC TELEFON</h2>
+            <p>Nastepnie muzyka sie zacznie</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-resolve" class="screen hidden">
+        <div class="ambient ambient-main"></div>
+        <div class="screen-inner resolve-layout">
+          <section id="resolve-spotify-card" class="spotify-card hidden">
+            <div class="spotify-badge">Spotify</div>
+            <iframe
+              id="spotify-embed"
+              class="spotify-embed"
+              title="Spotify player"
+              loading="lazy"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            ></iframe>
+          </section>
+
+          <section id="resolve-text-card" class="resolve-text-card hidden">
+            <p id="resolve-artist" class="resolve-artist"></p>
+            <p id="resolve-year" class="resolve-year"></p>
+            <h2 id="resolve-title" class="resolve-title"></h2>
+          </section>
+
+          <div id="collab-indicator" class="collab-indicator hidden" aria-label="Collaboration indicator">
+            <span class="person person-back"></span>
+            <span class="person person-front"></span>
+          </div>
+
+          <button id="next-card-button" class="cta-button" type="button">NASTEPNA KARTA</button>
+        </div>
       </section>
     </main>
   </body>
