@@ -23,7 +23,8 @@ const scannerError = document.getElementById("scanner-error");
 const turnPhone = document.getElementById("turn-phone");
 const nextCardButton = document.getElementById("next-card-button");
 const resolveCard = document.getElementById("resolve-card");
-const resolvePreviewPill = document.getElementById("resolve-preview-pill");
+const resolvePreviewBar = document.getElementById("resolve-preview-bar");
+const resolveStopButton = document.getElementById("resolve-stop-button");
 const resolveArtist = document.getElementById("resolve-artist");
 const resolveYear = document.getElementById("resolve-year");
 const resolveTitle = document.getElementById("resolve-title");
@@ -76,6 +77,10 @@ scannerCloseButton.addEventListener("click", async () => {
 nextCardButton.addEventListener("click", async () => {
   resetResolveView();
   await openScanner();
+});
+
+resolveStopButton.addEventListener("click", () => {
+  stopSpotifyPreview();
 });
 
 window.addEventListener("deviceorientation", (event) => {
@@ -143,7 +148,7 @@ async function startScanner() {
   try {
     await scanner.start(
       { facingMode: "environment" },
-      { fps: 10, qrbox: { width: 240, height: 240 } },
+      { fps: 10, qrbox: { width: 240, height: 240 }, aspectRatio: 9 / 16 },
       onScanSuccess,
       () => {}
     );
@@ -244,7 +249,8 @@ function renderResolve() {
   resolveYear.textContent = activeSong.year || "";
   resolveTitle.textContent = activeSong.title || "";
   resolveCard.classList.remove("resolve-card-spotify");
-  resolvePreviewPill.classList.add("hidden");
+  resolvePreviewBar.classList.add("hidden");
+  applyResolveTextSizing(activeSong);
 
   if (isCollaboration(activeSong.collab)) {
     collabIndicator.classList.remove("hidden");
@@ -254,7 +260,7 @@ function renderResolve() {
 
   if (activeSong.spotify_id) {
     resolveCard.classList.add("resolve-card-spotify");
-    resolvePreviewPill.classList.remove("hidden");
+    resolvePreviewBar.classList.remove("hidden");
     startSpotifyPreview(`spotify:track:${activeSong.spotify_id}`);
   } else {
     stopSpotifyPreview();
@@ -267,8 +273,10 @@ function resetResolveView() {
   clearTurnAnimation();
   clearTurnFallback();
   stopSpotifyPreview();
-  resolvePreviewPill.classList.add("hidden");
+  resolvePreviewBar.classList.add("hidden");
   resolveCard.classList.remove("resolve-card-spotify");
+  resolveArtist.classList.remove("resolve-artist-tight", "resolve-artist-ultra-tight");
+  resolveTitle.classList.remove("resolve-title-tight", "resolve-title-ultra-tight");
   collabIndicator.classList.add("hidden");
 }
 
@@ -357,6 +365,22 @@ function isScreenUpsideDown() {
 
   const normalized = ((angle % 360) + 360) % 360;
   return normalized === 180;
+}
+
+function applyResolveTextSizing(song) {
+  const artistLength = String(song.artist || "").length;
+  const titleLength = String(song.title || "").length;
+
+  resolveArtist.classList.remove("resolve-artist-tight", "resolve-artist-ultra-tight");
+  resolveTitle.classList.remove("resolve-title-tight", "resolve-title-ultra-tight");
+
+  if (artistLength > 30) {
+    resolveArtist.classList.add(artistLength > 44 ? "resolve-artist-ultra-tight" : "resolve-artist-tight");
+  }
+
+  if (titleLength > 30) {
+    resolveTitle.classList.add(titleLength > 46 ? "resolve-title-ultra-tight" : "resolve-title-tight");
+  }
 }
 
 function startSpotifyPreview(uri) {
