@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hitster Expansion</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://unpkg.com/html5-qrcode" defer></script>
+    <script src="config.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <p class="eyebrow">Hitster Expansion</p>
+        <h1>Skanuj karte i odpal utwor</h1>
+        <p class="lead">
+          Aplikacja czyta QR w formacie <code>hitsterexp:000001</code>, szuka rekordu
+          po <code>qr_code_id</code> i otwiera odpowiadajacy utwor w Spotify.
+        </p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Skaner QR</h2>
+          <button id="scan-toggle" class="primary-button" type="button">Start skanowania</button>
+        </div>
+        <p id="status" class="status">Kamera jest zatrzymana.</p>
+        <div id="reader" class="reader" aria-label="Podglad kamery"></div>
+      </section>
+
+      <section class="panel manual-panel">
+        <h2>Tryb reczny</h2>
+        <form id="manual-form" class="manual-form">
+          <label for="manual-code">Kod QR</label>
+          <input
+            id="manual-code"
+            name="manual-code"
+            type="text"
+            placeholder="hitsterexp:000001"
+            autocomplete="off"
+            spellcheck="false"
+          >
+          <button class="secondary-button" type="submit">Szukaj</button>
+        </form>
+      </section>
+
+      <section class="panel result-panel">
+        <h2>Aktualny utwor</h2>
+        <div id="result-empty" class="result-empty">
+          Zeskanuj kod albo wpisz go recznie, zeby wyswietlic dane utworu.
+        </div>
+        <article id="result-card" class="result-card hidden">
+          <p class="result-code" id="song-code"></p>
+          <h3 id="song-title"></h3>
+          <p id="song-artist" class="result-line"></p>
+          <p id="song-collab" class="result-line"></p>
+          <p id="song-year" class="result-line"></p>
+          <a id="spotify-link" class="primary-button hidden" target="_blank" rel="noopener noreferrer">
+            Otworz w Spotify
+          </a>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
