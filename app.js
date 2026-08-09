@@ -1,6 +1,7 @@
 const PREFIX = "hitsterexp:";
 const TURN_TRANSITION_MS = 1300;
 const PHONE_FLIP_THRESHOLD = 150;
+const TURN_FALLBACK_MS = 4500;
 
 const config = window.HITSTER_CONFIG || {};
 const supabaseClient =
@@ -34,13 +35,17 @@ let isScanning = false;
 let activeScreen = "home";
 let activeSong = null;
 let turnAnimationTimer = null;
+let turnFallbackTimer = null;
 let waitingForFlip = false;
+let orientationAccessRequested = false;
+let lastOrientationEventAt = 0;
 
 if (!supabaseClient) {
   showScannerError("Brakuje konfiguracji Supabase.");
 }
 
-playNowButton.addEventListener("click", () => {
+playNowButton.addEventListener("click", async () => {
+  await ensureOrientationAccess();
   openScanner();
 });
 
@@ -55,6 +60,7 @@ nextCardButton.addEventListener("click", async () => {
 });
 
 window.addEventListener("deviceorientation", (event) => {
+  lastOrientationEventAt = Date.now();
   if (!waitingForFlip) {
     return;
   }
@@ -65,10 +71,30 @@ window.addEventListener("deviceorientation", (event) => {
     return;
   }
 
-  waitingForFlip = false;
-  clearTurnAnimation();
-  renderResolve();
+  finishTurnFlow();
 });
+
+window.addEventListener("orientationchange", () => {
+  if (!waitingForFlip) {
+    return;
+  }
+
+  if (isScreenUpsideDown()) {
+    finishTurnFlow();
+  }
+});
+
+if (window.screen?.orientation?.addEventListener) {
+  window.screen.orientation.addEventListener("change", () => {
+    if (!waitingForFlip) {
+      return;
+    }
+
+    if (isScreenUpsideDown()) {
+      finishTurnFlow();
+    }
+  });
+}
 
 async function openScanner() {
   if (!supabaseClient) {
@@ -177,6 +203,15 @@ function showTurnScreen() {
   turnAnimationTimer = window.setTimeout(() => {
     turnPhone.classList.add("turn-phone-active");
   }, TURN_TRANSITION_MS);
+  turnFallbackTimer = window.setTimeout(() => {
+    if (!waitingForFlip) {
+      return;
+    }
+
+    if (!lastOrientationEventAt && !supportsScreenOrientationSignal()) {
+      finishTurnFlow();
+    }
+  }, TURN_FALLBACK_MS);
 }
 
 function renderResolve() {
@@ -211,6 +246,7 @@ function resetResolveView() {
   activeSong = null;
   waitingForFlip = false;
   clearTurnAnimation();
+  clearTurnFallback();
   spotifyEmbed.removeAttribute("src");
   spotifyCard.classList.add("hidden");
   resolveTextCard.classList.add("hidden");
@@ -223,6 +259,13 @@ function clearTurnAnimation() {
     turnAnimationTimer = null;
   }
   turnPhone.classList.remove("turn-phone-active");
+}
+
+function clearTurnFallback() {
+  if (turnFallbackTimer) {
+    window.clearTimeout(turnFallbackTimer);
+    turnFallbackTimer = null;
+  }
 }
 
 function showScannerError(message) {
@@ -252,4 +295,47 @@ function isCollaboration(value) {
 
   const normalized = String(value || "").trim().toLowerCase();
   return normalized === "true" || normalized === "prawda" || normalized === "1" || normalized === "yes";
+}
+
+async function ensureOrientationAccess() {
+  if (orientationAccessRequested) {
+    return;
+  }
+
+  orientationAccessRequested = true;
+
+  try {
+    if (typeof DeviceOrientationEvent?.requestPermission === "function") {
+      await DeviceOrientationEvent.requestPermission();
+    }
+  } catch (_) {
+    // If the browser rejects the prompt path, we still keep fallback signals.
+  }
+}
+
+function finishTurnFlow() {
+  waitingForFlip = false;
+  clearTurnAnimation();
+  clearTurnFallback();
+  renderResolve();
+}
+
+function supportsScreenOrientationSignal() {
+  return typeof window.orientation === "number" || typeof window.screen?.orientation?.angle === "number";
+}
+
+function isScreenUpsideDown() {
+  const angle =
+    typeof window.screen?.orientation?.angle === "number"
+      ? window.screen.orientation.angle
+      : typeof window.orientation === "number"
+        ? window.orientation
+        : null;
+
+  if (angle === null) {
+    return false;
+  }
+
+  const normalized = ((angle % 360) + 360) % 360;
+  return normalized === 180;
 }
