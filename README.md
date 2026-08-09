@@ -2,59 +2,70 @@
 
 ## Cel projektu
 
-Stworzenie własnej aplikacji webowej (PWA), działającej podobnie do
-Hitster, ale z własną bazą utworów oraz własnymi kodami QR.
+Stworzenie wlasnej aplikacji webowej (PWA), dzialajacej podobnie do
+Hitster, ale z wlasna baza utworow oraz wlasnymi kodami QR.
 
-### Główna zasada
+### Glowna zasada
 
--   QR na karcie nie zawiera bezposrednio linku do Spotify.
--   QR zawiera wyłącznie losowy identyfikator.
--   Backend mapuje QR → utwór → Spotify Track ID.
--   Zmiana Spotify Track ID nigdy nie wymaga ponownego drukowania kart.
+- QR na karcie nie zawiera bezposrednio linku do Spotify.
+- QR zawiera wylacznie losowy identyfikator.
+- Backend mapuje QR -> utwor -> Spotify Track ID.
+- Zmiana Spotify Track ID nigdy nie wymaga ponownego drukowania kart.
 
 ## Dane utworu
 
--   QR ID (do wygenerowania)
--   Artist/Band
--   Collaboration (TRUE = zespół/duet/wielu wykonawców)
--   Song title
--   Year published
--   Spotify Track ID (do wygenerowania)
+- QR ID
+- Artist/Band
+- Collaboration
+- Song title
+- Year published
+- Spotify Track ID
 
-## Założenia listy
+## Zalozenia listy
 
--   1965--2025
--   ok. 500 utworów
--   75--85% utworów popularnych w Polsce
--   reszta światowe klasyki zwiększające różnorodność gatunkową
--   maks. 4 utwory jednego wykonawcy
--   brak duplikatów
--   wszystkie dostępne w Spotify
--   preferowane oryginalne nagrania a nie remake
+- 1965-2025
+- ok. 500 utworow
+- 75-85% utworow popularnych w Polsce
+- reszta swiatowe klasyki zwiekszajace roznorodnosc gatunkowa
+- maks. 4 utwory jednego wykonawcy
+- brak duplikatow
+- wszystkie dostepne w Spotify
+- preferowane oryginalne nagrania a nie remake
 
 ## Architektura
 
-QR ↓ Backend ↓ Song ↓ Spotify Track ID ↓ Odtwarzanie
+QR -> skaner w aplikacji -> qr_code_id -> Supabase -> Spotify Track ID -> odtwarzanie
 
-## Proof of Concept
+## Format QR
 
-1.  Jeden QR.
-2.  Jeden rekord w bazie.
-3.  Skanowanie.
-4.  Wykrycie odwrócenia telefonu.
-5.  Odtwarzanie Spotify po odwróceniu.
-6.  Pokazac dane z listy:
-    -   wykonawcy
-    -   tytułu
-    -   roku
-    -   Collaboration
-## Etapy
+Kazdy kod QR zawiera string w formacie:
 
-1.  Finalizacja listy utworów.
-2.  Weryfikacja Spotify.
-3.  Generowanie QR.
-4.  Backend.
-5.  Frontend.
-6.  PWA.
-7.  Generator kart (przód i tyl).
-8.  Testy.
+```text
+hitsterexp:000001
+```
+
+Aplikacja:
+
+1. skanuje kod QR,
+2. sprawdza prefix `hitsterexp:`,
+3. wycina `qr_code_id`,
+4. pobiera rekord z tabeli `hitster`,
+5. pokazuje `artist`, `collab`, `title`, `year`,
+6. otwiera Spotify po `spotify_id`.
+
+## GitHub Pages
+
+Strona jest statyczna i moze byc wdrozona na GitHub Pages.
+
+Do dzialania potrzebuje runtime config z:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+
+Workflow GitHub Actions zapisuje je do `config.js` podczas deployu.
+
+Lokalnie mozna wygenerowac ten plik komenda:
+
+```powershell
+./sync-config.ps1
+```
