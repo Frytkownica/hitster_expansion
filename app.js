@@ -22,13 +22,13 @@ const scannerStatus = document.getElementById("scanner-status");
 const scannerError = document.getElementById("scanner-error");
 const turnPhone = document.getElementById("turn-phone");
 const nextCardButton = document.getElementById("next-card-button");
-const spotifyCard = document.getElementById("resolve-spotify-card");
-const spotifyEmbed = document.getElementById("spotify-embed");
-const resolveTextCard = document.getElementById("resolve-text-card");
+const resolveCard = document.getElementById("resolve-card");
+const resolvePreviewPill = document.getElementById("resolve-preview-pill");
 const resolveArtist = document.getElementById("resolve-artist");
 const resolveYear = document.getElementById("resolve-year");
 const resolveTitle = document.getElementById("resolve-title");
 const collabIndicator = document.getElementById("collab-indicator");
+const spotifyAutoplayHost = document.getElementById("spotify-autoplay-host");
 
 let scanner = null;
 let isScanning = false;
@@ -39,10 +39,29 @@ let turnFallbackTimer = null;
 let waitingForFlip = false;
 let orientationAccessRequested = false;
 let lastOrientationEventAt = 0;
+let spotifyController = null;
+let pendingSpotifyUri = null;
 
 if (!supabaseClient) {
   showScannerError("Brakuje konfiguracji Supabase.");
 }
+
+window.onSpotifyIframeApiReady = (IFrameAPI) => {
+  IFrameAPI.createController(
+    spotifyAutoplayHost,
+    {
+      uri: "spotify:track:3AhXZa8sUQht0UEdBJgpGc",
+      width: "1",
+      height: "1"
+    },
+    (controller) => {
+      spotifyController = controller;
+      if (pendingSpotifyUri) {
+        startSpotifyPreview(pendingSpotifyUri);
+      }
+    }
+  );
+};
 
 playNowButton.addEventListener("click", async () => {
   await ensureOrientationAccess();
@@ -224,6 +243,8 @@ function renderResolve() {
   resolveArtist.textContent = activeSong.artist || "";
   resolveYear.textContent = activeSong.year || "";
   resolveTitle.textContent = activeSong.title || "";
+  resolveCard.classList.remove("resolve-card-spotify");
+  resolvePreviewPill.classList.add("hidden");
 
   if (isCollaboration(activeSong.collab)) {
     collabIndicator.classList.remove("hidden");
@@ -232,13 +253,11 @@ function renderResolve() {
   }
 
   if (activeSong.spotify_id) {
-    spotifyEmbed.src = `https://open.spotify.com/embed/track/${activeSong.spotify_id}?utm_source=generator&theme=0`;
-    spotifyCard.classList.remove("hidden");
-    resolveTextCard.classList.add("hidden");
+    resolveCard.classList.add("resolve-card-spotify");
+    resolvePreviewPill.classList.remove("hidden");
+    startSpotifyPreview(`spotify:track:${activeSong.spotify_id}`);
   } else {
-    spotifyEmbed.removeAttribute("src");
-    spotifyCard.classList.add("hidden");
-    resolveTextCard.classList.remove("hidden");
+    stopSpotifyPreview();
   }
 }
 
@@ -247,9 +266,9 @@ function resetResolveView() {
   waitingForFlip = false;
   clearTurnAnimation();
   clearTurnFallback();
-  spotifyEmbed.removeAttribute("src");
-  spotifyCard.classList.add("hidden");
-  resolveTextCard.classList.add("hidden");
+  stopSpotifyPreview();
+  resolvePreviewPill.classList.add("hidden");
+  resolveCard.classList.remove("resolve-card-spotify");
   collabIndicator.classList.add("hidden");
 }
 
@@ -338,4 +357,29 @@ function isScreenUpsideDown() {
 
   const normalized = ((angle % 360) + 360) % 360;
   return normalized === 180;
+}
+
+function startSpotifyPreview(uri) {
+  pendingSpotifyUri = uri;
+  if (!spotifyController) {
+    return;
+  }
+
+  spotifyController.loadUri(uri);
+  const playResult = spotifyController.play?.();
+  if (playResult && typeof playResult.catch === "function") {
+    playResult.catch(() => {});
+  }
+}
+
+function stopSpotifyPreview() {
+  pendingSpotifyUri = null;
+  if (!spotifyController) {
+    return;
+  }
+
+  const pauseResult = spotifyController.pause?.();
+  if (pauseResult && typeof pauseResult.catch === "function") {
+    pauseResult.catch(() => {});
+  }
 }

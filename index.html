@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://unpkg.com/html5-qrcode" defer></script>
+    <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
     <script src="config.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
     <main class="app">
+      <div id="spotify-autoplay-host" class="spotify-autoplay-host" aria-hidden="true"></div>
       <section id="screen-home" class="screen screen-active">
         <div class="ambient ambient-home"></div>
         <div class="screen-inner home-layout">
@@ -83,18 +85,8 @@
       <section id="screen-resolve" class="screen hidden">
         <div class="ambient ambient-main"></div>
         <div class="screen-inner resolve-layout">
-          <section id="resolve-spotify-card" class="spotify-card hidden">
-            <div class="spotify-badge">Spotify</div>
-            <iframe
-              id="spotify-embed"
-              class="spotify-embed"
-              title="Spotify player"
-              loading="lazy"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            ></iframe>
-          </section>
-
-          <section id="resolve-text-card" class="resolve-text-card hidden">
+          <section id="resolve-card" class="resolve-card">
+            <div id="resolve-preview-pill" class="resolve-preview-pill hidden">Spotify Preview</div>
             <p id="resolve-artist" class="resolve-artist"></p>
             <p id="resolve-year" class="resolve-year"></p>
             <h2 id="resolve-title" class="resolve-title"></h2>
