@@ -101,6 +101,25 @@ h1 {
   color: var(--muted);
 }
 
+.flip-prompt {
+  margin-top: 16px;
+  padding: 18px;
+  border-radius: 18px;
+  background: #172217;
+  color: #fffaf0;
+}
+
+.flip-title {
+  margin-bottom: 6px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.flip-copy {
+  margin-bottom: 0;
+  color: rgba(255, 250, 240, 0.8);
+}
+
 .manual-form {
   display: grid;
   gap: 10px;
@@ -162,6 +181,14 @@ button:hover,
 .result-card {
   display: grid;
   gap: 10px;
+}
+
+.spotify-shell {
+  margin-top: 8px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #f4ecde;
 }
 
 .result-code {
