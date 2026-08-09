@@ -7,13 +7,20 @@ const songArtist = document.getElementById("song-artist");
 const songCollab = document.getElementById("song-collab");
 const songYear = document.getElementById("song-year");
 const spotifyLink = document.getElementById("spotify-link");
+const spotifyPlayerShell = document.getElementById("spotify-player-shell");
 const statusNode = document.getElementById("status");
 const toggleButton = document.getElementById("scan-toggle");
 const manualForm = document.getElementById("manual-form");
 const manualInput = document.getElementById("manual-code");
+const flipPrompt = document.getElementById("flip-prompt");
 
 let isScanning = false;
 let scanner = null;
+let spotifyEmbedController = null;
+let pendingSpotifyUri = null;
+let pendingAutoplayUri = null;
+let waitingForFlip = false;
+let hasPrimedPlayback = false;
 
 const config = window.HITSTER_CONFIG || {};
 const supabaseClient =
@@ -25,7 +32,26 @@ if (!supabaseClient) {
   setStatus("Brakuje konfiguracji Supabase. Ustaw config.js lub GitHub Secrets.", true);
 }
 
+window.onSpotifyIframeApiReady = (IFrameAPI) => {
+  const element = document.getElementById("spotify-player");
+  IFrameAPI.createController(
+    element,
+    {
+      uri: "spotify:track:3AhXZa8sUQht0UEdBJgpGc",
+      width: "100%",
+      height: "152"
+    },
+    (controller) => {
+      spotifyEmbedController = controller;
+      if (pendingSpotifyUri) {
+        loadSpotifyTrack(pendingSpotifyUri);
+      }
+    }
+  );
+};
+
 toggleButton.addEventListener("click", async () => {
+  hasPrimedPlayback = true;
   if (isScanning) {
     await stopScanner();
     return;
@@ -95,15 +121,16 @@ async function handleCode(rawValue) {
 
     if (song.spotify_id) {
       const spotifyUrl = `https://open.spotify.com/track/${song.spotify_id}`;
+      const spotifyUri = `spotify:track:${song.spotify_id}`;
       spotifyLink.href = spotifyUrl;
       spotifyLink.classList.remove("hidden");
-      const opened = window.open(spotifyUrl, "_blank", "noopener,noreferrer");
-      if (!opened) {
-        setStatus("Utwor znaleziony. Kliknij przycisk Spotify, jesli przegladarka zablokowala nowe okno.", false);
-      }
+      spotifyPlayerShell.classList.remove("hidden");
+      loadSpotifyTrack(spotifyUri);
+      prepareFlipAutoplay(spotifyUri);
     } else {
       spotifyLink.removeAttribute("href");
       spotifyLink.classList.add("hidden");
+      spotifyPlayerShell.classList.add("hidden");
       setStatus("Utwor znaleziony, ale rekord nie ma jeszcze spotify_id.", false);
     }
 
@@ -166,9 +193,81 @@ function clearSong() {
   resultCard.classList.add("hidden");
   spotifyLink.removeAttribute("href");
   spotifyLink.classList.add("hidden");
+  spotifyPlayerShell.classList.add("hidden");
+  hideFlipPrompt();
 }
 
 function setStatus(message, isError = false) {
   statusNode.textContent = message;
   statusNode.style.color = isError ? "#a23314" : "";
 }
+
+function loadSpotifyTrack(uri) {
+  pendingSpotifyUri = uri;
+  if (!spotifyEmbedController) {
+    setStatus("Utwor znaleziony. Czekam, az zaladuje sie player Spotify...", false);
+    return;
+  }
+
+  spotifyEmbedController.loadUri(uri);
+  if (typeof spotifyEmbedController.play === "function") {
+    spotifyEmbedController.play().catch?.(() => {});
+  }
+}
+
+function prepareFlipAutoplay(uri) {
+  pendingAutoplayUri = uri;
+  waitingForFlip = true;
+  showFlipPrompt();
+  setStatus("Utwor znaleziony. Obroc telefon, a player sprobuje ruszyc automatycznie.");
+}
+
+function showFlipPrompt() {
+  flipPrompt.classList.remove("hidden");
+}
+
+function hideFlipPrompt() {
+  waitingForFlip = false;
+  pendingAutoplayUri = null;
+  flipPrompt.classList.add("hidden");
+}
+
+function maybeHandleFlip(beta, gamma) {
+  if (!waitingForFlip || !pendingAutoplayUri) {
+    return;
+  }
+
+  const upsideDown = Math.abs(beta) > 150;
+  const sidewaysFlip = Math.abs(gamma) > 150;
+  if (!upsideDown && !sidewaysFlip) {
+    return;
+  }
+
+  waitingForFlip = false;
+  flipPrompt.classList.add("hidden");
+  setStatus("Telefon obrocony. Uruchamiam odtwarzanie...");
+  playCurrentTrack();
+}
+
+function playCurrentTrack() {
+  if (!pendingAutoplayUri) {
+    return;
+  }
+
+  if (!spotifyEmbedController) {
+    setStatus("Player Spotify jeszcze sie laduje. Sprobuj ponownie za chwile.", true);
+    return;
+  }
+
+  spotifyEmbedController.loadUri(pendingAutoplayUri);
+  const playResult = spotifyEmbedController.play?.();
+  if (playResult && typeof playResult.catch === "function") {
+    playResult.catch(() => {
+      setStatus("Przegladarka zablokowala autoplay. Kliknij Play w osadzonym playerze.", true);
+    });
+  }
+}
+
+window.addEventListener("deviceorientation", (event) => {
+  maybeHandleFlip(event.beta, event.gamma);
+});

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://unpkg.com/html5-qrcode" defer></script>
+    <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
     <script src="config.js" defer></script>
     <script src="app.js" defer></script>
   </head>
@@ -28,6 +29,10 @@
         </div>
         <p id="status" class="status">Kamera jest zatrzymana.</p>
         <div id="reader" class="reader" aria-label="Podglad kamery"></div>
+        <div id="flip-prompt" class="flip-prompt hidden" aria-live="polite">
+          <p class="flip-title">Please turn around the phone</p>
+          <p class="flip-copy">Po odczytaniu QR odtworzenie ruszy automatycznie po obroceniu telefonu.</p>
+        </div>
       </section>
 
       <section class="panel manual-panel">
@@ -57,7 +62,10 @@
           <p id="song-artist" class="result-line"></p>
           <p id="song-collab" class="result-line"></p>
           <p id="song-year" class="result-line"></p>
-          <a id="spotify-link" class="primary-button hidden" target="_blank" rel="noopener noreferrer">
+          <div id="spotify-player-shell" class="spotify-shell hidden">
+            <div id="spotify-player"></div>
+          </div>
+          <a id="spotify-link" class="secondary-button hidden" target="_blank" rel="noopener noreferrer">
             Otworz w Spotify
           </a>
         </article>
