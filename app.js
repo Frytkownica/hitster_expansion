@@ -265,6 +265,11 @@ function renderResolve() {
   } else {
     stopSpotifyPreview();
   }
+
+  requestAnimationFrame(() => {
+    fitTextToTwoLines(resolveArtist, 24);
+    fitTextToTwoLines(resolveTitle, 22);
+  });
 }
 
 function resetResolveView() {
@@ -380,6 +385,31 @@ function applyResolveTextSizing(song) {
 
   if (titleLength > 30) {
     resolveTitle.classList.add(titleLength > 46 ? "resolve-title-ultra-tight" : "resolve-title-tight");
+  }
+}
+
+function fitTextToTwoLines(element, minFontSizePx) {
+  if (!element) {
+    return;
+  }
+
+  element.style.fontSize = "";
+  element.style.lineHeight = "";
+
+  const computed = window.getComputedStyle(element);
+  const initialFontSize = parseFloat(computed.fontSize);
+  const initialLineHeight = parseFloat(computed.lineHeight) || initialFontSize * 1.08;
+
+  let fontSize = initialFontSize;
+  let lineHeight = initialLineHeight;
+  let guard = 0;
+
+  while (guard < 20 && element.scrollHeight > lineHeight * 2 + 1 && fontSize > minFontSizePx) {
+    fontSize -= 1;
+    lineHeight = Math.max(fontSize * 1.06, minFontSizePx * 1.06);
+    element.style.fontSize = `${fontSize}px`;
+    element.style.lineHeight = `${lineHeight}px`;
+    guard += 1;
   }
 }
 
