@@ -61,11 +61,3 @@ Do dzialania potrzebuje runtime config z:
 
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
-
-Workflow GitHub Actions zapisuje je do `config.js` podczas deployu.
-
-Lokalnie mozna wygenerowac ten plik komenda:
-
-```powershell
-./sync-config.ps1
-```
