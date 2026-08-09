@@ -1,26 +1,6 @@
 const PREFIX = "hitsterexp:";
-const resultEmpty = document.getElementById("result-empty");
-const resultCard = document.getElementById("result-card");
-const songCode = document.getElementById("song-code");
-const songTitle = document.getElementById("song-title");
-const songArtist = document.getElementById("song-artist");
-const songCollab = document.getElementById("song-collab");
-const songYear = document.getElementById("song-year");
-const spotifyLink = document.getElementById("spotify-link");
-const spotifyPlayerShell = document.getElementById("spotify-player-shell");
-const statusNode = document.getElementById("status");
-const toggleButton = document.getElementById("scan-toggle");
-const manualForm = document.getElementById("manual-form");
-const manualInput = document.getElementById("manual-code");
-const flipPrompt = document.getElementById("flip-prompt");
-
-let isScanning = false;
-let scanner = null;
-let spotifyEmbedController = null;
-let pendingSpotifyUri = null;
-let pendingAutoplayUri = null;
-let waitingForFlip = false;
-let hasPrimedPlayback = false;
+const TURN_TRANSITION_MS = 1300;
+const PHONE_FLIP_THRESHOLD = 150;
 
 const config = window.HITSTER_CONFIG || {};
 const supabaseClient =
@@ -28,46 +8,88 @@ const supabaseClient =
     ? window.supabase.createClient(config.supabaseUrl, config.supabasePublishableKey)
     : null;
 
-if (!supabaseClient) {
-  setStatus("Brakuje konfiguracji Supabase. Ustaw config.js lub GitHub Secrets.", true);
-}
-
-window.onSpotifyIframeApiReady = (IFrameAPI) => {
-  const element = document.getElementById("spotify-player");
-  IFrameAPI.createController(
-    element,
-    {
-      uri: "spotify:track:3AhXZa8sUQht0UEdBJgpGc",
-      width: "100%",
-      height: "152"
-    },
-    (controller) => {
-      spotifyEmbedController = controller;
-      if (pendingSpotifyUri) {
-        loadSpotifyTrack(pendingSpotifyUri);
-      }
-    }
-  );
+const screens = {
+  home: document.getElementById("screen-home"),
+  scanner: document.getElementById("screen-scanner"),
+  turn: document.getElementById("screen-turn"),
+  resolve: document.getElementById("screen-resolve")
 };
 
-toggleButton.addEventListener("click", async () => {
-  hasPrimedPlayback = true;
-  if (isScanning) {
-    await stopScanner();
+const playNowButton = document.getElementById("play-now-button");
+const scannerCloseButton = document.getElementById("scanner-close-button");
+const scannerStatus = document.getElementById("scanner-status");
+const scannerError = document.getElementById("scanner-error");
+const turnPhone = document.getElementById("turn-phone");
+const nextCardButton = document.getElementById("next-card-button");
+const spotifyCard = document.getElementById("resolve-spotify-card");
+const spotifyEmbed = document.getElementById("spotify-embed");
+const resolveTextCard = document.getElementById("resolve-text-card");
+const resolveArtist = document.getElementById("resolve-artist");
+const resolveYear = document.getElementById("resolve-year");
+const resolveTitle = document.getElementById("resolve-title");
+const collabIndicator = document.getElementById("collab-indicator");
+
+let scanner = null;
+let isScanning = false;
+let activeScreen = "home";
+let activeSong = null;
+let turnAnimationTimer = null;
+let waitingForFlip = false;
+
+if (!supabaseClient) {
+  showScannerError("Brakuje konfiguracji Supabase.");
+}
+
+playNowButton.addEventListener("click", () => {
+  openScanner();
+});
+
+scannerCloseButton.addEventListener("click", async () => {
+  await stopScanner();
+  showScreen("home");
+});
+
+nextCardButton.addEventListener("click", async () => {
+  resetResolveView();
+  await openScanner();
+});
+
+window.addEventListener("deviceorientation", (event) => {
+  if (!waitingForFlip) {
     return;
   }
 
-  await startScanner();
+  const beta = Math.abs(event.beta || 0);
+  const gamma = Math.abs(event.gamma || 0);
+  if (beta < PHONE_FLIP_THRESHOLD && gamma < PHONE_FLIP_THRESHOLD) {
+    return;
+  }
+
+  waitingForFlip = false;
+  clearTurnAnimation();
+  renderResolve();
 });
 
-manualForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  await handleCode(manualInput.value);
-});
+async function openScanner() {
+  if (!supabaseClient) {
+    showScreen("scanner");
+    showScannerError("Brakuje konfiguracji Supabase.");
+    return;
+  }
+
+  showScreen("scanner");
+  showScannerError("");
+  scannerStatus.textContent = "Nakieruj aparat na kod QR.";
+  await startScanner();
+}
 
 async function startScanner() {
+  if (isScanning) {
+    return;
+  }
+
   if (!window.Html5Qrcode) {
-    setStatus("Biblioteka skanera nie zaladowala sie poprawnie.", true);
+    showScannerError("Biblioteka skanera nie zaladowala sie poprawnie.");
     return;
   }
 
@@ -77,16 +99,12 @@ async function startScanner() {
     await scanner.start(
       { facingMode: "environment" },
       { fps: 10, qrbox: { width: 240, height: 240 } },
-      async (decodedText) => {
-        await handleCode(decodedText);
-      },
+      onScanSuccess,
       () => {}
     );
     isScanning = true;
-    toggleButton.textContent = "Zatrzymaj skanowanie";
-    setStatus("Skaner dziala. Pokaz kod QR do kamery.");
   } catch (error) {
-    setStatus(`Nie udalo sie uruchomic kamery: ${error.message || error}`, true);
+    showScannerError(`Nie udalo sie uruchomic kamery: ${error.message || error}`);
   }
 }
 
@@ -98,69 +116,38 @@ async function stopScanner() {
   await scanner.stop();
   await scanner.clear();
   isScanning = false;
-  toggleButton.textContent = "Start skanowania";
-  setStatus("Kamera jest zatrzymana.");
 }
 
-async function handleCode(rawValue) {
-  const trimmed = (rawValue || "").trim();
-  const qrCodeId = parseQrCodeId(trimmed);
-
+async function onScanSuccess(decodedText) {
+  const qrCodeId = parseQrCodeId(decodedText);
   if (!qrCodeId) {
-    setStatus(`Nieznany kod QR: ${trimmed || "pusty kod"}`, true);
+    showScannerError(`Nieznany kod: ${decodedText}`);
     return;
   }
 
-  setStatus(`Szukam utworu dla ${qrCodeId}...`);
-  manualInput.value = `${PREFIX}${qrCodeId}`;
+  scannerStatus.textContent = `Szukam utworu ${qrCodeId}...`;
+  showScannerError("");
 
   try {
     const song = await fetchSong(qrCodeId);
-    renderSong(song);
-    setStatus(`Znaleziono utwor dla ${qrCodeId}.`);
-
-    if (song.spotify_id) {
-      const spotifyUrl = `https://open.spotify.com/track/${song.spotify_id}`;
-      const spotifyUri = `spotify:track:${song.spotify_id}`;
-      spotifyLink.href = spotifyUrl;
-      spotifyLink.classList.remove("hidden");
-      spotifyPlayerShell.classList.remove("hidden");
-      loadSpotifyTrack(spotifyUri);
-      prepareFlipAutoplay(spotifyUri);
-    } else {
-      spotifyLink.removeAttribute("href");
-      spotifyLink.classList.add("hidden");
-      spotifyPlayerShell.classList.add("hidden");
-      setStatus("Utwor znaleziony, ale rekord nie ma jeszcze spotify_id.", false);
-    }
-
-    if (isScanning) {
-      await stopScanner();
-    }
+    activeSong = song;
+    await stopScanner();
+    showTurnScreen();
   } catch (error) {
-    clearSong();
-    setStatus(error.message || "Nie udalo sie pobrac danych utworu.", true);
+    showScannerError(error.message || "Nie udalo sie pobrac utworu.");
   }
 }
 
 function parseQrCodeId(value) {
-  if (!value) {
+  const trimmed = (value || "").trim();
+  if (!trimmed.toLowerCase().startsWith(PREFIX)) {
     return "";
   }
 
-  const normalized = value.toLowerCase();
-  if (!normalized.startsWith(PREFIX)) {
-    return "";
-  }
-
-  return value.slice(PREFIX.length).trim();
+  return trimmed.slice(PREFIX.length).trim();
 }
 
 async function fetchSong(qrCodeId) {
-  if (!supabaseClient) {
-    throw new Error("Supabase nie jest skonfigurowany.");
-  }
-
   const { data, error } = await supabaseClient
     .from("hitster")
     .select("*")
@@ -178,96 +165,91 @@ async function fetchSong(qrCodeId) {
   return data;
 }
 
-function renderSong(song) {
-  resultEmpty.classList.add("hidden");
-  resultCard.classList.remove("hidden");
-  songCode.textContent = `QR ID ${song.qr_code_id}`;
-  songTitle.textContent = song.title;
-  songArtist.textContent = `Artist: ${song.artist}`;
-  songCollab.textContent = `Collab: ${song.collab}`;
-  songYear.textContent = `Year: ${song.year}`;
-}
-
-function clearSong() {
-  resultEmpty.classList.remove("hidden");
-  resultCard.classList.add("hidden");
-  spotifyLink.removeAttribute("href");
-  spotifyLink.classList.add("hidden");
-  spotifyPlayerShell.classList.add("hidden");
-  hideFlipPrompt();
-}
-
-function setStatus(message, isError = false) {
-  statusNode.textContent = message;
-  statusNode.style.color = isError ? "#a23314" : "";
-}
-
-function loadSpotifyTrack(uri) {
-  pendingSpotifyUri = uri;
-  if (!spotifyEmbedController) {
-    setStatus("Utwor znaleziony. Czekam, az zaladuje sie player Spotify...", false);
+function showTurnScreen() {
+  if (!activeSong) {
     return;
   }
 
-  spotifyEmbedController.loadUri(uri);
-  if (typeof spotifyEmbedController.play === "function") {
-    spotifyEmbedController.play().catch?.(() => {});
-  }
-}
-
-function prepareFlipAutoplay(uri) {
-  pendingAutoplayUri = uri;
+  showScreen("turn");
   waitingForFlip = true;
-  showFlipPrompt();
-  setStatus("Utwor znaleziony. Obroc telefon, a player sprobuje ruszyc automatycznie.");
+  clearTurnAnimation();
+  turnPhone.classList.remove("turn-phone-active");
+  turnAnimationTimer = window.setTimeout(() => {
+    turnPhone.classList.add("turn-phone-active");
+  }, TURN_TRANSITION_MS);
 }
 
-function showFlipPrompt() {
-  flipPrompt.classList.remove("hidden");
+function renderResolve() {
+  if (!activeSong) {
+    showScreen("home");
+    return;
+  }
+
+  showScreen("resolve");
+  resolveArtist.textContent = activeSong.artist || "";
+  resolveYear.textContent = activeSong.year || "";
+  resolveTitle.textContent = activeSong.title || "";
+
+  if (isCollaboration(activeSong.collab)) {
+    collabIndicator.classList.remove("hidden");
+  } else {
+    collabIndicator.classList.add("hidden");
+  }
+
+  if (activeSong.spotify_id) {
+    spotifyEmbed.src = `https://open.spotify.com/embed/track/${activeSong.spotify_id}?utm_source=generator&theme=0`;
+    spotifyCard.classList.remove("hidden");
+    resolveTextCard.classList.add("hidden");
+  } else {
+    spotifyEmbed.removeAttribute("src");
+    spotifyCard.classList.add("hidden");
+    resolveTextCard.classList.remove("hidden");
+  }
 }
 
-function hideFlipPrompt() {
+function resetResolveView() {
+  activeSong = null;
   waitingForFlip = false;
-  pendingAutoplayUri = null;
-  flipPrompt.classList.add("hidden");
+  clearTurnAnimation();
+  spotifyEmbed.removeAttribute("src");
+  spotifyCard.classList.add("hidden");
+  resolveTextCard.classList.add("hidden");
+  collabIndicator.classList.add("hidden");
 }
 
-function maybeHandleFlip(beta, gamma) {
-  if (!waitingForFlip || !pendingAutoplayUri) {
-    return;
+function clearTurnAnimation() {
+  if (turnAnimationTimer) {
+    window.clearTimeout(turnAnimationTimer);
+    turnAnimationTimer = null;
   }
-
-  const upsideDown = Math.abs(beta) > 150;
-  const sidewaysFlip = Math.abs(gamma) > 150;
-  if (!upsideDown && !sidewaysFlip) {
-    return;
-  }
-
-  waitingForFlip = false;
-  flipPrompt.classList.add("hidden");
-  setStatus("Telefon obrocony. Uruchamiam odtwarzanie...");
-  playCurrentTrack();
+  turnPhone.classList.remove("turn-phone-active");
 }
 
-function playCurrentTrack() {
-  if (!pendingAutoplayUri) {
+function showScannerError(message) {
+  if (!message) {
+    scannerError.textContent = "";
+    scannerError.classList.add("hidden");
     return;
   }
 
-  if (!spotifyEmbedController) {
-    setStatus("Player Spotify jeszcze sie laduje. Sprobuj ponownie za chwile.", true);
-    return;
-  }
-
-  spotifyEmbedController.loadUri(pendingAutoplayUri);
-  const playResult = spotifyEmbedController.play?.();
-  if (playResult && typeof playResult.catch === "function") {
-    playResult.catch(() => {
-      setStatus("Przegladarka zablokowala autoplay. Kliknij Play w osadzonym playerze.", true);
-    });
-  }
+  scannerError.textContent = message;
+  scannerError.classList.remove("hidden");
 }
 
-window.addEventListener("deviceorientation", (event) => {
-  maybeHandleFlip(event.beta, event.gamma);
-});
+function showScreen(name) {
+  activeScreen = name;
+  Object.entries(screens).forEach(([key, element]) => {
+    const isActive = key === name;
+    element.classList.toggle("hidden", !isActive);
+    element.classList.toggle("screen-active", isActive);
+  });
+}
+
+function isCollaboration(value) {
+  if (typeof value === "boolean") {
+    return value;
+  }
+
+  const normalized = String(value || "").trim().toLowerCase();
+  return normalized === "true" || normalized === "prawda" || normalized === "1" || normalized === "yes";
+}
