@@ -250,7 +250,6 @@ function renderResolve() {
   resolveTitle.textContent = activeSong.title || "";
   resolveCard.classList.remove("resolve-card-spotify");
   resolvePreviewBar.classList.add("hidden");
-  applyResolveTextSizing(activeSong);
 
   if (isCollaboration(activeSong.collab)) {
     collabIndicator.classList.remove("hidden");
@@ -267,8 +266,8 @@ function renderResolve() {
   }
 
   requestAnimationFrame(() => {
-    fitTextToTwoLines(resolveArtist, 24);
-    fitTextToTwoLines(resolveTitle, 22);
+    fitTextToTwoLines(resolveArtist, 20);
+    fitTextToTwoLines(resolveTitle, 18);
   });
 }
 
@@ -280,8 +279,6 @@ function resetResolveView() {
   stopSpotifyPreview();
   resolvePreviewBar.classList.add("hidden");
   resolveCard.classList.remove("resolve-card-spotify");
-  resolveArtist.classList.remove("resolve-artist-tight", "resolve-artist-ultra-tight");
-  resolveTitle.classList.remove("resolve-title-tight", "resolve-title-ultra-tight");
   collabIndicator.classList.add("hidden");
 }
 
@@ -372,22 +369,6 @@ function isScreenUpsideDown() {
   return normalized === 180;
 }
 
-function applyResolveTextSizing(song) {
-  const artistLength = String(song.artist || "").length;
-  const titleLength = String(song.title || "").length;
-
-  resolveArtist.classList.remove("resolve-artist-tight", "resolve-artist-ultra-tight");
-  resolveTitle.classList.remove("resolve-title-tight", "resolve-title-ultra-tight");
-
-  if (artistLength > 30) {
-    resolveArtist.classList.add(artistLength > 44 ? "resolve-artist-ultra-tight" : "resolve-artist-tight");
-  }
-
-  if (titleLength > 30) {
-    resolveTitle.classList.add(titleLength > 46 ? "resolve-title-ultra-tight" : "resolve-title-tight");
-  }
-}
-
 function fitTextToTwoLines(element, minFontSizePx) {
   if (!element) {
     return;
@@ -395,22 +376,35 @@ function fitTextToTwoLines(element, minFontSizePx) {
 
   element.style.fontSize = "";
   element.style.lineHeight = "";
+  element.style.maxHeight = "";
 
   const computed = window.getComputedStyle(element);
   const initialFontSize = parseFloat(computed.fontSize);
   const initialLineHeight = parseFloat(computed.lineHeight) || initialFontSize * 1.08;
-
+  const minLineHeight = minFontSizePx * 1.06;
   let fontSize = initialFontSize;
   let lineHeight = initialLineHeight;
   let guard = 0;
 
-  while (guard < 20 && element.scrollHeight > lineHeight * 2 + 1 && fontSize > minFontSizePx) {
-    fontSize -= 1;
-    lineHeight = Math.max(fontSize * 1.06, minFontSizePx * 1.06);
+  element.style.fontSize = `${fontSize}px`;
+  element.style.lineHeight = `${lineHeight}px`;
+
+  while (guard < 60) {
+    const measuredHeight = element.scrollHeight;
+    const maxAllowedHeight = lineHeight * 2 + 1;
+
+    if (measuredHeight <= maxAllowedHeight || fontSize <= minFontSizePx) {
+      break;
+    }
+
+    fontSize = Math.max(fontSize * 0.97, minFontSizePx);
+    lineHeight = Math.max(lineHeight * 0.98, minLineHeight);
     element.style.fontSize = `${fontSize}px`;
     element.style.lineHeight = `${lineHeight}px`;
     guard += 1;
   }
+
+  element.style.maxHeight = `${lineHeight * 2 + 2}px`;
 }
 
 function startSpotifyPreview(uri) {

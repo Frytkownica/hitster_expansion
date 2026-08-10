@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Phone Turn Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      .phone-turn-test {
+        min-height: 100vh;
+      }
+
+      .phone-turn-test .turn-layout {
+        min-height: 100vh;
+        justify-content: center;
+      }
+
+      .turn-test-controls {
+        display: flex;
+        gap: 12px;
+        margin-top: 10px;
+      }
+
+      .turn-test-button {
+        border: 0;
+        border-radius: 999px;
+        padding: 12px 18px;
+        background: rgba(255, 255, 255, 0.12);
+        color: var(--white);
+        font-weight: 700;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app phone-turn-test">
+      <section class="screen screen-active">
+        <div class="ambient ambient-main"></div>
+        <div class="screen-inner turn-layout">
+          <div id="turn-phone" class="turn-phone" aria-hidden="true">
+            <div class="phone-glow"></div>
+            <div class="phone-frame">
+              <span class="phone-notch"></span>
+              <span class="phone-side side-left side-top"></span>
+              <span class="phone-side side-left side-mid"></span>
+              <span class="phone-side side-left side-low"></span>
+              <span class="phone-side side-right side-main"></span>
+              <span class="phone-side side-right side-low"></span>
+              <span class="phone-camera"></span>
+            </div>
+            <span class="note note-main">♪</span>
+            <span class="note note-small">♪</span>
+            <span class="note note-tiny">♫</span>
+          </div>
+
+          <div class="turn-copy">
+            <h2>ODWROC TELEFON</h2>
+            <p>Nastepnie muzyka sie zacznie</p>
+          </div>
+
+          <div class="turn-test-controls">
+            <button id="play-animation" class="turn-test-button" type="button">Play animation</button>
+            <button id="reset-animation" class="turn-test-button" type="button">Reset</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const phone = document.getElementById("turn-phone");
+      const playButton = document.getElementById("play-animation");
+      const resetButton = document.getElementById("reset-animation");
+
+      playButton.addEventListener("click", () => {
+        phone.classList.remove("turn-phone-active");
+        void phone.offsetWidth;
+        phone.classList.add("turn-phone-active");
+      });
+
+      resetButton.addEventListener("click", () => {
+        phone.classList.remove("turn-phone-active");
+      });
+    </script>
+  </body>
+</html>
