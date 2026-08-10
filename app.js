@@ -267,8 +267,8 @@ function renderResolve() {
   }
 
   requestAnimationFrame(() => {
-    fitTextToTwoLines(resolveArtist, 24);
-    fitTextToTwoLines(resolveTitle, 22);
+    fitTextToTwoLines(resolveArtist, 20);
+    fitTextToTwoLines(resolveTitle, 18);
   });
 }
 
@@ -395,6 +395,7 @@ function fitTextToTwoLines(element, minFontSizePx) {
 
   element.style.fontSize = "";
   element.style.lineHeight = "";
+  element.style.maxHeight = "";
 
   const computed = window.getComputedStyle(element);
   const initialFontSize = parseFloat(computed.fontSize);
@@ -411,6 +412,8 @@ function fitTextToTwoLines(element, minFontSizePx) {
     element.style.lineHeight = `${lineHeight}px`;
     guard += 1;
   }
+
+  element.style.maxHeight = `${lineHeight * 2 + 2}px`;
 }
 
 function startSpotifyPreview(uri) {
