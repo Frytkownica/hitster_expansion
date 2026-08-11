@@ -49,7 +49,7 @@
   --brand-fit-height: clamp(4rem, 12vw, 6.2rem);
   --cta-fit-height: clamp(1.6rem, 4.8vw, 2.7rem);
   --resolve-two-line-height: clamp(2.8rem, 9vw, 5rem);
-  --resolve-year-height: clamp(5.8rem, 18vw, 9.6rem);
+  --resolve-year-height: clamp(6.6rem, 20vw, 10.8rem);
 }
 
 * {
@@ -236,7 +236,7 @@ input {
 .bolt-d { bottom: 15%; right: 15%; }
 
 .cta-button {
-  min-height: 5.25rem;
+  min-height: 4rem;
   width: calc(100% - 40px);
   max-width: 500px;
   padding: 1rem 1.5rem;
@@ -348,6 +348,63 @@ input {
   box-shadow:
     0 0 0 999px var(--scanner-fog),
     0 0 28px var(--shadow-white-soft);
+  position: relative;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.scanner-frame.scanner-frame-found {
+  border-color: #50f27f;
+  box-shadow:
+    0 0 0 999px var(--scanner-fog),
+    0 0 28px rgba(80, 242, 127, 0.55);
+}
+
+.scanner-corner {
+  position: absolute;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-color: var(--panel-white);
+  border-style: solid;
+  border-width: 0;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+  transition: border-color 140ms ease, transform 140ms ease;
+}
+
+.scanner-frame.scanner-frame-found .scanner-corner {
+  border-color: #50f27f;
+  transform: scale(1.05);
+}
+
+.corner-top-left {
+  top: -4px;
+  left: -4px;
+  border-top-width: 5px;
+  border-left-width: 5px;
+  border-top-left-radius: 20px;
+}
+
+.corner-top-right {
+  top: -4px;
+  right: -4px;
+  border-top-width: 5px;
+  border-right-width: 5px;
+  border-top-right-radius: 20px;
+}
+
+.corner-bottom-left {
+  bottom: -4px;
+  left: -4px;
+  border-bottom-width: 5px;
+  border-left-width: 5px;
+  border-bottom-left-radius: 20px;
+}
+
+.corner-bottom-right {
+  right: -4px;
+  bottom: -4px;
+  border-right-width: 5px;
+  border-bottom-width: 5px;
+  border-bottom-right-radius: 20px;
 }
 
 .scanner-status,
@@ -376,8 +433,8 @@ input {
   --phone-duration: 1.5s;
   --phone-duration-effect: calc(var(--phone-duration) * 1.1);
   --phone-slide-mid: 50%;
-  --phone-slide-late: 80%;
-  --phone-slide-end: 130%;
+  --phone-slide-late: 90%;
+  --phone-slide-end: 140%;
   position: relative;
   width: var(--phone-width);
   aspect-ratio: 154 / 318;
@@ -598,10 +655,11 @@ input {
   width: 100%;
   display: grid;
   grid-template-rows: auto auto auto;
-  align-content: center;
+  align-content: space-between;
   justify-items: center;
-  gap: clamp(1rem, 3vh, 2rem);
-  padding: clamp(1rem, 2vh, 2rem) 0;
+  height: min(56svh, 34rem);
+  gap: clamp(1.25rem, 3.8vh, 2.5rem);
+  padding: clamp(0.25rem, 1vh, 0.75rem) 0 clamp(1.6rem, 4vh, 2.6rem);
   overflow: visible;
 }
 
@@ -635,7 +693,7 @@ input {
   text-align: center;
   font-size: 1rem;
   font-weight: var(--extra_thick_font);
-  line-height: 1;
+  line-height: 1.06;
   letter-spacing: 0.02em;
   white-space: nowrap;
   overflow: visible;

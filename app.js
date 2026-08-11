@@ -1,6 +1,6 @@
 const PREFIX = "hitsterexp:";
-const TURN_TRANSITION_MS = 1300;
-const PHONE_FLIP_THRESHOLD = 150;
+const TURN_TRANSITION_MS = 600;
+const PHONE_FLIP_THRESHOLD = 50;
 const TURN_FALLBACK_MS = 4500;
 
 const config = window.HITSTER_CONFIG || {};
@@ -20,6 +20,7 @@ const brandHitster = document.getElementById("brand-hitster");
 const playNowButton = document.getElementById("play-now-button");
 const playNowLabel = document.getElementById("play-now-label");
 const scannerCloseButton = document.getElementById("scanner-close-button");
+const scannerFrame = document.getElementById("scanner-frame");
 const scannerStatus = document.getElementById("scanner-status");
 const scannerError = document.getElementById("scanner-error");
 const turnPhone = document.getElementById("turn-phone");
@@ -44,6 +45,7 @@ let lastOrientationEventAt = 0;
 let spotifyController = null;
 let pendingSpotifyUri = null;
 let fitRaf = 0;
+let scannerFoundTimer = 0;
 
 if (!supabaseClient) {
   showScannerError("Brakuje konfiguracji Supabase.");
@@ -184,14 +186,16 @@ async function onScanSuccess(decodedText) {
 
   scannerStatus.textContent = `Szukam utworu ${qrCodeId}...`;
   showScannerError("");
+  flashScannerFound();
 
   try {
     const song = await fetchSong(qrCodeId);
     activeSong = song;
+    await pause(180);
     await stopScanner();
     showTurnScreen();
   } catch (error) {
-    showScannerError(error.message || "Nie udalo sie pobrac utworu.");
+    showScannerError(error.message || "Nie udało sie pobrać utworu.");
   }
 }
 
@@ -212,11 +216,11 @@ async function fetchSong(qrCodeId) {
     .maybeSingle();
 
   if (error) {
-    throw new Error(`Blad Supabase: ${error.message}`);
+    throw new Error(`Bład bazy danych: ${error.message}`);
   }
 
   if (!data) {
-    throw new Error(`Nie znaleziono utworu dla qr_code_id ${qrCodeId}.`);
+    throw new Error(`Nie znaleziono utworu dla kodu ${qrCodeId}.`);
   }
 
   return data;
@@ -405,6 +409,28 @@ function activateSpotifyElement() {
   } catch (_) {
     // Ignore activation failures and still try normal playback.
   }
+}
+
+function flashScannerFound() {
+  if (!scannerFrame) {
+    return;
+  }
+
+  if (scannerFoundTimer) {
+    window.clearTimeout(scannerFoundTimer);
+  }
+
+  scannerFrame.classList.add("scanner-frame-found");
+  scannerFoundTimer = window.setTimeout(() => {
+    scannerFrame.classList.remove("scanner-frame-found");
+    scannerFoundTimer = 0;
+  }, 320);
+}
+
+function pause(ms) {
+  return new Promise((resolve) => {
+    window.setTimeout(resolve, ms);
+  });
 }
 
 function scheduleTextFit() {
