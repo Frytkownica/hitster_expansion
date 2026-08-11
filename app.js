@@ -147,13 +147,7 @@ async function startScanner() {
   try {
     await scanner.start(
       { facingMode: "environment" },
-      {
-        fps: 10,
-        qrbox: (viewfinderWidth, viewfinderHeight) => {
-          const edge = Math.floor(Math.min(viewfinderWidth, viewfinderHeight) * 0.7);
-          return { width: edge, height: edge };
-        }
-      },
+      { fps: 10 },
       onScanSuccess,
       () => {}
     );
