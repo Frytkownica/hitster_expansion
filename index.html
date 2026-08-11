@@ -17,10 +17,15 @@
   <body>
     <main class="app">
       <div id="spotify-autoplay-host" class="spotify-autoplay-host" aria-hidden="true"></div>
-      <section id="screen-home" class="screen screen-active">
-        <div class="ambient ambient-home"></div>
+
+      <section id="screen-home" class="screen">
+        <div class="ambient"></div>
+        <div class="screen-inner home-layout">
+          <header class="home-brand">
             <div class="brand-hitster">HITSTER</div>
             <div class="brand-subtitle">Nieznane Utwory</div>
+          </header>
+
           <div class="speaker-wrap" aria-hidden="true">
             <div class="speaker">
               <div class="speaker-ring speaker-ring-outer"></div>
@@ -39,9 +44,9 @@
       </section>
 
       <section id="screen-scanner" class="screen hidden">
-        <div class="ambient ambient-main"></div>
+        <div class="ambient"></div>
         <div class="screen-inner scanner-layout">
-          <button id="scanner-close-button" class="top-action" type="button">Powrot</button>
+          <button id="scanner-close-button" class="top-action" type="button">Powrót</button>
           <div class="scanner-stage">
             <div id="reader" class="reader"></div>
             <div class="scanner-mask" aria-hidden="true">
@@ -54,7 +59,7 @@
       </section>
 
       <section id="screen-turn" class="screen hidden">
-        <div class="ambient ambient-main"></div>
+        <div class="ambient"></div>
         <div class="screen-inner turn-layout">
           <div id="turn-phone" class="turn-phone" aria-hidden="true">
             <div class="phone-glow"></div>
@@ -77,20 +82,28 @@
       </section>
 
       <section id="screen-resolve" class="screen hidden">
-        <div class="ambient ambient-main"></div>
+        <div class="ambient"></div>
+        <div class="screen-inner resolve-layout">
           <div id="resolve-preview-bar" class="resolve-preview-bar hidden">
             <div id="resolve-preview-pill" class="resolve-preview-pill">Spotify Preview</div>
             <button id="resolve-stop-button" class="resolve-stop-button" type="button">STOP</button>
           </div>
-          <div id="resolve-artist" class="resolve-artist"></div>
-          <div id="resolve-year" class="resolve-year"></div>
-          <div id="resolve-title" class="resolve-title"></div>
-          <div id="collab-indicator" class="collab-indicator hidden" aria-label="Collaboration indicator">
-            <span class="person person-left"></span>
-            <span class="person person-right"></span>
-            <span class="person person-back"></span>
+
+          <div class="resolve-copy">
+            <div id="resolve-artist" class="resolve-artist"></div>
+            <div id="resolve-year" class="resolve-year"></div>
+            <div id="resolve-title" class="resolve-title"></div>
           </div>
-          <button id="next-card-button" class="cta-button" type="button">NASTĘPNA KARTA</button>
+
+          <div class="resolve-footer">
+            <div id="collab-indicator" class="collab-indicator hidden" aria-label="Collaboration indicator">
+              <span class="person person-left"></span>
+              <span class="person person-right"></span>
+              <span class="person person-back"></span>
+            </div>
+            <button id="next-card-button" class="cta-button" type="button">NASTĘPNA KARTA</button>
+          </div>
+        </div>
       </section>
     </main>
   </body>

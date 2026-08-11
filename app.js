@@ -22,7 +22,6 @@ const scannerStatus = document.getElementById("scanner-status");
 const scannerError = document.getElementById("scanner-error");
 const turnPhone = document.getElementById("turn-phone");
 const nextCardButton = document.getElementById("next-card-button");
-const resolveCard = document.getElementById("resolve-card");
 const resolvePreviewBar = document.getElementById("resolve-preview-bar");
 const resolveStopButton = document.getElementById("resolve-stop-button");
 const resolveArtist = document.getElementById("resolve-artist");
@@ -33,7 +32,6 @@ const spotifyAutoplayHost = document.getElementById("spotify-autoplay-host");
 
 let scanner = null;
 let isScanning = false;
-let activeScreen = "home";
 let activeSong = null;
 let turnAnimationTimer = null;
 let turnFallbackTimer = null;
@@ -248,7 +246,6 @@ function renderResolve() {
   resolveArtist.textContent = activeSong.artist || "";
   resolveYear.textContent = activeSong.year || "";
   resolveTitle.textContent = activeSong.title || "";
-  resolveCard.classList.remove("resolve-card-spotify");
   resolvePreviewBar.classList.add("hidden");
 
   if (isCollaboration(activeSong.collab)) {
@@ -258,17 +255,11 @@ function renderResolve() {
   }
 
   if (activeSong.spotify_id) {
-    resolveCard.classList.add("resolve-card-spotify");
     resolvePreviewBar.classList.remove("hidden");
     startSpotifyPreview(`spotify:track:${activeSong.spotify_id}`);
   } else {
     stopSpotifyPreview();
   }
-
-  requestAnimationFrame(() => {
-    fitTextToTwoLines(resolveArtist, 20);
-    fitTextToTwoLines(resolveTitle, 18);
-  });
 }
 
 function resetResolveView() {
@@ -278,7 +269,6 @@ function resetResolveView() {
   clearTurnFallback();
   stopSpotifyPreview();
   resolvePreviewBar.classList.add("hidden");
-  resolveCard.classList.remove("resolve-card-spotify");
   collabIndicator.classList.add("hidden");
 }
 
@@ -309,11 +299,8 @@ function showScannerError(message) {
 }
 
 function showScreen(name) {
-  activeScreen = name;
   Object.entries(screens).forEach(([key, element]) => {
-    const isActive = key === name;
-    element.classList.toggle("hidden", !isActive);
-    element.classList.toggle("screen-active", isActive);
+    element.classList.toggle("hidden", key !== name);
   });
 }
 
@@ -367,44 +354,6 @@ function isScreenUpsideDown() {
 
   const normalized = ((angle % 360) + 360) % 360;
   return normalized === 180;
-}
-
-function fitTextToTwoLines(element, minFontSizePx) {
-  if (!element) {
-    return;
-  }
-
-  element.style.fontSize = "";
-  element.style.lineHeight = "";
-  element.style.maxHeight = "";
-
-  const computed = window.getComputedStyle(element);
-  const initialFontSize = parseFloat(computed.fontSize);
-  const initialLineHeight = parseFloat(computed.lineHeight) || initialFontSize * 1.08;
-  const minLineHeight = minFontSizePx * 1.06;
-  let fontSize = initialFontSize;
-  let lineHeight = initialLineHeight;
-  let guard = 0;
-
-  element.style.fontSize = `${fontSize}px`;
-  element.style.lineHeight = `${lineHeight}px`;
-
-  while (guard < 60) {
-    const measuredHeight = element.scrollHeight;
-    const maxAllowedHeight = lineHeight * 2 + 1;
-
-    if (measuredHeight <= maxAllowedHeight || fontSize <= minFontSizePx) {
-      break;
-    }
-
-    fontSize = Math.max(fontSize * 0.97, minFontSizePx);
-    lineHeight = Math.max(lineHeight * 0.98, minLineHeight);
-    element.style.fontSize = `${fontSize}px`;
-    element.style.lineHeight = `${lineHeight}px`;
-    guard += 1;
-  }
-
-  element.style.maxHeight = `${lineHeight * 2 + 2}px`;
 }
 
 function startSpotifyPreview(uri) {
