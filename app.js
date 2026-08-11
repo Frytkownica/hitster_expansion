@@ -16,12 +16,15 @@ const screens = {
   resolve: document.getElementById("screen-resolve")
 };
 
+const brandHitster = document.getElementById("brand-hitster");
 const playNowButton = document.getElementById("play-now-button");
+const playNowLabel = document.getElementById("play-now-label");
 const scannerCloseButton = document.getElementById("scanner-close-button");
 const scannerStatus = document.getElementById("scanner-status");
 const scannerError = document.getElementById("scanner-error");
 const turnPhone = document.getElementById("turn-phone");
 const nextCardButton = document.getElementById("next-card-button");
+const nextCardLabel = document.getElementById("next-card-label");
 const resolvePreviewBar = document.getElementById("resolve-preview-bar");
 const resolveStopButton = document.getElementById("resolve-stop-button");
 const resolveArtist = document.getElementById("resolve-artist");
@@ -40,10 +43,15 @@ let orientationAccessRequested = false;
 let lastOrientationEventAt = 0;
 let spotifyController = null;
 let pendingSpotifyUri = null;
+let fitRaf = 0;
 
 if (!supabaseClient) {
   showScannerError("Brakuje konfiguracji Supabase.");
 }
+
+window.addEventListener("resize", () => {
+  scheduleTextFit();
+});
 
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
   IFrameAPI.createController(
@@ -261,6 +269,8 @@ function renderResolve() {
   } else {
     stopSpotifyPreview();
   }
+
+  scheduleTextFit();
 }
 
 function resetResolveView() {
@@ -303,6 +313,8 @@ function showScreen(name) {
   Object.entries(screens).forEach(([key, element]) => {
     element.classList.toggle("hidden", key !== name);
   });
+
+  scheduleTextFit();
 }
 
 function isCollaboration(value) {
@@ -394,3 +406,65 @@ function activateSpotifyElement() {
     // Ignore activation failures and still try normal playback.
   }
 }
+
+function scheduleTextFit() {
+  if (fitRaf) {
+    window.cancelAnimationFrame(fitRaf);
+  }
+
+  fitRaf = window.requestAnimationFrame(() => {
+    fitRaf = 0;
+    applyTextFit();
+  });
+}
+
+function applyTextFit() {
+  if (typeof window.textFit !== "function") {
+    return;
+  }
+
+  fitSingleLine(brandHitster, { minFontSize: 24, maxFontSize: 180 });
+  fitSingleLine(playNowLabel, { minFontSize: 18, maxFontSize: 72 });
+  fitSingleLine(nextCardLabel, { minFontSize: 16, maxFontSize: 64 });
+
+  if (!screens.resolve.classList.contains("hidden")) {
+    fitTwoLines(resolveArtist, { minFontSize: 10, maxFontSize: 84 });
+    fitTwoLines(resolveTitle, { minFontSize: 10, maxFontSize: 84 });
+    fitSingleLine(resolveYear, { minFontSize: 28, maxFontSize: 160 });
+  }
+}
+
+function fitSingleLine(element, options = {}) {
+  if (!element || !isVisibleForFit(element)) {
+    return;
+  }
+
+  window.textFit(element, {
+    widthOnly: true,
+    multiLine: false,
+    detectMultiLine: false,
+    reProcess: true,
+    ...options
+  });
+}
+
+function fitTwoLines(element, options = {}) {
+  if (!element || !isVisibleForFit(element)) {
+    return;
+  }
+
+  window.textFit(element, {
+    widthOnly: false,
+    multiLine: true,
+    detectMultiLine: true,
+    reProcess: true,
+    ...options
+  });
+}
+
+function isVisibleForFit(element) {
+  const rect = element.getBoundingClientRect();
+  return rect.width > 0 && rect.height > 0;
+}
+
+scheduleTextFit();

@@ -12,6 +12,7 @@
     <script src="https://unpkg.com/html5-qrcode" defer></script>
     <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
     <script src="config.js" defer></script>
+    <script src="vendor/textFit.min.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -22,7 +23,7 @@
         <div class="ambient"></div>
         <div class="screen-inner home-layout">
           <header class="home-brand">
-            <div class="brand-hitster">HITSTER</div>
+            <div id="brand-hitster" class="brand-hitster">HITSTER</div>
             <div class="brand-subtitle">Nieznane Utwory</div>
           </header>
 
@@ -39,7 +40,9 @@
             </div>
           </div>
 
-          <button id="play-now-button" class="cta-button" type="button">ZAGRAJ TERAZ</button>
+          <button id="play-now-button" class="cta-button" type="button">
+            <span id="play-now-label" class="cta-label">ZAGRAJ TERAZ</span>
+          </button>
         </div>
       </section>
 
@@ -101,7 +104,9 @@
               <span class="person person-right"></span>
               <span class="person person-back"></span>
             </div>
-            <button id="next-card-button" class="cta-button" type="button">NASTĘPNA KARTA</button>
+            <button id="next-card-button" class="cta-button" type="button">
+              <span id="next-card-label" class="cta-label">NASTĘPNA KARTA</span>
+            </button>
           </div>
         </div>
       </section>

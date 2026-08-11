@@ -46,6 +46,10 @@
   --med_font: 600;
   --thick_font: 800;
   --extra_thick_font: 900;
+  --brand-fit-height: clamp(4rem, 12vw, 6.2rem);
+  --cta-fit-height: clamp(1.6rem, 4.8vw, 2.7rem);
+  --resolve-two-line-height: clamp(2.8rem, 9vw, 5rem);
+  --resolve-year-height: clamp(4.8rem, 16vw, 8.4rem);
 }
 
 * {
@@ -129,12 +133,17 @@ input {
 }
 
 .brand-hitster {
+  width: calc(100% - 40px);
+  height: var(--brand-fit-height);
+  margin: 0 auto;
+  overflow: visible;
   text-align: center;
   letter-spacing: 0.05em;
   font-family: "Orbitron", sans-serif;
   font-weight: var(--thin_font);
-  font-size: clamp(3rem, 12vw, 8rem);
+  font-size: 1rem;
   line-height: 0.95;
+  white-space: nowrap;
   color: var(--panel-white-soft);
   text-shadow:
     var(--neon-shadow),
@@ -247,6 +256,13 @@ input {
   margin-inline: auto;
 }
 
+.cta-label {
+  display: block;
+  width: 90%;
+  height: var(--cta-fit-height);
+  margin: 0 auto;
+}
+
 .cta-button:active {
   transform: translateY(2px);
 }
@@ -357,11 +373,11 @@ input {
   --phone-stroke: calc(var(--phone-width) * 0.04);
   --phone-radius: calc(var(--phone-width) * 0.22);
   --phone-side-width: calc(var(--phone-width) * 0.045);
-  --phone-duration: 3s;
+  --phone-duration: 1.5s;
   --phone-duration-effect: calc(var(--phone-duration) * 1.1);
-  --phone-slide-mid: 45%;
-  --phone-slide-late: 75%;
-  --phone-slide-end: 120%;
+  --phone-slide-mid: 50%;
+  --phone-slide-late: 80%;
+  --phone-slide-end: 130%;
   position: relative;
   width: var(--phone-width);
   aspect-ratio: 154 / 318;
@@ -591,34 +607,39 @@ input {
 .resolve-title {
   width: min(75vw, 500px);
   max-width: 500px;
+  height: var(--resolve-two-line-height);
   text-align: center;
   text-transform: uppercase;
-  text-wrap: balance;
   line-height: 0.98;
   letter-spacing: 0.03em;
   word-break: normal;
   overflow-wrap: anywhere;
+  overflow: hidden;
+  font-weight: var(--med_font);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .resolve-artist {
-  font-size: clamp(0.1rem, 7vw, 5rem);
-  line-height: 2;
-  font-weight: var(--med_font);
+  font-size: 1rem;
 }
 
 .resolve-year {
+  width: calc(100% - 40px);
+  max-width: 500px;
+  height: var(--resolve-year-height);
   text-align: center;
-  font-size: clamp(1rem, 18vw, 10rem);
+  font-size: 1rem;
   font-weight: var(--extra_thick_font);
-  line-height: 1;
   line-height: 0.88;
   letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .resolve-title {
-  font-size: clamp(0.1rem, 7vw, 5rem);
-  line-height: 2;
-  font-weight: var(--med_font);
+  font-size: 1rem;
 }
 
 .resolve-footer {
