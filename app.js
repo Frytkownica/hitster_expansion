@@ -63,6 +63,7 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
 };
 
 playNowButton.addEventListener("click", async () => {
+  activateSpotifyElement();
   await ensureOrientationAccess();
   openScanner();
 });
@@ -146,7 +147,13 @@ async function startScanner() {
   try {
     await scanner.start(
       { facingMode: "environment" },
-      { fps: 10, qrbox: { width: 240, height: 240 }, aspectRatio: 9 / 16 },
+      {
+        fps: 10,
+        qrbox: (viewfinderWidth, viewfinderHeight) => {
+          const edge = Math.floor(Math.min(viewfinderWidth, viewfinderHeight) * 0.7);
+          return { width: edge, height: edge };
+        }
+      },
       onScanSuccess,
       () => {}
     );
@@ -310,7 +317,7 @@ function isCollaboration(value) {
   }
 
   const normalized = String(value || "").trim().toLowerCase();
-  return normalized === "true" || normalized === "prawda" || normalized === "1" || normalized === "yes";
+  return normalized === "true";
 }
 
 async function ensureOrientationAccess() {
@@ -362,6 +369,7 @@ function startSpotifyPreview(uri) {
     return;
   }
 
+  activateSpotifyElement();
   spotifyController.loadUri(uri);
   const playResult = spotifyController.play?.();
   if (playResult && typeof playResult.catch === "function") {
@@ -378,5 +386,17 @@ function stopSpotifyPreview() {
   const pauseResult = spotifyController.pause?.();
   if (pauseResult && typeof pauseResult.catch === "function") {
     pauseResult.catch(() => {});
+  }
+}
+
+function activateSpotifyElement() {
+  if (!spotifyController || typeof spotifyController.activateElement !== "function") {
+    return;
+  }
+
+  try {
+    spotifyController.activateElement();
+  } catch (_) {
+    // Ignore activation failures and still try normal playback.
   }
 }
