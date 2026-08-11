@@ -235,7 +235,7 @@ input {
   border-radius: 28px;
   background: linear-gradient(var(--pink-red) 0%, var(--pink) 50%, var(--pink-blue) 100%);
   color: var(--panel-white-soft);
-  font-size: clamp(0.5rem, 4vw, 3rem);
+  font-size: clamp(1rem, 6vw, 3rem);
   font-weight: var(--thick_font);
   letter-spacing: 0.03em;
   line-height: 1;
@@ -359,9 +359,9 @@ input {
   --phone-side-width: calc(var(--phone-width) * 0.045);
   --phone-duration: 3s;
   --phone-duration-effect: calc(var(--phone-duration) * 1.1);
-  --phone-slide-mid: 40%;
-  --phone-slide-late: 70%;
-  --phone-slide-end: 110%;
+  --phone-slide-mid: 45%;
+  --phone-slide-late: 75%;
+  --phone-slide-end: 120%;
   position: relative;
   width: var(--phone-width);
   aspect-ratio: 154 / 318;
@@ -601,7 +601,8 @@ input {
 }
 
 .resolve-artist {
-  font-size: clamp(0.1rem, 7.6vw, 5rem);
+  font-size: clamp(0.1rem, 7vw, 5rem);
+  line-height: 2;
   font-weight: var(--med_font);
 }
 
@@ -609,12 +610,14 @@ input {
   text-align: center;
   font-size: clamp(1rem, 18vw, 10rem);
   font-weight: var(--extra_thick_font);
+  line-height: 1;
   line-height: 0.88;
   letter-spacing: 0.02em;
 }
 
 .resolve-title {
-  font-size: clamp(0.1rem, 6.9vw, 5rem);
+  font-size: clamp(0.1rem, 7vw, 5rem);
+  line-height: 2;
   font-weight: var(--med_font);
 }
 
