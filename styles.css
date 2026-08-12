@@ -376,32 +376,32 @@ input {
 }
 
 .corner-top-left {
-  top: -4px;
-  left: -4px;
+  top: 4px;
+  left: 4px;
   border-top-width: 5px;
   border-left-width: 5px;
   border-top-left-radius: 20px;
 }
 
 .corner-top-right {
-  top: -4px;
-  right: -4px;
+  top: 4px;
+  right: 4px;
   border-top-width: 5px;
   border-right-width: 5px;
   border-top-right-radius: 20px;
 }
 
 .corner-bottom-left {
-  bottom: -4px;
-  left: -4px;
+  bottom: 4px;
+  left: 4px;
   border-bottom-width: 5px;
   border-left-width: 5px;
   border-bottom-left-radius: 20px;
 }
 
 .corner-bottom-right {
-  right: -4px;
-  bottom: -4px;
+  right: 4px;
+  bottom: 4px;
   border-right-width: 5px;
   border-bottom-width: 5px;
   border-bottom-right-radius: 20px;
