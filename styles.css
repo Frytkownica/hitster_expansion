@@ -128,27 +128,16 @@ input {
   padding-bottom: max(56px, env(safe-area-inset-bottom));
 }
 
-.home-layout::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 4;
-  width: 4px;
-  height: 72px;
-  background: var(--ink);
-}
-
 .home-brand {
   width: 100%;
-  padding-top: clamp(0.25rem, 1.2vh, 0.85rem);
+  padding-top: clamp(2rem, 4vh, 2.5rem);
 }
 
 .brand-hitster {
   width: calc(100% - 28px);
   height: var(--brand-fit-height);
   margin: 0 auto;
-  overflow: hidden;
+  overflow: visible;
   text-align: center;
   letter-spacing: 0.05em;
   font-family: "Orbitron", sans-serif;

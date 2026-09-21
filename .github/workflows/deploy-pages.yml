@@ -39,12 +39,13 @@ jobs:
 
       - name: Prepare Pages artifact
         run: |
-          mkdir -p _site/vendor
+          mkdir -p _site/vendor _site/songs
           cp index.html _site/
           cp styles.css _site/
           cp app.js _site/
           cp config.js _site/
           cp vendor/textFit.min.js _site/vendor/
+          cp songs/*.json _site/songs/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
