@@ -78,17 +78,25 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
 };
 
 playNowButton.addEventListener("click", async () => {
-  activateSpotifyElement();
-  await ensureOrientationAccess();
-  await prepareSelectedPacks();
-  renderPackInfo();
-  showScreen("packInfo");
+  try {
+    activateSpotifyElement();
+    await ensureOrientationAccess();
+    await prepareSelectedPacks();
+    renderPackInfo();
+    showScreen("packInfo");
+  } catch (error) {
+    alert(error.message || "Nie udało się wczytać rozszerzeń.");
+  }
 });
 
 optionsButton.addEventListener("click", async () => {
-  await loadPacks();
-  renderOptions();
-  showScreen("options");
+  try {
+    await loadPacks();
+    renderOptions();
+    showScreen("options");
+  } catch (error) {
+    alert(error.message || "Nie udało się wczytać rozszerzeń.");
+  }
 });
 
 optionsCloseButton.addEventListener("click", () => {
@@ -258,7 +266,16 @@ async function loadPacks() {
   }
 
   packs = await response.json();
-  const saved = JSON.parse(localStorage.getItem(SELECTED_PACKS_KEY) || "null");
+  if (!Array.isArray(packs)) {
+    packs = [packs];
+  }
+
+  let saved = null;
+  try {
+    saved = JSON.parse(localStorage.getItem(SELECTED_PACKS_KEY) || "null");
+  } catch (_) {
+    localStorage.removeItem(SELECTED_PACKS_KEY);
+  }
   selectedPackFiles = Array.isArray(saved) && saved.length ? saved : packs.map((pack) => pack.file);
 }
 
@@ -596,3 +613,7 @@ function isVisibleForFit(element) {
 }
 
 scheduleTextFit();
+
+if (document.fonts?.ready) {
+  document.fonts.ready.then(scheduleTextFit);
+}

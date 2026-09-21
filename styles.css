@@ -46,7 +46,7 @@
   --med_font: 600;
   --thick_font: 800;
   --extra_thick_font: 900;
-  --brand-fit-height: clamp(4rem, 12vw, 6.2rem);
+  --brand-fit-height: clamp(5.2rem, 16vw, 7.4rem);
   --cta-fit-height: clamp(1.6rem, 4.8vw, 2.7rem);
   --resolve-two-line-height: clamp(2.8rem, 9vw, 5rem);
   --resolve-year-height: clamp(6.6rem, 20vw, 10.8rem);
@@ -124,7 +124,19 @@ input {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(1.5rem, 4vh, 2.5rem);
+  gap: clamp(1rem, 3vh, 2rem);
+  padding-bottom: max(56px, env(safe-area-inset-bottom));
+}
+
+.home-layout::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  width: 4px;
+  height: 72px;
+  background: var(--ink);
 }
 
 .home-brand {
@@ -133,10 +145,10 @@ input {
 }
 
 .brand-hitster {
-  width: calc(100% - 10px);
+  width: calc(100% - 28px);
   height: var(--brand-fit-height);
   margin: 0 auto;
-  overflow: visible;
+  overflow: hidden;
   text-align: center;
   letter-spacing: 0.05em;
   font-family: "Orbitron", sans-serif;
@@ -267,17 +279,26 @@ input {
   transform: translateY(2px);
 }
 
-.secondary-button {
+.menu-button {
+  position: fixed;
+  top: max(18px, env(safe-area-inset-top));
+  right: max(18px, env(safe-area-inset-right));
+  z-index: 5;
+  display: grid;
+  gap: 5px;
+  width: 44px;
+  padding: 6px 0;
   border: 0;
-  background: var(--transparent-button);
-  color: var(--panel-white-soft);
-  padding: 0.75rem 1.5rem;
-  border-radius: 999px;
-  font-size: 1.05rem;
-  font-weight: var(--med_font);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  background: transparent;
   cursor: pointer;
+}
+
+.menu-button span {
+  display: block;
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--panel-white-soft);
 }
 
 .options-layout,
