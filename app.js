@@ -49,6 +49,7 @@ let turnAnimationTimer = null;
 let turnFallbackTimer = null;
 let waitingForFlip = false;
 let orientationSignalSeen = false;
+let spotifyIframeApi = null;
 let spotifyController = null;
 let pendingSpotifyUri = null;
 let fitRaf = 0;
@@ -64,20 +65,10 @@ window.addEventListener("resize", () => {
 });
 
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
-  IFrameAPI.createController(
-    spotifyAutoplayHost,
-    {
-      uri: "spotify:track:3AhXZa8sUQht0UEdBJgpGc",
-      width: "1",
-      height: "1"
-    },
-    (controller) => {
-      spotifyController = controller;
-      if (pendingSpotifyUri) {
-        startSpotifyPreview(pendingSpotifyUri);
-      }
-    }
-  );
+  spotifyIframeApi = IFrameAPI;
+  if (pendingSpotifyUri) {
+    createSpotifyController(pendingSpotifyUri);
+  }
 };
 
 playNowButton.addEventListener("click", async () => {
@@ -557,6 +548,7 @@ function isScreenUpsideDown() {
 function startSpotifyPreview(uri) {
   pendingSpotifyUri = uri;
   if (!spotifyController) {
+    createSpotifyController(uri);
     return;
   }
 
@@ -678,4 +670,25 @@ scheduleTextFit();
 
 if (document.fonts?.ready) {
   document.fonts.ready.then(scheduleTextFit);
+}
+
+function createSpotifyController(uri) {
+  if (!spotifyIframeApi || spotifyController) {
+    return;
+  }
+
+  spotifyIframeApi.createController(
+    spotifyAutoplayHost,
+    {
+      uri,
+      width: "1",
+      height: "1"
+    },
+    (controller) => {
+      spotifyController = controller;
+      if (pendingSpotifyUri) {
+        startSpotifyPreview(pendingSpotifyUri);
+      }
+    }
+  );
 }
