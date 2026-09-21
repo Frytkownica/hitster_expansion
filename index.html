@@ -7,11 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://unpkg.com/html5-qrcode" defer></script>
     <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
-    <script src="config.js" defer></script>
     <script src="vendor/textFit.min.js" defer></script>
     <script src="app.js" defer></script>
   </head>
@@ -42,6 +41,40 @@
 
           <button id="play-now-button" class="cta-button" type="button">
             <span id="play-now-label" class="cta-label">ZAGRAJ TERAZ</span>
+          </button>
+          <button id="options-button" class="secondary-button" type="button">Opcje</button>
+        </div>
+      </section>
+
+      <section id="screen-options" class="screen hidden">
+        <div class="ambient"></div>
+        <div class="screen-inner options-layout">
+          <button id="options-close-button" class="top-action" type="button">Powrót</button>
+          <header class="home-brand compact-brand">
+            <div class="brand-hitster">HITSTER</div>
+            <div class="brand-subtitle">Rozszerzenia</div>
+          </header>
+          <div id="packs-list" class="packs-list"></div>
+          <button id="save-options-button" class="cta-button" type="button">
+            <span class="cta-label">ZAPISZ</span>
+          </button>
+        </div>
+      </section>
+
+      <section id="screen-pack-info" class="screen hidden">
+        <div class="ambient"></div>
+        <div class="screen-inner pack-info-layout">
+          <button id="pack-info-back-button" class="top-action" type="button">Powrót</button>
+          <header class="home-brand compact-brand">
+            <div class="brand-hitster">HITSTER</div>
+            <div class="brand-subtitle">Wybrane karty</div>
+          </header>
+          <div class="pack-summary">
+            <p>Lata kart: <strong id="selected-years">-</strong></p>
+            <p>Kolory kart: <span id="selected-sets" class="set-swatches"></span></p>
+          </div>
+          <button id="start-scan-button" class="cta-button" type="button">
+            <span class="cta-label">SKANUJ KARTĘ</span>
           </button>
         </div>
       </section>

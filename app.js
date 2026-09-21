@@ -1,16 +1,14 @@
 const PREFIX = "hitsterexp:";
+const PACKS_FILE = "songs/packs.json";
+const SELECTED_PACKS_KEY = "hitsterexp:selected-packs";
 const TURN_TRANSITION_MS = 600;
 const PHONE_FLIP_THRESHOLD = 50;
 const TURN_FALLBACK_MS = 4500;
 
-const config = window.HITSTER_CONFIG || {};
-const supabaseClient =
-  config.supabaseUrl && config.supabasePublishableKey
-    ? window.supabase.createClient(config.supabaseUrl, config.supabasePublishableKey)
-    : null;
-
 const screens = {
   home: document.getElementById("screen-home"),
+  options: document.getElementById("screen-options"),
+  packInfo: document.getElementById("screen-pack-info"),
   scanner: document.getElementById("screen-scanner"),
   turn: document.getElementById("screen-turn"),
   resolve: document.getElementById("screen-resolve")
@@ -19,6 +17,14 @@ const screens = {
 const brandHitster = document.getElementById("brand-hitster");
 const playNowButton = document.getElementById("play-now-button");
 const playNowLabel = document.getElementById("play-now-label");
+const optionsButton = document.getElementById("options-button");
+const optionsCloseButton = document.getElementById("options-close-button");
+const saveOptionsButton = document.getElementById("save-options-button");
+const packsList = document.getElementById("packs-list");
+const packInfoBackButton = document.getElementById("pack-info-back-button");
+const startScanButton = document.getElementById("start-scan-button");
+const selectedYears = document.getElementById("selected-years");
+const selectedSets = document.getElementById("selected-sets");
 const scannerCloseButton = document.getElementById("scanner-close-button");
 const scannerFrame = document.getElementById("scanner-frame");
 const scannerStatus = document.getElementById("scanner-status");
@@ -46,10 +52,9 @@ let spotifyController = null;
 let pendingSpotifyUri = null;
 let fitRaf = 0;
 let scannerFoundTimer = 0;
-
-if (!supabaseClient) {
-  showScannerError("Brakuje konfiguracji Supabase.");
-}
+let packs = [];
+let selectedPackFiles = [];
+let songPool = new Map();
 
 window.addEventListener("resize", () => {
   scheduleTextFit();
@@ -75,7 +80,37 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
 playNowButton.addEventListener("click", async () => {
   activateSpotifyElement();
   await ensureOrientationAccess();
-  openScanner();
+  await prepareSelectedPacks();
+  renderPackInfo();
+  showScreen("packInfo");
+});
+
+optionsButton.addEventListener("click", async () => {
+  await loadPacks();
+  renderOptions();
+  showScreen("options");
+});
+
+optionsCloseButton.addEventListener("click", () => {
+  showScreen("home");
+});
+
+saveOptionsButton.addEventListener("click", async () => {
+  selectedPackFiles = getCheckedPackFiles();
+  if (!selectedPackFiles.length && packs.length) {
+    selectedPackFiles = [packs[0].file];
+  }
+  localStorage.setItem(SELECTED_PACKS_KEY, JSON.stringify(selectedPackFiles));
+  await prepareSelectedPacks(true);
+  showScreen("home");
+});
+
+packInfoBackButton.addEventListener("click", () => {
+  showScreen("home");
+});
+
+startScanButton.addEventListener("click", async () => {
+  await openScanner();
 });
 
 scannerCloseButton.addEventListener("click", async () => {
@@ -130,12 +165,6 @@ if (window.screen?.orientation?.addEventListener) {
 }
 
 async function openScanner() {
-  if (!supabaseClient) {
-    showScreen("scanner");
-    showScannerError("Brakuje konfiguracji Supabase.");
-    return;
-  }
-
   showScreen("scanner");
   showScannerError("");
   scannerStatus.textContent = "Nakieruj aparat na kod QR.";
@@ -209,21 +238,94 @@ function parseQrCodeId(value) {
 }
 
 async function fetchSong(qrCodeId) {
-  const { data, error } = await supabaseClient
-    .from("hitster")
-    .select("*")
-    .eq("qr_code_id", qrCodeId)
-    .maybeSingle();
-
-  if (error) {
-    throw new Error(`Bład bazy danych: ${error.message}`);
+  await prepareSelectedPacks();
+  const songs = songPool.get(qrCodeId);
+  if (!songs?.length) {
+    throw new Error("Zeskanuj Inna karte!");
   }
 
-  if (!data) {
-    throw new Error(`Nie znaleziono utworu dla kodu ${qrCodeId}.`);
+  return songs[Math.floor(Math.random() * songs.length)];
+}
+
+async function loadPacks() {
+  if (packs.length) {
+    return;
   }
 
-  return data;
+  const response = await fetch(PACKS_FILE);
+  if (!response.ok) {
+    throw new Error("Nie udało się wczytać listy rozszerzeń.");
+  }
+
+  packs = await response.json();
+  const saved = JSON.parse(localStorage.getItem(SELECTED_PACKS_KEY) || "null");
+  selectedPackFiles = Array.isArray(saved) && saved.length ? saved : packs.map((pack) => pack.file);
+}
+
+async function prepareSelectedPacks(force = false) {
+  if (!packs.length) {
+    await loadPacks();
+  }
+
+  if (songPool.size && !force) {
+    return;
+  }
+
+  songPool = new Map();
+  const selectedPacks = packs.filter((pack) => selectedPackFiles.includes(pack.file));
+  await Promise.all(selectedPacks.map(loadPackSongs));
+}
+
+async function loadPackSongs(pack) {
+  const response = await fetch(`songs/${pack.file}`);
+  if (!response.ok) {
+    throw new Error(`Nie udało się wczytać ${pack.file}.`);
+  }
+
+  const cards = await response.json();
+  cards.forEach((card) => {
+    const existing = songPool.get(card.qr_code_id) || [];
+    songPool.set(card.qr_code_id, existing.concat(card.songs || []));
+  });
+}
+
+function renderOptions() {
+  packsList.innerHTML = "";
+  packs.forEach((pack) => {
+    const label = document.createElement("label");
+    label.className = "pack-option";
+
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.value = pack.file;
+    input.checked = selectedPackFiles.includes(pack.file);
+
+    const copy = document.createElement("span");
+    copy.innerHTML = `<strong>${pack.name}</strong><small>${pack.description || ""}</small>`;
+
+    label.append(input, copy);
+    packsList.append(label);
+  });
+}
+
+function getCheckedPackFiles() {
+  return [...packsList.querySelectorAll("input:checked")].map((input) => input.value);
+}
+
+function renderPackInfo() {
+  const selectedPacks = packs.filter((pack) => selectedPackFiles.includes(pack.file));
+  const minYear = Math.min(...selectedPacks.map((pack) => pack.years_min));
+  const maxYear = Math.max(...selectedPacks.map((pack) => pack.years_max));
+  const sets = [...new Set(selectedPacks.flatMap((pack) => pack.set || []))].sort();
+
+  selectedYears.textContent = Number.isFinite(minYear) && Number.isFinite(maxYear) ? `${minYear}-${maxYear}` : "-";
+  selectedSets.innerHTML = "";
+  sets.forEach((set) => {
+    const swatch = document.createElement("span");
+    swatch.className = `set-swatch set-${set}`;
+    swatch.textContent = set;
+    selectedSets.append(swatch);
+  });
 }
 
 function showTurnScreen() {
