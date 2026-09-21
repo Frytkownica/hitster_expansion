@@ -145,37 +145,15 @@ window.addEventListener("deviceorientation", (event) => {
     return;
   }
 
-  orientationSignalSeen = true;
-  const beta = Math.abs(event.beta || 0);
-  const gamma = Math.abs(event.gamma || 0);
-  if (beta < PHONE_FLIP_THRESHOLD && gamma < PHONE_FLIP_THRESHOLD) {
+  const beta = Number(event.beta);
+  const gamma = Number(event.gamma);
+  orientationSignalSeen = event.beta != null && event.gamma != null && Number.isFinite(beta) && Number.isFinite(gamma);
+  if (!orientationSignalSeen || !isFaceDown(beta, gamma)) {
     return;
   }
 
   finishTurnFlow();
 });
-
-window.addEventListener("orientationchange", () => {
-  if (!waitingForFlip) {
-    return;
-  }
-
-  if (isScreenUpsideDown()) {
-    finishTurnFlow();
-  }
-});
-
-if (window.screen?.orientation?.addEventListener) {
-  window.screen.orientation.addEventListener("change", () => {
-    if (!waitingForFlip) {
-      return;
-    }
-
-    if (isScreenUpsideDown()) {
-      finishTurnFlow();
-    }
-  });
-}
 
 async function openScanner() {
   showScreen("scanner");
@@ -485,13 +463,17 @@ function isMobileDevice() {
     return true;
   }
 
-  return /Android|iPhone|iPad|iPod|IEMobile|Windows Phone/i.test(navigator.userAgent);
+  return (
+    /Android|iPhone|iPad|iPod|IEMobile|Windows Phone/i.test(navigator.userAgent) ||
+    (navigator.maxTouchPoints > 1 && window.matchMedia?.("(pointer: coarse)").matches)
+  );
 }
 
 async function ensureOrientationAccess() {
   const orientationApi = window.DeviceOrientationEvent;
   const motionApi = window.DeviceMotionEvent;
-  const permissionApi = orientationApi?.requestPermission || motionApi?.requestPermission;
+  const permissionOwner = orientationApi?.requestPermission ? orientationApi : motionApi;
+  const permissionApi = permissionOwner?.requestPermission;
 
   if (!orientationApi && !motionApi) {
     return false;
@@ -502,10 +484,20 @@ async function ensureOrientationAccess() {
   }
 
   try {
-    return (await permissionApi.call(orientationApi || motionApi)) === "granted";
+    return (await permissionApi.call(permissionOwner)) === "granted";
   } catch (_) {
     return false;
   }
+}
+
+function isFaceDown(beta, gamma) {
+  if (beta === null || gamma === null) {
+    return false;
+  }
+
+  beta = Math.abs(Number(beta));
+  gamma = Math.abs(Number(gamma));
+  return Number.isFinite(beta) && Number.isFinite(gamma) && beta >= 180 - PHONE_FLIP_THRESHOLD && gamma <= PHONE_FLIP_THRESHOLD;
 }
 
 function showTurnSensorError() {
@@ -527,22 +519,6 @@ function finishTurnFlow() {
   clearTurnFallback();
   clearTurnSensorError();
   renderResolve();
-}
-
-function isScreenUpsideDown() {
-  const angle =
-    typeof window.screen?.orientation?.angle === "number"
-      ? window.screen.orientation.angle
-      : typeof window.orientation === "number"
-        ? window.orientation
-        : null;
-
-  if (angle === null) {
-    return false;
-  }
-
-  const normalized = ((angle % 360) + 360) % 360;
-  return normalized === 180;
 }
 
 function startSpotifyPreview(uri) {

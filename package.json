@@ -4,7 +4,7 @@
   "description": "Stworzenie wlasnej aplikacji webowej (PWA), dzialajacej podobnie do\r Hitster, ale z wlasna baza utworow oraz wlasnymi kodami QR.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test_orientation.js"
   },
   "repository": {
     "type": "git",
