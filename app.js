@@ -56,6 +56,8 @@ let scannerFoundTimer = 0;
 let packs = [];
 let selectedPackFiles = [];
 let songPool = new Map();
+let songQueues = new Map();
+let scanLocked = false;
 
 window.addEventListener("resize", () => {
   scheduleTextFit();
@@ -188,6 +190,7 @@ async function openScanner() {
   showScreen("scanner");
   showScannerError("");
   scannerStatus.textContent = "Nakieruj aparat na kod QR.";
+  scanLocked = false;
   await startScanner();
 }
 
@@ -227,6 +230,10 @@ async function stopScanner() {
 }
 
 async function onScanSuccess(decodedText) {
+  if (scanLocked) {
+    return;
+  }
+
   const qrCodeId = parseQrCodeId(decodedText);
   if (!qrCodeId) {
     showScannerError(`Nieznany kod: ${decodedText}`);
@@ -240,9 +247,14 @@ async function onScanSuccess(decodedText) {
   try {
     const song = await fetchSong(qrCodeId);
     activeSong = song;
+    scanLocked = true;
     await pause(180);
-    await stopScanner();
     showTurnScreen();
+    try {
+      await stopScanner();
+    } catch (_) {
+      // Firefox iOS can reject camera shutdown after the scan; the turn screen still works.
+    }
   } catch (error) {
     showScannerError(error.message || "Nie udało sie pobrać utworu.");
   }
@@ -264,7 +276,17 @@ async function fetchSong(qrCodeId) {
     throw new Error("Zeskanuj Inna karte!");
   }
 
-  return songs[Math.floor(Math.random() * songs.length)];
+  let queue = songQueues.get(qrCodeId);
+  if (!queue?.length) {
+    queue = [...songs];
+    for (let index = queue.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(Math.random() * (index + 1));
+      [queue[index], queue[swapIndex]] = [queue[swapIndex], queue[index]];
+    }
+    songQueues.set(qrCodeId, queue);
+  }
+
+  return queue.pop();
 }
 
 async function loadPacks() {
@@ -301,6 +323,7 @@ async function prepareSelectedPacks(force = false) {
   }
 
   songPool = new Map();
+  songQueues = new Map();
   const selectedPacks = packs.filter((pack) => selectedPackFiles.includes(pack.file));
   await Promise.all(selectedPacks.map(loadPackSongs));
 }
@@ -475,16 +498,20 @@ function isMobileDevice() {
 }
 
 async function ensureOrientationAccess() {
-  if (typeof window.DeviceOrientationEvent === "undefined") {
+  const orientationApi = window.DeviceOrientationEvent;
+  const motionApi = window.DeviceMotionEvent;
+  const permissionApi = orientationApi?.requestPermission || motionApi?.requestPermission;
+
+  if (!orientationApi && !motionApi) {
     return false;
   }
 
-  if (typeof window.DeviceOrientationEvent.requestPermission !== "function") {
-    return "ondeviceorientation" in window;
+  if (typeof permissionApi !== "function") {
+    return "ondeviceorientation" in window || "ondevicemotion" in window;
   }
 
   try {
-    return (await window.DeviceOrientationEvent.requestPermission()) === "granted";
+    return (await permissionApi.call(orientationApi || motionApi)) === "granted";
   } catch (_) {
     return false;
   }
