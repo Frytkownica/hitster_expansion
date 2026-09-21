@@ -689,6 +689,24 @@ input {
   color: var(--muted);
 }
 
+.turn-sensor-error {
+  max-width: 26rem;
+  color: var(--pink-delicate) !important;
+}
+
+.turn-sensor-retry-button {
+  margin-top: 22px;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 20px;
+  background: var(--transparent-button);
+  color: var(--panel-white-soft);
+  font-size: 1rem;
+  font-weight: var(--extra_thick_font);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
 .turn-phone-active {
   animation: phone-slide var(--phone-duration) ease-in-out forwards;
 }

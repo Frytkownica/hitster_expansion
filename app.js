@@ -30,6 +30,8 @@ const scannerFrame = document.getElementById("scanner-frame");
 const scannerStatus = document.getElementById("scanner-status");
 const scannerError = document.getElementById("scanner-error");
 const turnPhone = document.getElementById("turn-phone");
+const turnSensorError = document.getElementById("turn-sensor-error");
+const turnSensorRetryButton = document.getElementById("turn-sensor-retry-button");
 const nextCardButton = document.getElementById("next-card-button");
 const nextCardLabel = document.getElementById("next-card-label");
 const resolvePreviewBar = document.getElementById("resolve-preview-bar");
@@ -46,8 +48,7 @@ let activeSong = null;
 let turnAnimationTimer = null;
 let turnFallbackTimer = null;
 let waitingForFlip = false;
-let orientationAccessRequested = false;
-let lastOrientationEventAt = 0;
+let orientationSignalSeen = false;
 let spotifyController = null;
 let pendingSpotifyUri = null;
 let fitRaf = 0;
@@ -79,8 +80,6 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
 
 playNowButton.addEventListener("click", async () => {
   try {
-    activateSpotifyElement();
-    await ensureOrientationAccess();
     await prepareSelectedPacks();
     renderPackInfo();
     showScreen("packInfo");
@@ -118,7 +117,20 @@ packInfoBackButton.addEventListener("click", () => {
 });
 
 startScanButton.addEventListener("click", async () => {
+  activateSpotifyElement();
+  if (isMobileDevice() && !(await ensureOrientationAccess())) {
+    alert("Czujnik ruchu jest wymagany na telefonie. Włącz go i spróbuj ponownie.");
+    return;
+  }
   await openScanner();
+});
+
+turnSensorRetryButton.addEventListener("click", async () => {
+  if (await ensureOrientationAccess()) {
+    showTurnScreen();
+  } else {
+    showTurnSensorError();
+  }
 });
 
 scannerCloseButton.addEventListener("click", async () => {
@@ -136,11 +148,11 @@ resolveStopButton.addEventListener("click", () => {
 });
 
 window.addEventListener("deviceorientation", (event) => {
-  lastOrientationEventAt = Date.now();
   if (!waitingForFlip) {
     return;
   }
 
+  orientationSignalSeen = true;
   const beta = Math.abs(event.beta || 0);
   const gamma = Math.abs(event.gamma || 0);
   if (beta < PHONE_FLIP_THRESHOLD && gamma < PHONE_FLIP_THRESHOLD) {
@@ -352,6 +364,8 @@ function showTurnScreen() {
 
   showScreen("turn");
   waitingForFlip = true;
+  orientationSignalSeen = false;
+  clearTurnSensorError();
   clearTurnAnimation();
   turnPhone.classList.remove("turn-phone-active");
   turnAnimationTimer = window.setTimeout(() => {
@@ -362,8 +376,10 @@ function showTurnScreen() {
       return;
     }
 
-    if (!lastOrientationEventAt && !supportsScreenOrientationSignal()) {
+    if (!isMobileDevice()) {
       finishTurnFlow();
+    } else if (!orientationSignalSeen) {
+      showTurnSensorError();
     }
   }, TURN_FALLBACK_MS);
 }
@@ -402,6 +418,7 @@ function resetResolveView() {
   clearTurnAnimation();
   clearTurnFallback();
   stopSpotifyPreview();
+  clearTurnSensorError();
   resolvePreviewBar.classList.add("hidden");
   collabIndicator.classList.add("hidden");
 }
@@ -449,31 +466,49 @@ function isCollaboration(value) {
   return normalized === "true";
 }
 
-async function ensureOrientationAccess() {
-  if (orientationAccessRequested) {
-    return;
+function isMobileDevice() {
+  if (navigator.userAgentData?.mobile === true) {
+    return true;
   }
 
-  orientationAccessRequested = true;
+  return /Android|iPhone|iPad|iPod|IEMobile|Windows Phone/i.test(navigator.userAgent);
+}
+
+async function ensureOrientationAccess() {
+  if (typeof window.DeviceOrientationEvent === "undefined") {
+    return false;
+  }
+
+  if (typeof window.DeviceOrientationEvent.requestPermission !== "function") {
+    return "ondeviceorientation" in window;
+  }
 
   try {
-    if (typeof DeviceOrientationEvent?.requestPermission === "function") {
-      await DeviceOrientationEvent.requestPermission();
-    }
+    return (await window.DeviceOrientationEvent.requestPermission()) === "granted";
   } catch (_) {
-    // If the browser rejects the prompt path, we still keep fallback signals.
+    return false;
   }
+}
+
+function showTurnSensorError() {
+  waitingForFlip = false;
+  clearTurnAnimation();
+  clearTurnFallback();
+  turnSensorError.classList.remove("hidden");
+  turnSensorRetryButton.classList.remove("hidden");
+}
+
+function clearTurnSensorError() {
+  turnSensorError.classList.add("hidden");
+  turnSensorRetryButton.classList.add("hidden");
 }
 
 function finishTurnFlow() {
   waitingForFlip = false;
   clearTurnAnimation();
   clearTurnFallback();
+  clearTurnSensorError();
   renderResolve();
-}
-
-function supportsScreenOrientationSignal() {
-  return typeof window.orientation === "number" || typeof window.screen?.orientation?.angle === "number";
 }
 
 function isScreenUpsideDown() {
