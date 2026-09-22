@@ -1,63 +1,101 @@
-# Hitster Poland -- README
+# Hitster Expansion
 
-## Cel projektu
+Statyczna aplikacja webowa do grania w domowa wersje Hitstera z wlasnymi
+kartami QR i lokalna baza utworow.
 
-Stworzenie wlasnej aplikacji webowej (PWA), dzialajacej podobnie do
-Hitster, ale z wlasna baza utworow oraz wlasnymi kodami QR.
+## Co robi aplikacja
 
-### Glowna zasada
+- skanuje kody QR w formacie `hitsterexp:<qr_code_id>`,
+- laduje wybrane paczki z katalogu `songs/`,
+- losuje jeden utwor przypisany do zeskanowanej karty,
+- wymaga odwrocenia telefonu ekranem w dol przed pokazaniem odpowiedzi,
+- pokazuje wykonawce, tytul, rok i oznaczenie wspolpracy,
+- odtwarza podglad utworu przez Spotify Embed, jezeli rekord ma `spotify_id`,
+- zapamietuje wybor paczek w `localStorage`.
 
-- QR na karcie nie zawiera bezposrednio linku do Spotify.
-- QR zawiera wylacznie losowy identyfikator.
-- Backend mapuje QR -> utwor -> Spotify Track ID.
-- Zmiana Spotify Track ID nigdy nie wymaga ponownego drukowania kart.
+Nie ma juz backendu ani Supabase w runtime. Wszystkie dane sa czytane z plikow
+JSON hostowanych razem ze strona.
 
-## Dane utworu
-
-- QR ID
-- Artist/Band
-- Collaboration
-- Song title
-- Year published
-- Spotify Track ID
-
-## Zalozenia listy
-
-- 1965-2025
-- ok. 500 utworow
-- 75-85% utworow popularnych w Polsce
-- reszta swiatowe klasyki zwiekszajace roznorodnosc gatunkowa
-- maks. 4 utwory jednego wykonawcy
-- brak duplikatow
-- wszystkie dostepne w Spotify
-- preferowane oryginalne nagrania a nie remake
-
-## Architektura
-
-QR -> skaner w aplikacji -> qr_code_id -> Supabase -> Spotify Track ID -> odtwarzanie
-
-## Format QR
-
-Kazdy kod QR zawiera string w formacie:
+## Struktura projektu
 
 ```text
-hitsterexp:000001
+index.html              # ekran aplikacji
+styles.css              # wyglad i animacje
+app.js                  # logika gry, skaner, paczki, Spotify Embed
+songs/packs.json        # lista dostepnych paczek
+songs/standard.json     # glowna baza kart i utworow
+vendor/textFit.min.js   # lokalna kopia textFit
+test_orientation.js     # prosty test logiki odwrocenia telefonu
 ```
 
-Aplikacja:
+## Format paczki
 
-1. skanuje kod QR,
-2. sprawdza prefix `hitsterexp:`,
-3. wycina `qr_code_id`,
-4. pobiera rekord z tabeli `hitster`,
-5. pokazuje `artist`, `collab`, `title`, `year`,
-6. otwiera Spotify po `spotify_id`.
+`songs/packs.json` wskazuje pliki z paczkami:
 
-## GitHub Pages
+```json
+{
+  "name": "Standard Expansion",
+  "file": "standard.json",
+  "songs": 488,
+  "description": "Standardowe rozszerzenie z bazowymi piosenkami",
+  "years_min": 1965,
+  "years_max": 2025,
+  "set": [1, 2, 3]
+}
+```
 
-Strona jest statyczna i moze byc wdrozona na GitHub Pages.
+Kazdy plik paczki zawiera liste kart. Jedna karta moze miec kilka utworow;
+aplikacja tasuje je i wybiera kolejny przy skanowaniu tego samego QR.
 
-Do dzialania potrzebuje runtime config z:
+```json
+{
+  "qr_code_id": "1965_1",
+  "songs": [
+    {
+      "year": 1965,
+      "title": "Like a Rolling Stone",
+      "artist": "Bob Dylan",
+      "collab": false,
+      "spotify_id": "3AhXZa8sUQht0UEdBJgpGc"
+    }
+  ]
+}
+```
 
-- `NEXT_PUBLIC_SUPABASE_URL`
-- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+QR dla powyzszej karty powinien zawierac:
+
+```text
+hitsterexp:1965_1
+```
+
+## Uruchomienie lokalne
+
+Najprosciej odpalic statyczny serwer w katalogu projektu:
+
+```bash
+python -m http.server 8000
+```
+
+Potem wejdz na:
+
+```text
+http://localhost:8000
+```
+
+Otwieranie `index.html` bez serwera moze nie zadzialac, bo aplikacja pobiera
+pliki JSON przez `fetch()`.
+
+## Test
+
+```bash
+npm test
+```
+
+Test sprawdza minimalnie, czy ekran odpowiedzi nie odblokuje sie bez odczytu
+pozycji telefonu ekranem w dol.
+
+## Wdrozenie
+
+Aplikacja nadaje sie do GitHub Pages albo dowolnego hostingu statycznego.
+Wystarczy opublikowac pliki z repozytorium. Kamera w przegladarce wymaga
+bezpiecznego kontekstu, czyli `https://` albo `localhost`.
