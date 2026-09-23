@@ -172,7 +172,7 @@ async function startScanner() {
     return;
   }
 
-  if (!window.jsQR) {
+  if (!getQrDecoder()) {
     showScannerError("Biblioteka skanera nie zaladowala sie poprawnie.");
     return;
   }
@@ -233,10 +233,20 @@ function scanCameraFrame(timestamp = 0) {
   const context = scannerCanvas.getContext("2d", { willReadFrequently: true });
   context.drawImage(scannerVideo, 0, 0, width, height);
   const image = context.getImageData(0, 0, width, height);
-  const code = window.jsQR(image.data, width, height, { inversionAttempts: "onlyInvert" });
+  let code = null;
+  try {
+    code = getQrDecoder()(image.data, width, height, { inversionAttempts: "onlyInvert" });
+  } catch (error) {
+    showScannerError(`Nie udalo sie odczytac obrazu z kamery: ${error.message || error}`);
+    return;
+  }
   if (code) {
     onScanSuccess(code.data);
   }
+}
+
+function getQrDecoder() {
+  return typeof window.jsQR === "function" ? window.jsQR : window.jsQR?.default;
 }
 
 async function onScanSuccess(decodedText) {
