@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://unpkg.com/html5-qrcode" defer></script>
+    <script src="https://unpkg.com/jsqr@1.4.0/dist/jsQR.js" defer></script>
     <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
     <script src="vendor/textFit.min.js" defer></script>
     <script src="app.js" defer></script>
@@ -90,7 +90,10 @@
         <div class="screen-inner scanner-layout">
           <button id="scanner-close-button" class="top-action" type="button">Powrót</button>
           <div class="scanner-stage">
-            <div id="reader" class="reader"></div>
+            <div id="reader" class="reader">
+              <video id="scanner-video" playsinline muted></video>
+              <canvas id="scanner-canvas" class="hidden"></canvas>
+            </div>
             <div class="scanner-mask" aria-hidden="true">
               <div id="scanner-frame" class="scanner-frame">
                 <span class="scanner-corner corner-top-left"></span>

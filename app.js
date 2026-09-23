@@ -29,6 +29,8 @@ const scannerCloseButton = document.getElementById("scanner-close-button");
 const scannerFrame = document.getElementById("scanner-frame");
 const scannerStatus = document.getElementById("scanner-status");
 const scannerError = document.getElementById("scanner-error");
+const scannerVideo = document.getElementById("scanner-video");
+const scannerCanvas = document.getElementById("scanner-canvas");
 const turnPhone = document.getElementById("turn-phone");
 const turnSensorError = document.getElementById("turn-sensor-error");
 const turnSensorRetryButton = document.getElementById("turn-sensor-retry-button");
@@ -42,8 +44,10 @@ const resolveTitle = document.getElementById("resolve-title");
 const collabIndicator = document.getElementById("collab-indicator");
 const spotifyAutoplayHost = document.getElementById("spotify-autoplay-host");
 
-let scanner = null;
+let scannerStream = null;
 let isScanning = false;
+let scannerRaf = 0;
+let lastScanAt = 0;
 let activeSong = null;
 let turnAnimationTimer = null;
 let turnFallbackTimer = null;
@@ -168,34 +172,71 @@ async function startScanner() {
     return;
   }
 
-  if (!window.Html5Qrcode) {
+  if (!window.jsQR) {
     showScannerError("Biblioteka skanera nie zaladowala sie poprawnie.");
     return;
   }
-
-  scanner = scanner || new Html5Qrcode("reader");
+  if (!navigator.mediaDevices?.getUserMedia) {
+    showScannerError("Ta przegladarka nie udostepnia kamery.");
+    return;
+  }
 
   try {
-    await scanner.start(
-      { facingMode: "environment" },
-      { fps: 10 },
-      onScanSuccess,
-      () => {}
-    );
+    scannerStream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { ideal: "environment" } },
+      audio: false
+    });
+    scannerVideo.srcObject = scannerStream;
+    await scannerVideo.play();
     isScanning = true;
+    scanCameraFrame();
   } catch (error) {
+    scannerStream?.getTracks().forEach((track) => track.stop());
+    scannerStream = null;
+    scannerVideo.srcObject = null;
     showScannerError(`Nie udalo sie uruchomic kamery: ${error.message || error}`);
   }
 }
 
 async function stopScanner() {
-  if (!scanner || !isScanning) {
+  if (!isScanning && !scannerStream) {
     return;
   }
 
-  await scanner.stop();
-  await scanner.clear();
+  window.cancelAnimationFrame(scannerRaf);
+  scannerRaf = 0;
+  scannerStream?.getTracks().forEach((track) => track.stop());
+  scannerStream = null;
+  scannerVideo.srcObject = null;
   isScanning = false;
+}
+
+function scanCameraFrame(timestamp = 0) {
+  if (!isScanning) {
+    return;
+  }
+
+  scannerRaf = window.requestAnimationFrame(scanCameraFrame);
+  if (timestamp - lastScanAt < 100 || scannerVideo.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
+    return;
+  }
+  lastScanAt = timestamp;
+
+  const width = scannerVideo.videoWidth;
+  const height = scannerVideo.videoHeight;
+  if (!width || !height) {
+    return;
+  }
+
+  scannerCanvas.width = width;
+  scannerCanvas.height = height;
+  const context = scannerCanvas.getContext("2d", { willReadFrequently: true });
+  context.drawImage(scannerVideo, 0, 0, width, height);
+  const image = context.getImageData(0, 0, width, height);
+  const code = window.jsQR(image.data, width, height, { inversionAttempts: "onlyInvert" });
+  if (code) {
+    onScanSuccess(code.data);
+  }
 }
 
 async function onScanSuccess(decodedText) {
@@ -209,6 +250,7 @@ async function onScanSuccess(decodedText) {
     return;
   }
 
+  scanLocked = true;
   scannerStatus.textContent = `Szukam utworu ${qrCodeId}...`;
   showScannerError("");
   flashScannerFound();
@@ -216,7 +258,6 @@ async function onScanSuccess(decodedText) {
   try {
     const song = await fetchSong(qrCodeId);
     activeSong = song;
-    scanLocked = true;
     await pause(180);
     showTurnScreen();
     try {
@@ -225,6 +266,7 @@ async function onScanSuccess(decodedText) {
       // Firefox iOS can reject camera shutdown after the scan; the turn screen still works.
     }
   } catch (error) {
+    scanLocked = false;
     showScannerError(error.message || "Nie udało sie pobrać utworu.");
   }
 }
