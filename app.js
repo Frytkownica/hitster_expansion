@@ -233,15 +233,24 @@ function scanCameraFrame(timestamp = 0) {
   const context = scannerCanvas.getContext("2d", { willReadFrequently: true });
   context.drawImage(scannerVideo, 0, 0, width, height);
   const image = context.getImageData(0, 0, width, height);
+  invertImage(image.data);
   let code = null;
   try {
-    code = getQrDecoder()(image.data, width, height, { inversionAttempts: "onlyInvert" });
+    code = getQrDecoder()(image.data, width, height, { inversionAttempts: "dontInvert" });
   } catch (error) {
     showScannerError(`Nie udalo sie odczytac obrazu z kamery: ${error.message || error}`);
     return;
   }
   if (code) {
     onScanSuccess(code.data);
+  }
+}
+
+function invertImage(data) {
+  for (let i = 0; i < data.length; i += 4) {
+    data[i] = 255 - data[i];
+    data[i + 1] = 255 - data[i + 1];
+    data[i + 2] = 255 - data[i + 2];
   }
 }
 
