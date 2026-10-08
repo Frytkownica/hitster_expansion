@@ -56,6 +56,7 @@ let orientationSignalSeen = false;
 let spotifyIframeApi = null;
 let spotifyController = null;
 let pendingSpotifyUri = null;
+let spotifySeedUri = null;
 let fitRaf = 0;
 let scannerFoundTimer = 0;
 let packs = [];
@@ -70,8 +71,8 @@ window.addEventListener("resize", () => {
 
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
   spotifyIframeApi = IFrameAPI;
-  if (pendingSpotifyUri) {
-    createSpotifyController(pendingSpotifyUri);
+  if (spotifySeedUri) {
+    createSpotifyController(spotifySeedUri);
   }
 };
 
@@ -356,6 +357,7 @@ async function prepareSelectedPacks(force = false) {
   songQueues = new Map();
   const selectedPacks = packs.filter((pack) => selectedPackFiles.includes(pack.file));
   await Promise.all(selectedPacks.map(loadPackSongs));
+  prepareSpotifyController();
 }
 
 async function loadPackSongs(pack) {
@@ -369,6 +371,21 @@ async function loadPackSongs(pack) {
     const existing = songPool.get(card.qr_code_id) || [];
     songPool.set(card.qr_code_id, existing.concat(card.songs || []));
   });
+}
+
+function prepareSpotifyController() {
+  if (spotifyController || spotifySeedUri) {
+    return;
+  }
+
+  for (const songs of songPool.values()) {
+    const song = songs.find(({ spotify_id: spotifyId }) => spotifyId);
+    if (song) {
+      spotifySeedUri = `spotify:track:${song.spotify_id}`;
+      createSpotifyController(spotifySeedUri);
+      return;
+    }
+  }
 }
 
 function renderOptions() {

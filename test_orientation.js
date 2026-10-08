@@ -14,3 +14,14 @@ const isFaceDown = context.result;
 assert.equal(isFaceDown(90, 0), false, "upright scanning must not reveal the song");
 assert.equal(isFaceDown(175, 5), true, "face-down must reveal the song");
 assert.equal(isFaceDown(null, null), false, "missing sensor data must stay blocked");
+
+assert.match(
+  source,
+  /function prepareSpotifyController\(\) \{[\s\S]*?spotifySeedUri = `spotify:track:\$\{song\.spotify_id\}`;[\s\S]*?createSpotifyController\(spotifySeedUri\);/,
+  "Spotify controller must use a track from the selected packs"
+);
+assert.match(
+  source,
+  /window\.onSpotifyIframeApiReady = \(IFrameAPI\) => \{[\s\S]*?if \(spotifySeedUri\) \{[\s\S]*?createSpotifyController\(spotifySeedUri\);/,
+  "Spotify controller must exist before the user starts scanning"
+);
