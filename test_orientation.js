@@ -4,6 +4,7 @@ const vm = require("node:vm");
 
 const source = fs.readFileSync("app.js", "utf8");
 const html = fs.readFileSync("index.html", "utf8");
+const playerHtml = fs.readFileSync("player.html", "utf8");
 const threshold = source.match(/const PHONE_FLIP_THRESHOLD = \d+;/)?.[0];
 const helper = source.match(/function isFaceDown\(beta, gamma\) \{[\s\S]*?\n\}/)?.[0];
 assert.ok(threshold && helper, "face-down gate must exist");
@@ -23,10 +24,15 @@ assert.match(
 );
 assert.match(
   source,
-  /activeSong = song;[\s\S]*?preloadSpotifyPreview\(`spotify:track:\$\{song\.spotify_id\}`\);/,
-  "the scanned track must preload before the phone is turned"
+  /activeSong = song;[\s\S]*?preloadSpotifyPreview\(spotifyUri\);[\s\S]*?startSpotifyPreview\(spotifyUri\);[\s\S]*?showTurnScreen\(\);/,
+  "the selected track must start before the visual turn screen"
 );
 assert.match(source, /spotifyController\.resume\(\)/, "the pre-armed Spotify controller must resume after the flip");
+assert.match(
+  source,
+  /function preloadSpotifyPreview\(uri\) \{[\s\S]*?spotifyPrimingUri = null;[\s\S]*?window\.clearTimeout\(spotifyPrimeTimer\)/,
+  "loading the scanned track must cancel the stale bootstrap pause"
+);
 assert.match(source, /function setSpotifyIframeApi\(IFrameAPI\)/, "Spotify API must survive an early loader callback");
 assert.ok(
   html.indexOf("window.__spotifyIframeApi") < html.indexOf("https://open.spotify.com/embed/iframe-api/v1"),
@@ -43,3 +49,5 @@ assert.match(
   /function setSpotifyIframeApi\(IFrameAPI\) \{[\s\S]*?if \(spotifySeedUri\) \{[\s\S]*?createSpotifyController\(spotifySeedUri\);/,
   "Spotify controller must exist before the user starts scanning"
 );
+assert.match(source, /window\.location\.assign\(`player\.html\?\$\{params\.toString\(\)\}`\)/, "the flip result must pass its Spotify ID to the top-level player experiment");
+assert.match(playerHtml, /allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"/, "the top-level Spotify Embed must retain Spotify's required permissions");

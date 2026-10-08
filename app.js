@@ -486,6 +486,20 @@ function renderResolve() {
     return;
   }
 
+  // Experiment: hand the scanned ID to a top-level page that owns one normal
+  // Spotify Embed. This deliberately avoids changing content in the hidden
+  // controller while a turn transition is occurring.
+  if (activeSong.spotify_id) {
+    const params = new URLSearchParams({
+      track: activeSong.spotify_id,
+      artist: activeSong.artist || "",
+      title: activeSong.title || "",
+      year: activeSong.year || ""
+    });
+    window.location.assign(`player.html?${params.toString()}`);
+    return;
+  }
+
   showScreen("resolve");
   resolveArtist.textContent = activeSong.artist || "";
   resolveYear.textContent = activeSong.year || "";
