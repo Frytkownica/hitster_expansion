@@ -5,3 +5,5 @@ scripts/
 node_modules/
 npm-debug.log*
 .npm/
+/qr_codes/backs
+/qr_codes/fronts
