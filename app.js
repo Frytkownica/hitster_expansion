@@ -55,6 +55,8 @@ let turnAnimationTimer = null;
 let turnFallbackTimer = null;
 let waitingForFlip = false;
 let orientationSignalSeen = false;
+let latestOrientationBeta = null;
+let latestOrientationGamma = null;
 let spotifyIframeApi = null;
 let spotifyController = null;
 let pendingSpotifyUri = null;
@@ -161,12 +163,10 @@ window.addEventListener("deviceorientation", (event) => {
 
   const beta = Number(event.beta);
   const gamma = Number(event.gamma);
+  latestOrientationBeta = beta;
+  latestOrientationGamma = gamma;
   orientationSignalSeen = event.beta != null && event.gamma != null && Number.isFinite(beta) && Number.isFinite(gamma);
-  if (!orientationSignalSeen || !isFaceDown(beta, gamma)) {
-    return;
-  }
-
-  finishTurnFlow();
+  finishTurnIfReady();
 });
 
 turnReadyButton.addEventListener("click", () => {
@@ -176,7 +176,7 @@ turnReadyButton.addEventListener("click", () => {
 
   startSpotifyPreview(`spotify:track:${activeSong.spotify_id}`);
   turnReadyButton.disabled = true;
-  turnReadyButton.textContent = "MUZYKA GRA";
+  turnReadyButton.textContent = "ŁADOWANIE MUZYKI...";
 });
 
 async function openScanner() {
@@ -449,6 +449,8 @@ function showTurnScreen() {
   showScreen("turn");
   waitingForFlip = true;
   orientationSignalSeen = false;
+  latestOrientationBeta = null;
+  latestOrientationGamma = null;
   clearTurnSensorError();
   turnReadyButton.disabled = false;
   turnReadyButton.textContent = "GOTOWE";
@@ -623,6 +625,20 @@ function finishTurnFlow() {
   renderResolve();
 }
 
+function finishTurnIfReady() {
+  if (!orientationSignalSeen || !isFaceDown(latestOrientationBeta, latestOrientationGamma)) {
+    return;
+  }
+
+  // Firefox starts after the flip. Chromium needs the earlier GOTOWE gesture,
+  // so do not reveal until Spotify confirms that audio has actually started.
+  if (!isFirefoxBrowser() && !spotifyPreviewStarted) {
+    return;
+  }
+
+  finishTurnFlow();
+}
+
 function startSpotifyPreview(uri) {
   if (pendingSpotifyUri !== uri) {
     preloadSpotifyPreview(uri);
@@ -662,7 +678,6 @@ function playSpotifyPreview(uri) {
   }
 
   spotifyPlayRequested = false;
-  spotifyPreviewStarted = true;
   if (spotifyPlayTimer) {
     window.clearTimeout(spotifyPlayTimer);
     spotifyPlayTimer = 0;
@@ -815,8 +830,16 @@ function createSpotifyController(uri) {
         }
 
         spotifyLoadedUri = pendingSpotifyUri;
+        if (event?.data?.isPaused === false) {
+          confirmSpotifyPlayback(pendingSpotifyUri);
+        }
         if (spotifyPlayRequested) {
           playSpotifyPreview(pendingSpotifyUri);
+        }
+      });
+      controller.addListener?.("playback_started", (event) => {
+        if (event?.data?.playingURI === pendingSpotifyUri) {
+          confirmSpotifyPlayback(pendingSpotifyUri);
         }
       });
       if (pendingSpotifyUri) {
@@ -828,4 +851,16 @@ function createSpotifyController(uri) {
       }
     }
   );
+}
+
+function confirmSpotifyPlayback(uri) {
+  if (pendingSpotifyUri !== uri || spotifyPreviewStarted) {
+    return;
+  }
+
+  spotifyPreviewStarted = true;
+  if (!isFirefoxBrowser() && waitingForFlip) {
+    turnReadyButton.textContent = "MUZYKA GRA — ODWRÓĆ TELEFON";
+    finishTurnIfReady();
+  }
 }
