@@ -666,9 +666,11 @@ function playSpotifyPreview(uri) {
     spotifyPlayTimer = 0;
   }
   activateSpotifyElement();
-  const playResult = spotifyController.play?.();
-  if (playResult && typeof playResult.catch === "function") {
-    playResult.catch(() => {});
+  const playbackResult = typeof spotifyController.resume === "function"
+    ? spotifyController.resume()
+    : spotifyController.play?.();
+  if (playbackResult && typeof playbackResult.catch === "function") {
+    playbackResult.catch(() => {});
   }
 }
 

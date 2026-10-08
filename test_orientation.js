@@ -26,6 +26,7 @@ assert.match(
   /activeSong = song;[\s\S]*?preloadSpotifyPreview\(`spotify:track:\$\{song\.spotify_id\}`\);/,
   "the scanned track must preload before the phone is turned"
 );
+assert.match(source, /spotifyController\.resume\(\)/, "the pre-armed Spotify controller must resume after the flip");
 assert.match(source, /function setSpotifyIframeApi\(IFrameAPI\)/, "Spotify API must survive an early loader callback");
 assert.ok(
   html.indexOf("window.__spotifyIframeApi") < html.indexOf("https://open.spotify.com/embed/iframe-api/v1"),
