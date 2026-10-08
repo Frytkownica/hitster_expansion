@@ -857,6 +857,13 @@ input {
   display: none !important;
 }
 
+.top-level-spotify-player {
+  width: min(100%, 440px);
+  height: 152px;
+  border: 0;
+  border-radius: 12px;
+}
+
 .collab-indicator {
   position: relative;
   width: 90px;

@@ -173,6 +173,8 @@ window.addEventListener("deviceorientation", (event) => {
   finishTurnFlow();
 });
 
+showTopLevelPlayerFromQuery();
+
 async function openScanner() {
   showScreen("scanner");
   showScannerError("");
@@ -496,7 +498,7 @@ function renderResolve() {
       title: activeSong.title || "",
       year: activeSong.year || ""
     });
-    window.location.assign(`player.html?${params.toString()}`);
+    window.location.assign(`index.html?player=1&${params.toString()}`);
     return;
   }
 
@@ -567,6 +569,33 @@ function showScreen(name) {
     element.classList.toggle("hidden", key !== name);
   });
 
+  scheduleTextFit();
+}
+
+function showTopLevelPlayerFromQuery() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("player") !== "1") {
+    return;
+  }
+
+  const track = params.get("track") || "";
+  if (!/^[A-Za-z0-9]{22}$/.test(track)) {
+    showScreen("home");
+    return;
+  }
+
+  showScreen("resolve");
+  resolveArtist.textContent = params.get("artist") || "";
+  resolveYear.textContent = params.get("year") || "";
+  resolveTitle.textContent = params.get("title") || "";
+  collabIndicator.classList.add("hidden");
+  const player = document.createElement("iframe");
+  player.className = "top-level-spotify-player";
+  player.title = "Spotify player";
+  player.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+  player.src = `https://open.spotify.com/embed/track/${encodeURIComponent(track)}`;
+  resolvePreviewBar.replaceChildren(player);
+  resolvePreviewBar.classList.remove("hidden");
   scheduleTextFit();
 }
 
