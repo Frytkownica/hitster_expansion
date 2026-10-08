@@ -1,0 +1,17 @@
+# Gradle's local caches and generated build products
+.gradle/
+build/
+app/build/
+
+# Machine-specific Android SDK location
+local.properties
+
+# Android Studio's per-user project state
+.idea/
+*.iml
+.externalNativeBuild/
+.cxx/
+
+# Signing keys must never be committed
+*.jks
+*.keystore
