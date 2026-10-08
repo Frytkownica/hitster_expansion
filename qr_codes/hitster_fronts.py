@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create 770x770 Hitster front cards from a UTF-8 text file."""
+"""Create 65mm Hitster front cards with 3mm print cutoff from a UTF-8 text file."""
 from __future__ import annotations
 
 import argparse
@@ -10,7 +10,17 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-SIZE = 770
+DPI = 300
+SIZE_MM = 65
+CUT_OFF_MM = 3
+
+
+def mm_to_px(mm: float) -> int:
+    return round(mm / 25.4 * DPI)
+
+
+SIZE = mm_to_px(SIZE_MM)
+CANVAS_SIZE = mm_to_px(SIZE_MM + CUT_OFF_MM * 2)
 COLOR = (22, 22, 22)
 FONT_SIZE = 250
 MASK_SIZE = 256
@@ -59,6 +69,13 @@ def random_color(ranges: tuple[tuple[int, int], tuple[int, int], tuple[int, int]
     return tuple(random.randint(lo, hi) for lo, hi in ranges)
 
 
+def print_progress(index: int, total: int) -> None:
+    width = 30
+    filled = round(width * index / total)
+    bar = "#" * filled + "-" * (width - filled)
+    print(f"\rGenerating front cards [{bar}] {index}/{total}", end="", flush=True)
+
+
 def gradient(light: tuple[int, int, int], dark: tuple[int, int, int]) -> Image.Image:
     angle = math.radians( random.choice([30, 0, -30]))
     dx = math.sin(angle)
@@ -92,6 +109,24 @@ def paper_base() -> Image.Image:
     return image.crop((left, top, left + SIZE, top + SIZE))
 
 
+def add_cutoff(image: Image.Image) -> Image.Image:
+    left = (CANVAS_SIZE - image.width) // 2
+    top = (CANVAS_SIZE - image.height) // 2
+    right = CANVAS_SIZE - image.width - left
+    bottom = CANVAS_SIZE - image.height - top
+    expanded = Image.new(image.mode, (CANVAS_SIZE, CANVAS_SIZE))
+    expanded.paste(image, (left, top))
+    expanded.paste(image.crop((0, 0, image.width, 1)).resize((image.width, top)), (left, 0))
+    expanded.paste(image.crop((0, image.height - 1, image.width, image.height)).resize((image.width, bottom)), (left, top + image.height))
+    expanded.paste(image.crop((0, 0, 1, image.height)).resize((left, image.height)), (0, top))
+    expanded.paste(image.crop((image.width - 1, 0, image.width, image.height)).resize((right, image.height)), (left + image.width, top))
+    expanded.paste(image.crop((0, 0, 1, 1)).resize((left, top)), (0, 0))
+    expanded.paste(image.crop((image.width - 1, 0, image.width, 1)).resize((right, top)), (left + image.width, 0))
+    expanded.paste(image.crop((0, image.height - 1, 1, image.height)).resize((left, bottom)), (0, top + image.height))
+    expanded.paste(image.crop((image.width - 1, image.height - 1, image.width, image.height)).resize((right, bottom)), (left + image.width, top + image.height))
+    return expanded
+
+
 def random_gradient(suffix: str) -> tuple[tuple[int, int, int], tuple[int, int, int]]:
     light_ranges = PALETTES_LIGHT.get(suffix)
     dark_ranges = PALETTES_DARK.get(suffix)
@@ -112,7 +147,7 @@ def make_front(row: str, font: ImageFont.FreeTypeFont, base: Image.Image, out_pa
     year, suffix = row.rsplit("_", 1)
     image = Image.blend(base, gradient(*random_gradient(suffix)), PAPER_ALPHA)
     draw_year(image, year, font)
-    image.save(out_path, format="PNG", optimize=True)
+    add_cutoff(image).save(out_path, format="PNG", optimize=True, dpi=(DPI, DPI))
 
 
 def main() -> None:
@@ -128,8 +163,11 @@ def main() -> None:
     args.out.mkdir(parents=True, exist_ok=True)
     font = ImageFont.truetype(str(find_font()), FONT_SIZE)
     base = paper_base()
+    total = len(rows)
     for index, row in enumerate(rows, 1):
         make_front(row, font, base, args.out / safe_name(row, index))
+        print_progress(index, total)
+    print()
     print(f"Created {len(rows)} front card(s) in {args.out.resolve()}")
 
 
