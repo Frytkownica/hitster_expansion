@@ -71,12 +71,17 @@ window.addEventListener("resize", () => {
   scheduleTextFit();
 });
 
-window.onSpotifyIframeApiReady = (IFrameAPI) => {
+function setSpotifyIframeApi(IFrameAPI) {
   spotifyIframeApi = IFrameAPI;
   if (spotifySeedUri) {
     createSpotifyController(spotifySeedUri);
   }
-};
+}
+
+window.onSpotifyIframeApiReady = setSpotifyIframeApi;
+if (window.__spotifyIframeApi) {
+  setSpotifyIframeApi(window.__spotifyIframeApi);
+}
 
 playNowButton.addEventListener("click", async () => {
   try {

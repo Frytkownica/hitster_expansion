@@ -3,6 +3,7 @@ const fs = require("node:fs");
 const vm = require("node:vm");
 
 const source = fs.readFileSync("app.js", "utf8");
+const html = fs.readFileSync("index.html", "utf8");
 const threshold = source.match(/const PHONE_FLIP_THRESHOLD = \d+;/)?.[0];
 const helper = source.match(/function isFaceDown\(beta, gamma\) \{[\s\S]*?\n\}/)?.[0];
 assert.ok(threshold && helper, "face-down gate must exist");
@@ -20,6 +21,11 @@ assert.match(
   /startScanButton\.addEventListener\("click", async \(\) => \{[\s\S]*?primeSpotifyPlayback\(\);/,
   "Spotify must be primed from the scan-start user gesture"
 );
+assert.match(source, /function setSpotifyIframeApi\(IFrameAPI\)/, "Spotify API must survive an early loader callback");
+assert.ok(
+  html.indexOf("window.__spotifyIframeApi") < html.indexOf("https://open.spotify.com/embed/iframe-api/v1"),
+  "Spotify callback receiver must load before Spotify's async script"
+);
 
 assert.match(
   source,
@@ -28,6 +34,6 @@ assert.match(
 );
 assert.match(
   source,
-  /window\.onSpotifyIframeApiReady = \(IFrameAPI\) => \{[\s\S]*?if \(spotifySeedUri\) \{[\s\S]*?createSpotifyController\(spotifySeedUri\);/,
+  /function setSpotifyIframeApi\(IFrameAPI\) \{[\s\S]*?if \(spotifySeedUri\) \{[\s\S]*?createSpotifyController\(spotifySeedUri\);/,
   "Spotify controller must exist before the user starts scanning"
 );

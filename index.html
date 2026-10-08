@@ -9,10 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E">
     <link rel="stylesheet" href="styles.css">
+    <script>
+      window.__spotifyIframeApi = null;
+      window.onSpotifyIframeApiReady = (IFrameAPI) => {
+        window.__spotifyIframeApi = IFrameAPI;
+      };
+    </script>
     <script src="https://unpkg.com/jsqr@1.4.0/dist/jsQR.js" defer></script>
-    <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
     <script src="vendor/textFit.min.js" defer></script>
     <script src="app.js" defer></script>
+    <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
   </head>
   <body>
     <main class="app">
