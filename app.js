@@ -452,6 +452,7 @@ function showTurnScreen() {
   clearTurnSensorError();
   turnReadyButton.disabled = false;
   turnReadyButton.textContent = "GOTOWE";
+  turnReadyButton.classList.toggle("hidden", isFirefoxBrowser());
   clearTurnAnimation();
   turnPhone.classList.remove("turn-phone-active");
   turnAnimationTimer = window.setTimeout(() => {
@@ -491,7 +492,7 @@ function renderResolve() {
   if (activeSong.spotify_id) {
     resolvePreviewBar.classList.remove("hidden");
     const spotifyUri = `spotify:track:${activeSong.spotify_id}`;
-    if (!spotifyPreviewStarted) {
+    if (isFirefoxBrowser() || !spotifyPreviewStarted) {
       startSpotifyPreview(spotifyUri);
     }
   } else {
@@ -553,6 +554,10 @@ function isCollaboration(value) {
 
   const normalized = String(value || "").trim().toLowerCase();
   return normalized === "true";
+}
+
+function isFirefoxBrowser() {
+  return /Firefox|FxiOS/i.test(navigator.userAgent);
 }
 
 function isMobileDevice() {
