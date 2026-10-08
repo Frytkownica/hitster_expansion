@@ -643,6 +643,14 @@ function startSpotifyPreview(uri) {
 }
 
 function preloadSpotifyPreview(uri) {
+  // The bootstrap track only unlocks the browser's media session. Once QR
+  // recognition has supplied the real URI, a late bootstrap event must not
+  // pause this same controller after it has been reused for the real track.
+  spotifyPrimingUri = null;
+  if (spotifyPrimeTimer) {
+    window.clearTimeout(spotifyPrimeTimer);
+    spotifyPrimeTimer = 0;
+  }
   pendingSpotifyUri = uri;
   spotifyLoadedUri = null;
   spotifyPlayRequested = false;
