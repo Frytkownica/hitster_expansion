@@ -28,9 +28,19 @@ assert.doesNotMatch(
 );
 assert.match(
   source,
+  /if \(isFirefoxBrowser\(\) \|\| !spotifyPreviewStarted\) \{\s*startSpotifyPreview\(spotifyUri\);/,
+  "Firefox must start the selected track after the flip reveals it"
+);
+assert.match(
+  source,
   /turnReadyButton\.addEventListener\("click", \(\) => \{[\s\S]*?startSpotifyPreview\(`spotify:track:\$\{activeSong\.spotify_id\}`\);/,
   "Gotowe must start the scanned track from a user gesture"
 );
+assert.match(source, /turnReadyButton\.textContent = "ŁADOWANIE MUZYKI\.\.\."/, "Gotowe must show loading until Spotify starts");
+assert.match(source, /function finishTurnIfReady\(\) \{[\s\S]*?!isFirefoxBrowser\(\) && !spotifyPreviewStarted/, "Chromium must wait for confirmed playback before revealing");
+assert.match(source, /function confirmSpotifyPlayback\(uri\) \{[\s\S]*?finishTurnIfReady\(\);/, "a late playback confirmation must finish an already-turned phone");
+assert.match(source, /const SPOTIFY_PLAYBACK_SETTLE_MS = 900;/, "Chromium playback must settle before the title can reveal");
+assert.match(source, /spotifyPlaybackConfirmTimer = window\.setTimeout\([\s\S]*?SPOTIFY_PLAYBACK_SETTLE_MS/, "confirmed playback must wait through the settle window");
 assert.match(source, /function setSpotifyIframeApi\(IFrameAPI\)/, "Spotify API must survive an early loader callback");
 assert.ok(
   html.indexOf("window.__spotifyIframeApi") < html.indexOf("https://open.spotify.com/embed/iframe-api/v1"),
@@ -44,3 +54,4 @@ assert.match(
 );
 assert.doesNotMatch(source, /primeSpotifyPlayback|spotifySeedUri|showTopLevelPlayerFromQuery/, "the bootstrap and redirect experiments must be removed");
 assert.match(html, /id="turn-ready-button"/, "turn screen must provide a Gotowe button");
+assert.match(source, /turnReadyButton\.classList\.toggle\("hidden", isFirefoxBrowser\(\)\)/, "Firefox must not show the Gotowe button");
