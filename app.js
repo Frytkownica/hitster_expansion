@@ -292,7 +292,9 @@ async function onScanSuccess(decodedText) {
     const song = await fetchSong(qrCodeId);
     activeSong = song;
     if (song.spotify_id) {
-      preloadSpotifyPreview(`spotify:track:${song.spotify_id}`);
+      const spotifyUri = `spotify:track:${song.spotify_id}`;
+      preloadSpotifyPreview(spotifyUri);
+      startSpotifyPreview(spotifyUri);
     }
     await pause(180);
     showTurnScreen();
@@ -498,7 +500,10 @@ function renderResolve() {
 
   if (activeSong.spotify_id) {
     resolvePreviewBar.classList.remove("hidden");
-    startSpotifyPreview(`spotify:track:${activeSong.spotify_id}`);
+    const spotifyUri = `spotify:track:${activeSong.spotify_id}`;
+    if (pendingSpotifyUri !== spotifyUri) {
+      startSpotifyPreview(spotifyUri);
+    }
   } else {
     stopSpotifyPreview();
   }
