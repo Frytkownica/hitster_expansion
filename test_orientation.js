@@ -17,6 +17,12 @@ assert.equal(isFaceDown(null, null), false, "missing sensor data must stay block
 
 assert.match(
   source,
+  /startScanButton\.addEventListener\("click", async \(\) => \{[\s\S]*?primeSpotifyPlayback\(\);/,
+  "Spotify must be primed from the scan-start user gesture"
+);
+
+assert.match(
+  source,
   /function prepareSpotifyController\(\) \{[\s\S]*?spotifySeedUri = `spotify:track:\$\{song\.spotify_id\}`;[\s\S]*?createSpotifyController\(spotifySeedUri\);/,
   "Spotify controller must use a track from the selected packs"
 );

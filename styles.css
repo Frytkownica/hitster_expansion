@@ -257,6 +257,11 @@ input {
   margin-inline: auto;
 }
 
+.cta-button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
 .cta-label {
   display: block;
   width: 90%;

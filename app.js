@@ -23,6 +23,7 @@ const saveOptionsButton = document.getElementById("save-options-button");
 const packsList = document.getElementById("packs-list");
 const packInfoBackButton = document.getElementById("pack-info-back-button");
 const startScanButton = document.getElementById("start-scan-button");
+const startScanLabel = document.getElementById("start-scan-label");
 const selectedYears = document.getElementById("selected-years");
 const selectedSets = document.getElementById("selected-sets");
 const scannerCloseButton = document.getElementById("scanner-close-button");
@@ -55,6 +56,7 @@ let waitingForFlip = false;
 let orientationSignalSeen = false;
 let spotifyIframeApi = null;
 let spotifyController = null;
+let spotifyControllerReady = false;
 let pendingSpotifyUri = null;
 let spotifySeedUri = null;
 let fitRaf = 0;
@@ -116,6 +118,7 @@ packInfoBackButton.addEventListener("click", () => {
 
 startScanButton.addEventListener("click", async () => {
   activateSpotifyElement();
+  primeSpotifyPlayback();
   if (isMobileDevice() && !(await ensureOrientationAccess())) {
     alert("Czujnik ruchu jest wymagany na telefonie. Włącz go i spróbuj ponownie.");
     return;
@@ -425,6 +428,14 @@ function renderPackInfo() {
     swatch.textContent = set;
     selectedSets.append(swatch);
   });
+
+  updateStartScanButton();
+}
+
+function updateStartScanButton() {
+  const isSpotifyLoading = Boolean(spotifySeedUri) && !spotifyControllerReady;
+  startScanButton.disabled = isSpotifyLoading;
+  startScanLabel.textContent = isSpotifyLoading ? "ŁADOWANIE MUZYKI..." : "SKANUJ KARTĘ";
 }
 
 function showTurnScreen() {
@@ -638,6 +649,23 @@ function activateSpotifyElement() {
   }
 }
 
+function primeSpotifyPlayback() {
+  if (!spotifyControllerReady) {
+    return;
+  }
+
+  const playResult = spotifyController.play?.();
+  if (playResult && typeof playResult.catch === "function") {
+    playResult.catch(() => {});
+  }
+  window.queueMicrotask(() => {
+    const pauseResult = spotifyController.pause?.();
+    if (pauseResult && typeof pauseResult.catch === "function") {
+      pauseResult.catch(() => {});
+    }
+  });
+}
+
 function flashScannerFound() {
   if (!scannerFrame) {
     return;
@@ -740,6 +768,10 @@ function createSpotifyController(uri) {
     },
     (controller) => {
       spotifyController = controller;
+      controller.addListener?.("ready", () => {
+        spotifyControllerReady = true;
+        updateStartScanButton();
+      });
       if (pendingSpotifyUri) {
         startSpotifyPreview(pendingSpotifyUri);
       }
