@@ -59,6 +59,11 @@ let spotifyController = null;
 let spotifyControllerReady = false;
 let pendingSpotifyUri = null;
 let spotifySeedUri = null;
+let spotifyLoadedUri = null;
+let spotifyPlayRequested = false;
+let spotifyPlayTimer = 0;
+let spotifyPrimingUri = null;
+let spotifyPrimeTimer = 0;
 let fitRaf = 0;
 let scannerFoundTimer = 0;
 let packs = [];
@@ -286,6 +291,9 @@ async function onScanSuccess(decodedText) {
   try {
     const song = await fetchSong(qrCodeId);
     activeSong = song;
+    if (song.spotify_id) {
+      preloadSpotifyPreview(`spotify:track:${song.spotify_id}`);
+    }
     await pause(180);
     showTurnScreen();
     try {
@@ -616,14 +624,48 @@ function finishTurnFlow() {
 }
 
 function startSpotifyPreview(uri) {
+  if (pendingSpotifyUri !== uri) {
+    preloadSpotifyPreview(uri);
+  }
+  spotifyPlayRequested = true;
+  if (spotifyLoadedUri === uri) {
+    playSpotifyPreview(uri);
+    return;
+  }
+
+  if (spotifyPlayTimer) {
+    window.clearTimeout(spotifyPlayTimer);
+  }
+  spotifyPlayTimer = window.setTimeout(() => {
+    spotifyPlayTimer = 0;
+    playSpotifyPreview(uri);
+  }, 800);
+}
+
+function preloadSpotifyPreview(uri) {
   pendingSpotifyUri = uri;
+  spotifyLoadedUri = null;
+  spotifyPlayRequested = false;
   if (!spotifyController) {
     createSpotifyController(uri);
     return;
   }
 
+  const load = spotifyController.loadEntity || spotifyController.loadUri;
+  load?.call(spotifyController, uri);
+}
+
+function playSpotifyPreview(uri) {
+  if (!spotifyPlayRequested || pendingSpotifyUri !== uri || !spotifyController) {
+    return;
+  }
+
+  spotifyPlayRequested = false;
+  if (spotifyPlayTimer) {
+    window.clearTimeout(spotifyPlayTimer);
+    spotifyPlayTimer = 0;
+  }
   activateSpotifyElement();
-  spotifyController.loadUri(uri);
   const playResult = spotifyController.play?.();
   if (playResult && typeof playResult.catch === "function") {
     playResult.catch(() => {});
@@ -632,6 +674,12 @@ function startSpotifyPreview(uri) {
 
 function stopSpotifyPreview() {
   pendingSpotifyUri = null;
+  spotifyLoadedUri = null;
+  spotifyPlayRequested = false;
+  if (spotifyPlayTimer) {
+    window.clearTimeout(spotifyPlayTimer);
+    spotifyPlayTimer = 0;
+  }
   if (!spotifyController) {
     return;
   }
@@ -659,16 +707,18 @@ function primeSpotifyPlayback() {
     return;
   }
 
+  spotifyPrimingUri = spotifySeedUri;
+  if (spotifyPrimeTimer) {
+    window.clearTimeout(spotifyPrimeTimer);
+  }
+  spotifyPrimeTimer = window.setTimeout(() => {
+    spotifyPrimingUri = null;
+    spotifyPrimeTimer = 0;
+  }, 1500);
   const playResult = spotifyController.play?.();
   if (playResult && typeof playResult.catch === "function") {
     playResult.catch(() => {});
   }
-  window.queueMicrotask(() => {
-    const pauseResult = spotifyController.pause?.();
-    if (pauseResult && typeof pauseResult.catch === "function") {
-      pauseResult.catch(() => {});
-    }
-  });
 }
 
 function flashScannerFound() {
@@ -777,8 +827,33 @@ function createSpotifyController(uri) {
         spotifyControllerReady = true;
         updateStartScanButton();
       });
+      controller.addListener?.("playback_started", (event) => {
+        if (event?.data?.playingURI !== spotifyPrimingUri) {
+          return;
+        }
+
+        spotifyPrimingUri = null;
+        if (spotifyPrimeTimer) {
+          window.clearTimeout(spotifyPrimeTimer);
+          spotifyPrimeTimer = 0;
+        }
+        const pauseResult = controller.pause?.();
+        if (pauseResult && typeof pauseResult.catch === "function") {
+          pauseResult.catch(() => {});
+        }
+      });
+      controller.addListener?.("playback_update", (event) => {
+        if (event?.data?.playingURI !== pendingSpotifyUri) {
+          return;
+        }
+
+        spotifyLoadedUri = pendingSpotifyUri;
+        if (spotifyPlayRequested) {
+          playSpotifyPreview(pendingSpotifyUri);
+        }
+      });
       if (pendingSpotifyUri) {
-        startSpotifyPreview(pendingSpotifyUri);
+        preloadSpotifyPreview(pendingSpotifyUri);
       }
     }
   );

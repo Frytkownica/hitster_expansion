@@ -21,6 +21,11 @@ assert.match(
   /startScanButton\.addEventListener\("click", async \(\) => \{[\s\S]*?primeSpotifyPlayback\(\);/,
   "Spotify must be primed from the scan-start user gesture"
 );
+assert.match(
+  source,
+  /activeSong = song;[\s\S]*?preloadSpotifyPreview\(`spotify:track:\$\{song\.spotify_id\}`\);/,
+  "the scanned track must preload before the phone is turned"
+);
 assert.match(source, /function setSpotifyIframeApi\(IFrameAPI\)/, "Spotify API must survive an early loader callback");
 assert.ok(
   html.indexOf("window.__spotifyIframeApi") < html.indexOf("https://open.spotify.com/embed/iframe-api/v1"),
