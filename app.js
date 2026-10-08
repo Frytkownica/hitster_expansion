@@ -35,6 +35,7 @@ const scannerCanvas = document.getElementById("scanner-canvas");
 const turnPhone = document.getElementById("turn-phone");
 const turnSensorError = document.getElementById("turn-sensor-error");
 const turnSensorRetryButton = document.getElementById("turn-sensor-retry-button");
+const turnReadyButton = document.getElementById("turn-ready-button");
 const nextCardButton = document.getElementById("next-card-button");
 const nextCardLabel = document.getElementById("next-card-label");
 const resolvePreviewBar = document.getElementById("resolve-preview-bar");
@@ -56,14 +57,11 @@ let waitingForFlip = false;
 let orientationSignalSeen = false;
 let spotifyIframeApi = null;
 let spotifyController = null;
-let spotifyControllerReady = false;
 let pendingSpotifyUri = null;
-let spotifySeedUri = null;
 let spotifyLoadedUri = null;
 let spotifyPlayRequested = false;
 let spotifyPlayTimer = 0;
-let spotifyPrimingUri = null;
-let spotifyPrimeTimer = 0;
+let spotifyPreviewStarted = false;
 let fitRaf = 0;
 let scannerFoundTimer = 0;
 let packs = [];
@@ -78,8 +76,8 @@ window.addEventListener("resize", () => {
 
 function setSpotifyIframeApi(IFrameAPI) {
   spotifyIframeApi = IFrameAPI;
-  if (spotifySeedUri) {
-    createSpotifyController(spotifySeedUri);
+  if (pendingSpotifyUri) {
+    createSpotifyController(pendingSpotifyUri);
   }
 }
 
@@ -127,8 +125,6 @@ packInfoBackButton.addEventListener("click", () => {
 });
 
 startScanButton.addEventListener("click", async () => {
-  activateSpotifyElement();
-  primeSpotifyPlayback();
   if (isMobileDevice() && !(await ensureOrientationAccess())) {
     alert("Czujnik ruchu jest wymagany na telefonie. Włącz go i spróbuj ponownie.");
     return;
@@ -173,7 +169,15 @@ window.addEventListener("deviceorientation", (event) => {
   finishTurnFlow();
 });
 
-showTopLevelPlayerFromQuery();
+turnReadyButton.addEventListener("click", () => {
+  if (!activeSong?.spotify_id) {
+    return;
+  }
+
+  startSpotifyPreview(`spotify:track:${activeSong.spotify_id}`);
+  turnReadyButton.disabled = true;
+  turnReadyButton.textContent = "MUZYKA GRA";
+});
 
 async function openScanner() {
   showScreen("scanner");
@@ -296,7 +300,6 @@ async function onScanSuccess(decodedText) {
     if (song.spotify_id) {
       const spotifyUri = `spotify:track:${song.spotify_id}`;
       preloadSpotifyPreview(spotifyUri);
-      startSpotifyPreview(spotifyUri);
     }
     await pause(180);
     showTurnScreen();
@@ -377,7 +380,6 @@ async function prepareSelectedPacks(force = false) {
   songQueues = new Map();
   const selectedPacks = packs.filter((pack) => selectedPackFiles.includes(pack.file));
   await Promise.all(selectedPacks.map(loadPackSongs));
-  prepareSpotifyController();
 }
 
 async function loadPackSongs(pack) {
@@ -391,21 +393,6 @@ async function loadPackSongs(pack) {
     const existing = songPool.get(card.qr_code_id) || [];
     songPool.set(card.qr_code_id, existing.concat(card.songs || []));
   });
-}
-
-function prepareSpotifyController() {
-  if (spotifyController || spotifySeedUri) {
-    return;
-  }
-
-  for (const songs of songPool.values()) {
-    const song = songs.find(({ spotify_id: spotifyId }) => spotifyId);
-    if (song) {
-      spotifySeedUri = `spotify:track:${song.spotify_id}`;
-      createSpotifyController(spotifySeedUri);
-      return;
-    }
-  }
 }
 
 function renderOptions() {
@@ -450,9 +437,8 @@ function renderPackInfo() {
 }
 
 function updateStartScanButton() {
-  const isSpotifyLoading = Boolean(spotifySeedUri) && !spotifyControllerReady;
-  startScanButton.disabled = isSpotifyLoading;
-  startScanLabel.textContent = isSpotifyLoading ? "ŁADOWANIE MUZYKI..." : "SKANUJ KARTĘ";
+  startScanButton.disabled = false;
+  startScanLabel.textContent = "SKANUJ KARTĘ";
 }
 
 function showTurnScreen() {
@@ -464,6 +450,8 @@ function showTurnScreen() {
   waitingForFlip = true;
   orientationSignalSeen = false;
   clearTurnSensorError();
+  turnReadyButton.disabled = false;
+  turnReadyButton.textContent = "GOTOWE";
   clearTurnAnimation();
   turnPhone.classList.remove("turn-phone-active");
   turnAnimationTimer = window.setTimeout(() => {
@@ -488,20 +476,6 @@ function renderResolve() {
     return;
   }
 
-  // Experiment: hand the scanned ID to a top-level page that owns one normal
-  // Spotify Embed. This deliberately avoids changing content in the hidden
-  // controller while a turn transition is occurring.
-  if (activeSong.spotify_id) {
-    const params = new URLSearchParams({
-      track: activeSong.spotify_id,
-      artist: activeSong.artist || "",
-      title: activeSong.title || "",
-      year: activeSong.year || ""
-    });
-    window.location.assign(`index.html?player=1&${params.toString()}`);
-    return;
-  }
-
   showScreen("resolve");
   resolveArtist.textContent = activeSong.artist || "";
   resolveYear.textContent = activeSong.year || "";
@@ -517,7 +491,7 @@ function renderResolve() {
   if (activeSong.spotify_id) {
     resolvePreviewBar.classList.remove("hidden");
     const spotifyUri = `spotify:track:${activeSong.spotify_id}`;
-    if (pendingSpotifyUri !== spotifyUri) {
+    if (!spotifyPreviewStarted) {
       startSpotifyPreview(spotifyUri);
     }
   } else {
@@ -569,33 +543,6 @@ function showScreen(name) {
     element.classList.toggle("hidden", key !== name);
   });
 
-  scheduleTextFit();
-}
-
-function showTopLevelPlayerFromQuery() {
-  const params = new URLSearchParams(window.location.search);
-  if (params.get("player") !== "1") {
-    return;
-  }
-
-  const track = params.get("track") || "";
-  if (!/^[A-Za-z0-9]{22}$/.test(track)) {
-    showScreen("home");
-    return;
-  }
-
-  showScreen("resolve");
-  resolveArtist.textContent = params.get("artist") || "";
-  resolveYear.textContent = params.get("year") || "";
-  resolveTitle.textContent = params.get("title") || "";
-  collabIndicator.classList.add("hidden");
-  const player = document.createElement("iframe");
-  player.className = "top-level-spotify-player";
-  player.title = "Spotify player";
-  player.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
-  player.src = `https://open.spotify.com/embed/track/${encodeURIComponent(track)}`;
-  resolvePreviewBar.replaceChildren(player);
-  resolvePreviewBar.classList.remove("hidden");
   scheduleTextFit();
 }
 
@@ -691,17 +638,10 @@ function startSpotifyPreview(uri) {
 }
 
 function preloadSpotifyPreview(uri) {
-  // The bootstrap track only unlocks the browser's media session. Once QR
-  // recognition has supplied the real URI, a late bootstrap event must not
-  // pause this same controller after it has been reused for the real track.
-  spotifyPrimingUri = null;
-  if (spotifyPrimeTimer) {
-    window.clearTimeout(spotifyPrimeTimer);
-    spotifyPrimeTimer = 0;
-  }
   pendingSpotifyUri = uri;
   spotifyLoadedUri = null;
   spotifyPlayRequested = false;
+  spotifyPreviewStarted = false;
   if (!spotifyController) {
     createSpotifyController(uri);
     return;
@@ -717,6 +657,7 @@ function playSpotifyPreview(uri) {
   }
 
   spotifyPlayRequested = false;
+  spotifyPreviewStarted = true;
   if (spotifyPlayTimer) {
     window.clearTimeout(spotifyPlayTimer);
     spotifyPlayTimer = 0;
@@ -734,6 +675,7 @@ function stopSpotifyPreview() {
   pendingSpotifyUri = null;
   spotifyLoadedUri = null;
   spotifyPlayRequested = false;
+  spotifyPreviewStarted = false;
   if (spotifyPlayTimer) {
     window.clearTimeout(spotifyPlayTimer);
     spotifyPlayTimer = 0;
@@ -757,25 +699,6 @@ function activateSpotifyElement() {
     spotifyController.activateElement();
   } catch (_) {
     // Ignore activation failures and still try normal playback.
-  }
-}
-
-function primeSpotifyPlayback() {
-  if (!spotifyControllerReady) {
-    return;
-  }
-
-  spotifyPrimingUri = spotifySeedUri;
-  if (spotifyPrimeTimer) {
-    window.clearTimeout(spotifyPrimeTimer);
-  }
-  spotifyPrimeTimer = window.setTimeout(() => {
-    spotifyPrimingUri = null;
-    spotifyPrimeTimer = 0;
-  }, 1500);
-  const playResult = spotifyController.play?.();
-  if (playResult && typeof playResult.catch === "function") {
-    playResult.catch(() => {});
   }
 }
 
@@ -881,25 +804,6 @@ function createSpotifyController(uri) {
     },
     (controller) => {
       spotifyController = controller;
-      controller.addListener?.("ready", () => {
-        spotifyControllerReady = true;
-        updateStartScanButton();
-      });
-      controller.addListener?.("playback_started", (event) => {
-        if (event?.data?.playingURI !== spotifyPrimingUri) {
-          return;
-        }
-
-        spotifyPrimingUri = null;
-        if (spotifyPrimeTimer) {
-          window.clearTimeout(spotifyPrimeTimer);
-          spotifyPrimeTimer = 0;
-        }
-        const pauseResult = controller.pause?.();
-        if (pauseResult && typeof pauseResult.catch === "function") {
-          pauseResult.catch(() => {});
-        }
-      });
       controller.addListener?.("playback_update", (event) => {
         if (event?.data?.playingURI !== pendingSpotifyUri) {
           return;
@@ -911,7 +815,11 @@ function createSpotifyController(uri) {
         }
       });
       if (pendingSpotifyUri) {
+        const shouldPlay = spotifyPlayRequested;
         preloadSpotifyPreview(pendingSpotifyUri);
+        if (shouldPlay) {
+          startSpotifyPreview(pendingSpotifyUri);
+        }
       }
     }
   );

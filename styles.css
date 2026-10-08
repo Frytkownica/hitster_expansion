@@ -857,11 +857,22 @@ input {
   display: none !important;
 }
 
-.top-level-spotify-player {
-  width: min(100%, 440px);
-  height: 152px;
+.turn-ready-button {
+  margin-top: 18px;
   border: 0;
-  border-radius: 12px;
+  border-radius: 999px;
+  padding: 12px 30px;
+  background: var(--pink-red);
+  color: #fff;
+  font: inherit;
+  font-weight: var(--extra_thick_font);
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.turn-ready-button:disabled {
+  opacity: 0.7;
+  cursor: default;
 }
 
 .collab-indicator {

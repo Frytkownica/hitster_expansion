@@ -4,7 +4,6 @@ const vm = require("node:vm");
 
 const source = fs.readFileSync("app.js", "utf8");
 const html = fs.readFileSync("index.html", "utf8");
-const playerHtml = fs.readFileSync("player.html", "utf8");
 const threshold = source.match(/const PHONE_FLIP_THRESHOLD = \d+;/)?.[0];
 const helper = source.match(/function isFaceDown\(beta, gamma\) \{[\s\S]*?\n\}/)?.[0];
 assert.ok(threshold && helper, "face-down gate must exist");
@@ -19,19 +18,18 @@ assert.equal(isFaceDown(null, null), false, "missing sensor data must stay block
 
 assert.match(
   source,
-  /startScanButton\.addEventListener\("click", async \(\) => \{[\s\S]*?primeSpotifyPlayback\(\);/,
-  "Spotify must be primed from the scan-start user gesture"
+  /activeSong = song;[\s\S]*?preloadSpotifyPreview\(spotifyUri\);[\s\S]*?showTurnScreen\(\);/,
+  "the selected track must preload before the turn screen"
+);
+assert.doesNotMatch(
+  source,
+  /preloadSpotifyPreview\(spotifyUri\);\s*startSpotifyPreview\(spotifyUri\);/,
+  "scanning must not start a bootstrap or the selected track"
 );
 assert.match(
   source,
-  /activeSong = song;[\s\S]*?preloadSpotifyPreview\(spotifyUri\);[\s\S]*?startSpotifyPreview\(spotifyUri\);[\s\S]*?showTurnScreen\(\);/,
-  "the selected track must start before the visual turn screen"
-);
-assert.match(source, /spotifyController\.resume\(\)/, "the pre-armed Spotify controller must resume after the flip");
-assert.match(
-  source,
-  /function preloadSpotifyPreview\(uri\) \{[\s\S]*?spotifyPrimingUri = null;[\s\S]*?window\.clearTimeout\(spotifyPrimeTimer\)/,
-  "loading the scanned track must cancel the stale bootstrap pause"
+  /turnReadyButton\.addEventListener\("click", \(\) => \{[\s\S]*?startSpotifyPreview\(`spotify:track:\$\{activeSong\.spotify_id\}`\);/,
+  "Gotowe must start the scanned track from a user gesture"
 );
 assert.match(source, /function setSpotifyIframeApi\(IFrameAPI\)/, "Spotify API must survive an early loader callback");
 assert.ok(
@@ -41,13 +39,8 @@ assert.ok(
 
 assert.match(
   source,
-  /function prepareSpotifyController\(\) \{[\s\S]*?spotifySeedUri = `spotify:track:\$\{song\.spotify_id\}`;[\s\S]*?createSpotifyController\(spotifySeedUri\);/,
-  "Spotify controller must use a track from the selected packs"
+  /function setSpotifyIframeApi\(IFrameAPI\) \{[\s\S]*?if \(pendingSpotifyUri\) \{[\s\S]*?createSpotifyController\(pendingSpotifyUri\);/,
+  "Spotify API must create the scanned-track controller when it becomes ready"
 );
-assert.match(
-  source,
-  /function setSpotifyIframeApi\(IFrameAPI\) \{[\s\S]*?if \(spotifySeedUri\) \{[\s\S]*?createSpotifyController\(spotifySeedUri\);/,
-  "Spotify controller must exist before the user starts scanning"
-);
-assert.match(source, /window\.location\.assign\(`player\.html\?\$\{params\.toString\(\)\}`\)/, "the flip result must pass its Spotify ID to the top-level player experiment");
-assert.match(playerHtml, /allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"/, "the top-level Spotify Embed must retain Spotify's required permissions");
+assert.doesNotMatch(source, /primeSpotifyPlayback|spotifySeedUri|showTopLevelPlayerFromQuery/, "the bootstrap and redirect experiments must be removed");
+assert.match(html, /id="turn-ready-button"/, "turn screen must provide a Gotowe button");
