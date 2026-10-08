@@ -4,6 +4,7 @@ const SELECTED_PACKS_KEY = "hitsterexp:selected-packs";
 const TURN_TRANSITION_MS = 600;
 const PHONE_FLIP_THRESHOLD = 50;
 const TURN_FALLBACK_MS = 4500;
+const SPOTIFY_PLAYBACK_SETTLE_MS = 300;
 
 const screens = {
   home: document.getElementById("screen-home"),
@@ -64,6 +65,7 @@ let spotifyLoadedUri = null;
 let spotifyPlayRequested = false;
 let spotifyPlayTimer = 0;
 let spotifyPreviewStarted = false;
+let spotifyPlaybackConfirmTimer = 0;
 let fitRaf = 0;
 let scannerFoundTimer = 0;
 let packs = [];
@@ -659,6 +661,7 @@ function startSpotifyPreview(uri) {
 }
 
 function preloadSpotifyPreview(uri) {
+  clearSpotifyPlaybackConfirmation();
   pendingSpotifyUri = uri;
   spotifyLoadedUri = null;
   spotifyPlayRequested = false;
@@ -692,6 +695,7 @@ function playSpotifyPreview(uri) {
 }
 
 function stopSpotifyPreview() {
+  clearSpotifyPlaybackConfirmation();
   pendingSpotifyUri = null;
   spotifyLoadedUri = null;
   spotifyPlayRequested = false;
@@ -854,13 +858,27 @@ function createSpotifyController(uri) {
 }
 
 function confirmSpotifyPlayback(uri) {
-  if (pendingSpotifyUri !== uri || spotifyPreviewStarted) {
+  if (pendingSpotifyUri !== uri || spotifyPreviewStarted || spotifyPlaybackConfirmTimer) {
     return;
   }
 
-  spotifyPreviewStarted = true;
-  if (!isFirefoxBrowser() && waitingForFlip) {
-    turnReadyButton.textContent = "MUZYKA GRA — ODWRÓĆ TELEFON";
-    finishTurnIfReady();
+  spotifyPlaybackConfirmTimer = window.setTimeout(() => {
+    spotifyPlaybackConfirmTimer = 0;
+    if (pendingSpotifyUri !== uri) {
+      return;
+    }
+
+    spotifyPreviewStarted = true;
+    if (!isFirefoxBrowser() && waitingForFlip) {
+      turnReadyButton.textContent = "MUZYKA GRA — ODWRÓĆ TELEFON";
+      finishTurnIfReady();
+    }
+  }, SPOTIFY_PLAYBACK_SETTLE_MS);
+}
+
+function clearSpotifyPlaybackConfirmation() {
+  if (spotifyPlaybackConfirmTimer) {
+    window.clearTimeout(spotifyPlaybackConfirmTimer);
+    spotifyPlaybackConfirmTimer = 0;
   }
 }
