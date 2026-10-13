@@ -4,10 +4,11 @@
 Install:
     python -m pip install "qrcode[pil]" pillow
 
+Rows without the "hitsterexp:" prefix get it added automatically.
+
 Examples:
-    python hitster_qr_batch.py payloads.txt
-    python hitster_qr_batch.py values.txt --prefix "hitsterexp:"
-    python hitster_qr_batch.py payloads.txt --style standard
+    python hitster_backs.py qr_inputs.txt
+    python hitster_backs.py qr_inputs.txt --out qr_output
 """
 from __future__ import annotations
 
