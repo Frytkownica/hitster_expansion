@@ -6,6 +6,7 @@ const PHONE_FLIP_THRESHOLD = 50;
 const TURN_FALLBACK_MS = 4500;
 const SPOTIFY_PLAYBACK_SETTLE_MS = 300;
 const SPOTIFY_START_TIMEOUT_MS = 8000;
+const MUSIC_PLAYING_LABEL = "MUZYKA GRA - ODWRÓĆ TELEFON";
 
 const screens = {
   home: document.getElementById("screen-home"),
@@ -471,7 +472,7 @@ function renderPackInfo() {
   const selectedPacks = packs.filter((pack) => selectedPackFiles.includes(pack.file));
   const minYear = Math.min(...selectedPacks.map((pack) => pack.years_min));
   const maxYear = Math.max(...selectedPacks.map((pack) => pack.years_max));
-  const sets = [...new Set(selectedPacks.flatMap((pack) => pack.set || []))].sort();
+  const sets = [...new Set(selectedPacks.flatMap((pack) => pack.set || []))].sort((a, b) => a - b);
 
   selectedYears.textContent = Number.isFinite(minYear) && Number.isFinite(maxYear) ? `${minYear}-${maxYear}` : "-";
   selectedSets.innerHTML = "";
@@ -503,8 +504,10 @@ function showTurnScreen() {
   spotifyStartTimedOut = false;
   clearTurnFallback();
   clearTurnSensorError();
-  turnReadyButton.disabled = false;
-  turnReadyButton.textContent = "GOTOWE";
+  // After a sensor retry, keep GOTOWE locked if the music is already playing;
+  // otherwise re-enable it so a fresh tap can retry playback.
+  turnReadyButton.disabled = spotifyPreviewStarted;
+  turnReadyButton.textContent = spotifyPreviewStarted ? MUSIC_PLAYING_LABEL : "GOTOWE";
   turnReadyButton.classList.toggle("hidden", isFirefoxBrowser());
   clearTurnAnimation();
   turnPhone.classList.remove("turn-phone-active");
@@ -699,6 +702,9 @@ function startSpotifyPreview(uri) {
     preloadSpotifyPreview(uri);
   }
   spotifyPlayRequested = true;
+  // Chrome only lets the iframe start audio during the user's tap, so unlock it now;
+  // the delayed play below runs after the gesture and would otherwise be blocked.
+  activateSpotifyElement();
   if (spotifyLoadedUri === uri) {
     playSpotifyPreview(uri);
     return;
@@ -923,7 +929,7 @@ function confirmSpotifyPlayback(uri) {
 
     spotifyPreviewStarted = true;
     if (!isFirefoxBrowser() && waitingForFlip) {
-      turnReadyButton.textContent = "MUZYKA GRA — ODWRÓĆ TELEFON";
+      turnReadyButton.textContent = MUSIC_PLAYING_LABEL;
       finishTurnIfReady();
     }
   }, SPOTIFY_PLAYBACK_SETTLE_MS);
