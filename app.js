@@ -5,6 +5,7 @@ const TURN_TRANSITION_MS = 600;
 const PHONE_FLIP_THRESHOLD = 50;
 const TURN_FALLBACK_MS = 4500;
 const SPOTIFY_PLAYBACK_SETTLE_MS = 300;
+const SPOTIFY_START_TIMEOUT_MS = 8000;
 
 const screens = {
   home: document.getElementById("screen-home"),
@@ -49,11 +50,15 @@ const spotifyAutoplayHost = document.getElementById("spotify-autoplay-host");
 
 let scannerStream = null;
 let isScanning = false;
+let scannerStarting = false;
+let scannerSession = 0;
 let scannerRaf = 0;
 let lastScanAt = 0;
 let activeSong = null;
 let turnAnimationTimer = null;
 let turnFallbackTimer = null;
+let spotifyStartTimer = null;
+let spotifyStartTimedOut = false;
 let waitingForFlip = false;
 let orientationSignalSeen = false;
 let latestOrientationBeta = null;
@@ -120,8 +125,12 @@ saveOptionsButton.addEventListener("click", async () => {
     selectedPackFiles = [packs[0].file];
   }
   localStorage.setItem(SELECTED_PACKS_KEY, JSON.stringify(selectedPackFiles));
-  await prepareSelectedPacks(true);
-  showScreen("home");
+  try {
+    await prepareSelectedPacks(true);
+    showScreen("home");
+  } catch (error) {
+    alert(error.message || "Nie udało się wczytać rozszerzeń.");
+  }
 });
 
 packInfoBackButton.addEventListener("click", () => {
@@ -179,6 +188,17 @@ turnReadyButton.addEventListener("click", () => {
   startSpotifyPreview(`spotify:track:${activeSong.spotify_id}`);
   turnReadyButton.disabled = true;
   turnReadyButton.textContent = "ŁADOWANIE MUZYKI...";
+  // If Spotify never confirms playback, stop gating the reveal so the player is not stuck here.
+  spotifyStartTimer = window.setTimeout(() => {
+    spotifyStartTimer = null;
+    if (!waitingForFlip || spotifyPreviewStarted) {
+      return;
+    }
+
+    spotifyStartTimedOut = true;
+    turnReadyButton.textContent = "MUZYKA NIE RUSZYŁA - ODWRÓĆ TELEFON";
+    finishTurnIfReady();
+  }, SPOTIFY_START_TIMEOUT_MS);
 });
 
 async function openScanner() {
@@ -190,7 +210,7 @@ async function openScanner() {
 }
 
 async function startScanner() {
-  if (isScanning) {
+  if (isScanning || scannerStarting) {
     return;
   }
 
@@ -203,28 +223,44 @@ async function startScanner() {
     return;
   }
 
+  // stopScanner() bumps the session, so a start that resolves after Powrót shuts itself down.
+  const session = ++scannerSession;
+  scannerStarting = true;
   try {
-    scannerStream = await navigator.mediaDevices.getUserMedia({
+    const stream = await navigator.mediaDevices.getUserMedia({
       video: { facingMode: { ideal: "environment" } },
       audio: false
     });
-    scannerVideo.srcObject = scannerStream;
+    if (session !== scannerSession) {
+      stream.getTracks().forEach((track) => track.stop());
+      return;
+    }
+    scannerStream = stream;
+    scannerVideo.srcObject = stream;
     await scannerVideo.play();
+    if (session !== scannerSession) {
+      return;
+    }
     isScanning = true;
     scanCameraFrame();
   } catch (error) {
+    if (session !== scannerSession) {
+      return;
+    }
     scannerStream?.getTracks().forEach((track) => track.stop());
     scannerStream = null;
     scannerVideo.srcObject = null;
     showScannerError(`Nie udalo sie uruchomic kamery: ${error.message || error}`);
+  } finally {
+    if (session === scannerSession) {
+      scannerStarting = false;
+    }
   }
 }
 
 async function stopScanner() {
-  if (!isScanning && !scannerStream) {
-    return;
-  }
-
+  scannerSession += 1;
+  scannerStarting = false;
   window.cancelAnimationFrame(scannerRaf);
   scannerRaf = 0;
   scannerStream?.getTracks().forEach((track) => track.stop());
@@ -366,7 +402,10 @@ async function loadPacks() {
   } catch (_) {
     localStorage.removeItem(SELECTED_PACKS_KEY);
   }
-  selectedPackFiles = Array.isArray(saved) && saved.length ? saved : packs.map((pack) => pack.file);
+  // Drop saved files that no longer exist in packs.json (renamed or removed packs).
+  const knownFiles = packs.map((pack) => pack.file);
+  const validSaved = Array.isArray(saved) ? saved.filter((file) => knownFiles.includes(file)) : [];
+  selectedPackFiles = validSaved.length ? validSaved : knownFiles;
 }
 
 async function prepareSelectedPacks(force = false) {
@@ -378,10 +417,18 @@ async function prepareSelectedPacks(force = false) {
     return;
   }
 
+  // Build into a local map so a failed pack never leaves a half-filled pool behind;
+  // an empty pool makes the next call retry the load.
   songPool = new Map();
-  songQueues = new Map();
   const selectedPacks = packs.filter((pack) => selectedPackFiles.includes(pack.file));
-  await Promise.all(selectedPacks.map(loadPackSongs));
+  const packCards = await Promise.all(selectedPacks.map(loadPackSongs));
+  const pool = new Map();
+  packCards.flat().forEach((card) => {
+    const existing = pool.get(card.qr_code_id) || [];
+    pool.set(card.qr_code_id, existing.concat(card.songs || []));
+  });
+  songPool = pool;
+  songQueues = new Map();
 }
 
 async function loadPackSongs(pack) {
@@ -391,10 +438,10 @@ async function loadPackSongs(pack) {
   }
 
   const cards = await response.json();
-  cards.forEach((card) => {
-    const existing = songPool.get(card.qr_code_id) || [];
-    songPool.set(card.qr_code_id, existing.concat(card.songs || []));
-  });
+  if (!Array.isArray(cards)) {
+    throw new Error(`Nieprawidłowy plik ${pack.file}.`);
+  }
+  return cards;
 }
 
 function renderOptions() {
@@ -453,6 +500,8 @@ function showTurnScreen() {
   orientationSignalSeen = false;
   latestOrientationBeta = null;
   latestOrientationGamma = null;
+  spotifyStartTimedOut = false;
+  clearTurnFallback();
   clearTurnSensorError();
   turnReadyButton.disabled = false;
   turnReadyButton.textContent = "GOTOWE";
@@ -529,6 +578,10 @@ function clearTurnFallback() {
   if (turnFallbackTimer) {
     window.clearTimeout(turnFallbackTimer);
     turnFallbackTimer = null;
+  }
+  if (spotifyStartTimer) {
+    window.clearTimeout(spotifyStartTimer);
+    spotifyStartTimer = null;
   }
 }
 
@@ -634,7 +687,7 @@ function finishTurnIfReady() {
 
   // Firefox starts after the flip. Chromium needs the earlier GOTOWE gesture,
   // so do not reveal until Spotify confirms that audio has actually started.
-  if (!isFirefoxBrowser() && !spotifyPreviewStarted) {
+  if (!isFirefoxBrowser() && activeSong?.spotify_id && !spotifyPreviewStarted && !spotifyStartTimedOut) {
     return;
   }
 
