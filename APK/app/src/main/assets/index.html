@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hitster Ultimate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+      window.__spotifyIframeApi = null;
+      window.onSpotifyIframeApiReady = (IFrameAPI) => {
+        window.__spotifyIframeApi = IFrameAPI;
+      };
+    </script>
+    <script src="https://unpkg.com/jsqr@1.4.0/dist/jsQR.js" defer></script>
+    <script src="vendor/textFit.min.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+  </head>
+  <body>
+    <main class="app">
+      <div class="spotify-autoplay-host" aria-hidden="true">
+        <div id="spotify-autoplay-host"></div>
+      </div>
+
+      <section id="screen-home" class="screen">
+        <div class="ambient"></div>
+        <div class="screen-inner home-layout">
+          <header class="home-brand">
+            <div id="brand-hitster" class="brand-hitster">HITSTER</div>
+            <div class="brand-subtitle">Ultimate</div>
+          </header>
+
+          <div class="speaker-wrap" aria-hidden="true">
+            <div class="speaker">
+              <div class="speaker-ring speaker-ring-outer"></div>
+              <div class="speaker-ring speaker-ring-mid"></div>
+              <div class="speaker-ring speaker-ring-inner"></div>
+              <div class="speaker-ring speaker-cap"></div>
+              <span class="speaker-bolt bolt-a"></span>
+              <span class="speaker-bolt bolt-b"></span>
+              <span class="speaker-bolt bolt-c"></span>
+              <span class="speaker-bolt bolt-d"></span>
+            </div>
+          </div>
+
+          <button id="play-now-button" class="cta-button" type="button">
+            <span id="play-now-label" class="cta-label">ZAGRAJ TERAZ</span>
+          </button>
+          <button id="options-button" class="menu-button" type="button" aria-label="Opcje">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </section>
+
+      <section id="screen-options" class="screen hidden">
+        <div class="ambient"></div>
+        <div class="screen-inner options-layout">
+          <button id="options-close-button" class="top-action" type="button">Powrót</button>
+          <header class="home-brand compact-brand">
+            <div class="brand-subtitle">Rozszerzenia</div>
+          </header>
+          <div id="packs-list" class="packs-list"></div>
+          <button id="check-updates-button" class="update-option-button" type="button">SPRAWDŹ AKTUALIZACJE</button>
+          <p id="update-status" class="update-status" role="status" aria-live="polite"></p>
+          <button id="save-options-button" class="cta-button" type="button">
+            <span class="cta-label">ZAPISZ</span>
+          </button>
+        </div>
+      </section>
+
+      <section id="screen-pack-info" class="screen hidden">
+        <div class="ambient"></div>
+        <div class="screen-inner pack-info-layout">
+          <button id="pack-info-back-button" class="top-action" type="button">Powrót</button>
+          <div class="pack-summary">
+            <h2 class="brand-subtitle pack-summary-title">Wybrane karty</h2>
+            <p>Lata kart: <strong id="selected-years">-</strong></p>
+            <p>Kolory kart: <span id="selected-sets" class="set-swatches"></span></p>
+          </div>
+          <button id="start-scan-button" class="cta-button" type="button">
+            <span id="start-scan-label" class="cta-label">SKANUJ KARTĘ</span>
+          </button>
+        </div>
+      </section>
+
+      <section id="screen-scanner" class="screen hidden">
+        <div class="ambient"></div>
+        <div class="screen-inner scanner-layout">
+          <button id="scanner-close-button" class="top-action" type="button">Powrót</button>
+          <div class="scanner-stage">
+            <div id="reader" class="reader">
+              <video id="scanner-video" autoplay playsinline muted></video>
+              <canvas id="scanner-canvas" class="hidden"></canvas>
+            </div>
+            <div class="scanner-mask" aria-hidden="true">
+              <div id="scanner-frame" class="scanner-frame">
+                <span class="scanner-corner corner-top-left"></span>
+                <span class="scanner-corner corner-top-right"></span>
+                <span class="scanner-corner corner-bottom-left"></span>
+                <span class="scanner-corner corner-bottom-right"></span>
+              </div>
+            </div>
+          </div>
+          <p id="scanner-status" class="scanner-status">Nakieruj aparat na kod QR.</p>
+          <p id="scanner-error" class="scanner-error hidden"></p>
+        </div>
+      </section>
+
+      <section id="screen-turn" class="screen hidden">
+        <div class="ambient"></div>
+        <div class="screen-inner turn-layout">
+          <div id="turn-phone" class="turn-phone" aria-hidden="true">
+            <div class="phone-glow"></div>
+            <div class="phone-frame">
+              <span class="phone-notch"></span>
+              <span class="phone-side side-left side-left-up"></span>
+              <span class="phone-side side-left side-left-down"></span>
+              <span class="phone-side side-right side-right-main"></span>
+              <span class="phone-camera"></span>
+            </div>
+            <span class="note note-main">♪</span>
+            <span class="note note-small">♫</span>
+            <span class="note note-tiny">♪</span>
+          </div>
+          <div class="turn-copy">
+            <h2>ODWRÓĆ TELEFON</h2>
+            <p>Następnie muzyka się zacznie</p>
+            <p id="turn-sensor-error" class="turn-sensor-error hidden" role="alert">
+              Nie wykryto czujnika ruchu. Włącz go i spróbuj ponownie.
+            </p>
+            <button id="turn-ready-button" class="turn-ready-button" type="button">GOTOWE</button>
+            <button id="turn-sensor-retry-button" class="turn-sensor-retry-button hidden" type="button">
+              SPRÓBUJ PONOWNIE
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-resolve" class="screen hidden">
+        <div class="ambient"></div>
+        <div class="screen-inner resolve-layout">
+          <div id="resolve-preview-bar" class="resolve-preview-bar hidden">
+            <div id="resolve-preview-pill" class="resolve-preview-pill">Spotify Preview</div>
+            <button id="resolve-stop-button" class="resolve-stop-button" type="button">STOP</button>
+          </div>
+
+          <div class="resolve-copy">
+            <div id="resolve-artist" class="resolve-artist"></div>
+            <div id="resolve-year" class="resolve-year"></div>
+            <div id="resolve-title" class="resolve-title"></div>
+          </div>
+
+          <div class="resolve-footer">
+            <div id="collab-indicator" class="collab-indicator hidden" aria-label="Collaboration indicator">
+              <span class="person person-left"></span>
+              <span class="person person-right"></span>
+              <span class="person person-back"></span>
+            </div>
+            <button id="next-card-button" class="cta-button" type="button">
+              <span id="next-card-label" class="cta-label">NASTĘPNA KARTA</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

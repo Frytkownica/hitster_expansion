@@ -2,7 +2,7 @@
   {
     "name": "Standard Expansion",
     "file": "standard.json",
-    "songs": 488,
+    "songs": 333,
     "description": "Standardowe rozszerzenie z bazowymi piosenkami",
     "years_min": 1965,
     "years_max": 2025,
@@ -11,16 +11,25 @@
   {
     "name": "Polskie",
     "file": "polskie.json",
-    "songs": 488,
+    "songs": 287,
     "description": "Polskie piosenki",
     "years_min": 1965,
     "years_max": 2026,
     "set": [1, 2, 3]
   },
   {
+    "name": "Męskie Granie",
+    "file": "meskie_granie.json",
+    "songs": 17,
+    "description": "Piosenki Bożonarodzeniowe",
+    "years_min": 2010,
+    "years_max": 2026,
+    "set": [1]
+  },
+  {
     "name": "Rock&metal",
     "file": "rock.json",
-    "songs": 488,
+    "songs": 318,
     "description": "Classic Rock, Metal i Nu metal",
     "years_min": 1965,
     "years_max": 2026,
@@ -29,7 +38,7 @@
   {
     "name": "Christmas",
     "file": "christmas.json",
-    "songs": 488,
+    "songs": 200,
     "description": "Piosenki Bożonarodzeniowe",
     "years_min": 1965,
     "years_max": 2025,

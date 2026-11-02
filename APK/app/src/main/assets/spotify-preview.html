@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>html,body,#player{width:1px;height:1px;margin:0;overflow:hidden}</style>
+</head>
+<body>
+  <div id="player"></div>
+  <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+  <script>
+    let controller;
+    let pendingTrackId = "";
+    let readyTimeout;
+
+    function android(method, trackId) {
+      window.HitsterPreview?.[method]?.(trackId);
+    }
+
+    function playPendingTrack() {
+      if (!controller || !pendingTrackId) return;
+      const trackId = pendingTrackId;
+      const uri = `spotify:track:${trackId}`;
+      const load = controller.loadUri || controller.loadEntity;
+      load?.call(controller, uri);
+      const play = controller.resume || controller.play;
+      const result = play?.call(controller);
+      result?.catch?.(() => android("onFailed", trackId));
+    }
+
+    window.playSpotifyPreview = (trackId) => {
+      pendingTrackId = trackId;
+      window.clearTimeout(readyTimeout);
+      readyTimeout = window.setTimeout(() => android("onFailed", trackId), 5000);
+      playPendingTrack();
+    };
+
+    window.stopSpotifyPreview = () => {
+      pendingTrackId = "";
+      controller?.pause?.();
+    };
+
+    window.onSpotifyIframeApiReady = (IFrameAPI) => {
+      IFrameAPI.createController(document.getElementById("player"), {
+        uri: "spotify:track:3AhXZa8sUQht0UEdBJgpGc",
+        width: "1",
+        height: "1"
+      }, (embedController) => {
+        controller = embedController;
+        controller.addListener?.("playback_update", (event) => {
+          const data = event?.data;
+          if (pendingTrackId && data?.isPaused === false) {
+            window.clearTimeout(readyTimeout);
+            android("onStarted", pendingTrackId);
+          }
+        });
+        controller.addListener?.("playback_error", () => android("onFailed", pendingTrackId));
+        playPendingTrack();
+      });
+    };
+  </script>
+</body>
+</html>

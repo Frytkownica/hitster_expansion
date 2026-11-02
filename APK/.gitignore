@@ -15,3 +15,4 @@ local.properties
 # Signing keys must never be committed
 *.jks
 *.keystore
+keystore.properties

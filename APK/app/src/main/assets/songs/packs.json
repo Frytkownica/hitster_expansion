@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Standard Expansion",
+    "file": "standard.json",
+    "songs": 488,
+    "description": "Standardowe rozszerzenie z bazowymi piosenkami",
+    "years_min": 1965,
+    "years_max": 2025,
+    "set": [1, 2, 3]
+  }
+]

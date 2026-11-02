@@ -1,0 +1,4333 @@
+[
+    {
+        "qr_code_id":  "1965_1",
+        "songs":  [
+                      {
+                          "year":  1965,
+                          "title":  "Like a Rolling Stone",
+                          "artist":  "Bob Dylan",
+                          "collab":  false,
+                          "spotify_id":  "3AhXZa8sUQht0UEdBJgpGc"
+                      },
+                      {
+                          "year":  1965,
+                          "title":  "Don\u0027t Let Me Be Misunderstood",
+                          "artist":  "The Animals",
+                          "collab":  true,
+                          "spotify_id":  "0KpTFH1SzexN8SGc0GPILC"
+                      },
+                      {
+                          "year":  1965,
+                          "title":  "(I Can\u0027t Get No) Satisfaction",
+                          "artist":  "The Rolling Stones",
+                          "collab":  true,
+                          "spotify_id":  "2PzU4IB8Dr6mxV3lHuaG34"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1965_2",
+        "songs":  [
+                      {
+                          "year":  1965,
+                          "title":  "Czy mnie jeszcze pamiętasz",
+                          "artist":  "Czesław Niemen",
+                          "collab":  false,
+                          "spotify_id":  "4J7Hiscxz5qGYLSwRkl8Pr"
+                      },
+                      {
+                          "year":  1965,
+                          "title":  "Help!",
+                          "artist":  "The Beatles",
+                          "collab":  true,
+                          "spotify_id":  "6EdSN1iGtLPhcz43QDRkdK"
+                      },
+                      {
+                          "year":  1965,
+                          "title":  "My Generation",
+                          "artist":  "The Who",
+                          "collab":  true,
+                          "spotify_id":  "2EMmHEhCZSMMEM85HTFJvj"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1965_3",
+        "songs":  [
+                      {
+                          "year":  1965,
+                          "title":  "I Got You Babe",
+                          "artist":  "Sonny \u0026 Cher",
+                          "collab":  true,
+                          "spotify_id":  "4SGBuq37Ol4HJr7pQqFMKa"
+                      },
+                      {
+                          "year":  1965,
+                          "title":  "Yesterday",
+                          "artist":  "The Beatles",
+                          "collab":  true,
+                          "spotify_id":  "3BQHpFgAp4l80e1XslIjNI"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1966_1",
+        "songs":  [
+                      {
+                          "year":  1966,
+                          "title":  "Historia jednej znajomości",
+                          "artist":  "Czerwone Gitary",
+                          "collab":  true,
+                          "spotify_id":  "64PrlRNzKDm3de49MMzPMl"
+                      },
+                      {
+                          "year":  1966,
+                          "title":  "Good Vibrations",
+                          "artist":  "The Beach Boys",
+                          "collab":  true,
+                          "spotify_id":  "6aU6a9tdn2vHhnPGlboFZX"
+                      },
+                      {
+                          "year":  1966,
+                          "title":  "Paint It, Black",
+                          "artist":  "The Rolling Stones",
+                          "collab":  true,
+                          "spotify_id":  "63T7DJ1AFDD6Bn8VzG6JE8"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1966_2",
+        "songs":  [
+                      {
+                          "year":  1966,
+                          "title":  "Matura",
+                          "artist":  "Czerwone Gitary",
+                          "collab":  true,
+                          "spotify_id":  "6NdNKJDvoYfmLFeC0bEDbe"
+                      },
+                      {
+                          "year":  1966,
+                          "title":  "Eleanor Rigby",
+                          "artist":  "The Beatles",
+                          "collab":  true,
+                          "spotify_id":  "6EOKwO6WaLal58MSsi6U4W"
+                      },
+                      {
+                          "year":  1966,
+                          "title":  "Wild Thing",
+                          "artist":  "The Troggs",
+                          "collab":  true,
+                          "spotify_id":  "7jGzYUZ2Bgg8BDfYlQRfn8"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1966_3",
+        "songs":  [
+                      {
+                          "year":  1966,
+                          "title":  "Sen o Warszawie",
+                          "artist":  "Czesław Niemen",
+                          "collab":  false,
+                          "spotify_id":  "0JcUJ4ZF75Z3Q3bda0BoWa"
+                      },
+                      {
+                          "year":  1966,
+                          "title":  "Sunny Afternoon",
+                          "artist":  "The Kinks",
+                          "collab":  true,
+                          "spotify_id":  "09Plbz3Ja2gxU9xCsqA5KY"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1967_1",
+        "songs":  [
+                      {
+                          "year":  1967,
+                          "title":  "Respect",
+                          "artist":  "Aretha Franklin",
+                          "collab":  false,
+                          "spotify_id":  "7s25THrKz86DM225dOYwnr"
+                      },
+                      {
+                          "year":  1967,
+                          "title":  "Purple Haze",
+                          "artist":  "Jimi Hendrix",
+                          "collab":  false,
+                          "spotify_id":  "0wJoRiX5K5BxlqZTolB2LD"
+                      },
+                      {
+                          "year":  1967,
+                          "title":  "Light My Fire",
+                          "artist":  "The Doors",
+                          "collab":  true,
+                          "spotify_id":  "5uvosCdMlFdTXhoazkTI5R"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1967_2",
+        "songs":  [
+                      {
+                          "year":  1967,
+                          "title":  "Takie ładne oczy",
+                          "artist":  "Czerwone Gitary",
+                          "collab":  true,
+                          "spotify_id":  "1ZEkgm4t0wpvXcWRvNectM"
+                      },
+                      {
+                          "year":  1967,
+                          "title":  "A Whiter Shade of Pale",
+                          "artist":  "Procol Harum",
+                          "collab":  true,
+                          "spotify_id":  "2ECReVEeiSQk8zpC9TRAwx"
+                      },
+                      {
+                          "year":  1967,
+                          "title":  "The Wind Cries Mary",
+                          "artist":  "The Jimi Hendrix Experience",
+                          "collab":  true,
+                          "spotify_id":  "5H6Jp0syB5yEPk7SWYdlmk"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1967_3",
+        "songs":  [
+                      {
+                          "year":  1967,
+                          "title":  "Dziwny jest ten świat",
+                          "artist":  "Czesław Niemen",
+                          "collab":  false,
+                          "spotify_id":  "6edKYktrjHFfTh0SB3O76j"
+                      },
+                      {
+                          "year":  1967,
+                          "title":  "San Francisco (Be Sure to Wear Flowers in Your Hair)",
+                          "artist":  "Scott McKenzie",
+                          "collab":  false,
+                          "spotify_id":  "6vcNJUWtUPB0hKC6VbZriY"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1968_1",
+        "songs":  [
+                      {
+                          "year":  1968,
+                          "title":  "White Room",
+                          "artist":  "Cream",
+                          "collab":  true,
+                          "spotify_id":  "3Xls4cNOwy01dtrNXb1inG"
+                      },
+                      {
+                          "year":  1968,
+                          "title":  "(Sittin\u0027 On) The Dock of the Bay",
+                          "artist":  "Otis Redding",
+                          "collab":  false,
+                          "spotify_id":  "4Y4Gd3ty8uut6Qw43c7yJc"
+                      },
+                      {
+                          "year":  1968,
+                          "title":  "Born to Be Wild",
+                          "artist":  "Steppenwolf",
+                          "collab":  true,
+                          "spotify_id":  "2VPGmrcBw5X4yAu3B8UZNE"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1968_2",
+        "songs":  [
+                      {
+                          "year":  1968,
+                          "title":  "Kwiaty we włosach",
+                          "artist":  "Czerwone Gitary",
+                          "collab":  true,
+                          "spotify_id":  "67shyWT6EUlsZXjagH6WwA"
+                      },
+                      {
+                          "year":  1968,
+                          "title":  "Mrs. Robinson",
+                          "artist":  "Simon \u0026 Garfunkel",
+                          "collab":  true,
+                          "spotify_id":  "0iOZM63lendWRTTeKhZBSC"
+                      },
+                      {
+                          "year":  1968,
+                          "title":  "Hey Jude",
+                          "artist":  "The Beatles",
+                          "collab":  true,
+                          "spotify_id":  "1eT2CjXwFXNx6oY5ydvzKU"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1968_3",
+        "songs":  [
+                      {
+                          "year":  1968,
+                          "title":  "Hush",
+                          "artist":  "Deep Purple",
+                          "collab":  true,
+                          "spotify_id":  "2Vim06YsRb4uJRpbeq6NR6"
+                      },
+                      {
+                          "year":  1968,
+                          "title":  "Medytacje wiejskiego listonosza",
+                          "artist":  "Skaldowie",
+                          "collab":  true,
+                          "spotify_id":  "4Tl2YkVM7IlkL5GaC5PvTn"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1969_1",
+        "songs":  [
+                      {
+                          "year":  1969,
+                          "title":  "Gdybyś kochał, hej!",
+                          "artist":  "Breakout",
+                          "collab":  true,
+                          "spotify_id":  "4xdzAOB3baQ8VmPJ8cf3ij"
+                      },
+                      {
+                          "year":  1969,
+                          "title":  "Space Oddity",
+                          "artist":  "David Bowie",
+                          "collab":  false,
+                          "spotify_id":  "72Z17vmmeQKAg8bptWvpVG"
+                      },
+                      {
+                          "year":  1969,
+                          "title":  "Sugar, Sugar",
+                          "artist":  "The Archies",
+                          "collab":  true,
+                          "spotify_id":  "6MTd61g9zq6CB1FnJydjEb"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1969_2",
+        "songs":  [
+                      {
+                          "year":  1969,
+                          "title":  "Fortunate Son",
+                          "artist":  "Creedence Clearwater Revival",
+                          "collab":  true,
+                          "spotify_id":  "4BP3uh0hFLFRb5cjsgLqDh"
+                      },
+                      {
+                          "year":  1969,
+                          "title":  "Whole Lotta Love",
+                          "artist":  "Led Zeppelin",
+                          "collab":  true,
+                          "spotify_id":  "0hCB0YR03f6AmQaHbwWDe8"
+                      },
+                      {
+                          "year":  1969,
+                          "title":  "Gimme Shelter",
+                          "artist":  "The Rolling Stones",
+                          "collab":  true,
+                          "spotify_id":  "6H3kDe7CGoWYBabAeVWGiD"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1969_3",
+        "songs":  [
+                      {
+                          "year":  1969,
+                          "title":  "Bema pamięci żałobny rapsod",
+                          "artist":  "Czesław Niemen",
+                          "collab":  false,
+                          "spotify_id":  "4CYojURFHAG0ZQUUdaKJtb"
+                      },
+                      {
+                          "year":  1969,
+                          "title":  "Prześliczna wiolonczelistka",
+                          "artist":  "Skaldowie",
+                          "collab":  true,
+                          "spotify_id":  "7CuUAXRcEzEJmgPEioUkGr"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1970_1",
+        "songs":  [
+                      {
+                          "year":  1970,
+                          "title":  "Paranoid",
+                          "artist":  "Black Sabbath",
+                          "collab":  true,
+                          "spotify_id":  "3hwuHzRicnu6Ji9i1JLzor"
+                      },
+                      {
+                          "year":  1970,
+                          "title":  "All Right Now",
+                          "artist":  "Free",
+                          "collab":  true,
+                          "spotify_id":  "1gcESexgftSuLuML57Y69q"
+                      },
+                      {
+                          "year":  1970,
+                          "title":  "Black Magic Woman",
+                          "artist":  "Santana",
+                          "collab":  true,
+                          "spotify_id":  "4nmne9J3YCEdhvjTzwiAgu"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1970_2",
+        "songs":  [
+                      {
+                          "year":  1970,
+                          "title":  "Kiedy byłem małym chłopcem",
+                          "artist":  "Breakout",
+                          "collab":  true,
+                          "spotify_id":  "0FGBCrLj15yxjJ1WPRnVMQ"
+                      },
+                      {
+                          "year":  1970,
+                          "title":  "My Sweet Lord",
+                          "artist":  "George Harrison",
+                          "collab":  false,
+                          "spotify_id":  "0KZodeWxqxd88F9wY1cqgs"
+                      },
+                      {
+                          "year":  1970,
+                          "title":  "Bridge Over Troubled Water",
+                          "artist":  "Simon \u0026 Garfunkel",
+                          "collab":  true,
+                          "spotify_id":  "6l8EbYRtQMgKOyc1gcDHF9"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1970_3",
+        "songs":  [
+                      {
+                          "year":  1970,
+                          "title":  "Black Night",
+                          "artist":  "Deep Purple",
+                          "collab":  true,
+                          "spotify_id":  "2c1ccPqUnFYD8W7LY65bKG"
+                      },
+                      {
+                          "year":  1970,
+                          "title":  "Immigrant Song",
+                          "artist":  "Led Zeppelin",
+                          "collab":  true,
+                          "spotify_id":  "78lgmZwycJ3nzsdgmPPGNx"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1971_1",
+        "songs":  [
+                      {
+                          "year":  1971,
+                          "title":  "Me and Bobby McGee",
+                          "artist":  "Janis Joplin",
+                          "collab":  false,
+                          "spotify_id":  "1IqFh00G2kvvMm8pRMpehA"
+                      },
+                      {
+                          "year":  1971,
+                          "title":  "What\u0027s Going On",
+                          "artist":  "Marvin Gaye",
+                          "collab":  false,
+                          "spotify_id":  "3Um9toULmYFGCpvaIPFw7l"
+                      },
+                      {
+                          "year":  1971,
+                          "title":  "Get It On",
+                          "artist":  "T. Rex",
+                          "collab":  true,
+                          "spotify_id":  "0LoQuiekvzqx7n8flgEKzF"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1971_2",
+        "songs":  [
+                      {
+                          "year":  1971,
+                          "title":  "Imagine",
+                          "artist":  "John Lennon",
+                          "collab":  false,
+                          "spotify_id":  "7pKfPomDEeI4TPT6EOYjn9"
+                      },
+                      {
+                          "year":  1971,
+                          "title":  "Ballada wagonowa",
+                          "artist":  "Maryla Rodowicz",
+                          "collab":  false,
+                          "spotify_id":  "2x5d3kl1nIIhcGB0BC0Qk2"
+                      },
+                      {
+                          "year":  1971,
+                          "title":  "Riders on the Storm",
+                          "artist":  "The Doors",
+                          "collab":  true,
+                          "spotify_id":  "14XWXWv5FoCbFzLksawpEe"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1971_3",
+        "songs":  [
+                      {
+                          "year":  1971,
+                          "title":  "Stairway to Heaven",
+                          "artist":  "Led Zeppelin",
+                          "collab":  true,
+                          "spotify_id":  "5CQ30WqJwcep0pYcV4AMNc"
+                      },
+                      {
+                          "year":  1971,
+                          "title":  "Wszystko mi mówi, że mnie ktoś pokochał",
+                          "artist":  "Skaldowie",
+                          "collab":  true,
+                          "spotify_id":  "5S115BRg8EghKqq1D0Wx9J"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1972_1",
+        "songs":  [
+                      {
+                          "year":  1972,
+                          "title":  "School\u0027s Out",
+                          "artist":  "Alice Cooper",
+                          "collab":  true,
+                          "spotify_id":  "5Z8EDau8uNcP1E8JvmfkZe"
+                      },
+                      {
+                          "year":  1972,
+                          "title":  "Rocket Man",
+                          "artist":  "Elton John",
+                          "collab":  false,
+                          "spotify_id":  "3gdewACMIVMEWVbyb8O9sY"
+                      },
+                      {
+                          "year":  1972,
+                          "title":  "Superstition",
+                          "artist":  "Stevie Wonder",
+                          "collab":  false,
+                          "spotify_id":  "4N0TP4Rmj6QQezWV88ARNJ"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1972_2",
+        "songs":  [
+                      {
+                          "year":  1972,
+                          "title":  "Starman",
+                          "artist":  "David Bowie",
+                          "collab":  false,
+                          "spotify_id":  "5xTOdHx9HY3mpnmcaiO3BI"
+                      },
+                      {
+                          "year":  1972,
+                          "title":  "Walk on the Wild Side",
+                          "artist":  "Lou Reed",
+                          "collab":  false,
+                          "spotify_id":  "5p3JunprHCxClJjOmcLV8G"
+                      },
+                      {
+                          "year":  1972,
+                          "title":  "Metal Guru",
+                          "artist":  "T. Rex",
+                          "collab":  true,
+                          "spotify_id":  "0HoMdjB1XwwMlyPfTV7DEj"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1972_3",
+        "songs":  [
+                      {
+                          "year":  1972,
+                          "title":  "Smoke on the Water",
+                          "artist":  "Deep Purple",
+                          "collab":  true,
+                          "spotify_id":  "5MMnwYs0hIxkENRsbkWJ2G"
+                      },
+                      {
+                          "year":  1972,
+                          "title":  "Diabeł i raj",
+                          "artist":  "Maryla Rodowicz",
+                          "collab":  false,
+                          "spotify_id":  "6K9d8WH2hzA02Xez8ibiVT"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1973_1",
+        "songs":  [
+                      {
+                          "year":  1973,
+                          "title":  "Najtrudniejszy pierwszy krok",
+                          "artist":  "Anna Jantar",
+                          "collab":  false,
+                          "spotify_id":  "7EMNmdoqljQgMWkkdYOUDt"
+                      },
+                      {
+                          "year":  1973,
+                          "title":  "Radar Love",
+                          "artist":  "Golden Earring",
+                          "collab":  true,
+                          "spotify_id":  "5tU9JM1v72X7oM808Am6Fq"
+                      },
+                      {
+                          "year":  1973,
+                          "title":  "Money",
+                          "artist":  "Pink Floyd",
+                          "collab":  true,
+                          "spotify_id":  "0vFOzaXqZHahrZp6enQwQb"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1973_2",
+        "songs":  [
+                      {
+                          "year":  1973,
+                          "title":  "Jolene",
+                          "artist":  "Dolly Parton",
+                          "collab":  false,
+                          "spotify_id":  "2SpEHTbUuebeLkgs9QB7Ue"
+                      },
+                      {
+                          "year":  1973,
+                          "title":  "Search and Destroy",
+                          "artist":  "Iggy and the Stooges",
+                          "collab":  true,
+                          "spotify_id":  "00sydAz6PeOxYzwG1dRIPi"
+                      },
+                      {
+                          "year":  1973,
+                          "title":  "Angie",
+                          "artist":  "The Rolling Stones",
+                          "collab":  true,
+                          "spotify_id":  "1GcVa4jFySlun4jLSuMhiq"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1973_3",
+        "songs":  [
+                      {
+                          "year":  1973,
+                          "title":  "Crocodile Rock",
+                          "artist":  "Elton John",
+                          "collab":  false,
+                          "spotify_id":  "6WCeFNVAXUtNczb7lqLiZU"
+                      },
+                      {
+                          "year":  1973,
+                          "title":  "Małgośka",
+                          "artist":  "Maryla Rodowicz",
+                          "collab":  false,
+                          "spotify_id":  "4pi02xa3zjzM6O69H7FYf5"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1974_1",
+        "songs":  [
+                      {
+                          "year":  1974,
+                          "title":  "Waterloo",
+                          "artist":  "ABBA",
+                          "collab":  true,
+                          "spotify_id":  "3Dy4REq8O09IlgiwuHQ3sk"
+                      },
+                      {
+                          "year":  1974,
+                          "title":  "Rebel Rebel",
+                          "artist":  "David Bowie",
+                          "collab":  false,
+                          "spotify_id":  "2EC9IJj7g0mN1Q5VrZkiYY"
+                      },
+                      {
+                          "year":  1974,
+                          "title":  "Killer Queen",
+                          "artist":  "Queen",
+                          "collab":  true,
+                          "spotify_id":  "46L5lm1Xzwr0TExEMpObtq"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1974_2",
+        "songs":  [
+                      {
+                          "year":  1974,
+                          "title":  "Sen o dolinie",
+                          "artist":  "Budka Suflera",
+                          "collab":  true,
+                          "spotify_id":  "2WfY2N0Md2vEddffnaMPNU"
+                      },
+                      {
+                          "year":  1974,
+                          "title":  "Burn",
+                          "artist":  "Deep Purple",
+                          "collab":  true,
+                          "spotify_id":  "1iW2ktyrQHNKZwFTvgP0Ta"
+                      },
+                      {
+                          "year":  1974,
+                          "title":  "Devil Gate Drive",
+                          "artist":  "Suzi Quatro",
+                          "collab":  false,
+                          "spotify_id":  "05fBPztfk8kjaRXXx58fvm"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1974_3",
+        "songs":  [
+                      {
+                          "year":  1974,
+                          "title":  "Kung Fu Fighting",
+                          "artist":  "Carl Douglas",
+                          "collab":  false,
+                          "spotify_id":  "7K8QsHbmUpSX37oOCL4e2g"
+                      },
+                      {
+                          "year":  1974,
+                          "title":  "Sweet Home Alabama",
+                          "artist":  "Lynyrd Skynyrd",
+                          "collab":  true,
+                          "spotify_id":  "7e89621JPkKaeDSTQ3avtg"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1975_1",
+        "songs":  [
+                      {
+                          "year":  1975,
+                          "title":  "Mamma Mia",
+                          "artist":  "ABBA",
+                          "collab":  true,
+                          "spotify_id":  "2TxCwUlqaOH3TIyJqGgR91"
+                      },
+                      {
+                          "year":  1975,
+                          "title":  "Born to Run",
+                          "artist":  "Bruce Springsteen",
+                          "collab":  false,
+                          "spotify_id":  "6hTcuIQa0sxrrByu9wTD7s"
+                      },
+                      {
+                          "year":  1975,
+                          "title":  "Wish You Were Here",
+                          "artist":  "Pink Floyd",
+                          "collab":  true,
+                          "spotify_id":  "6mFkJmJqdDVQ1REhVfGgd1"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1975_2",
+        "songs":  [
+                      {
+                          "year":  1975,
+                          "title":  "Tyle słońca w całym mieście",
+                          "artist":  "Anna Jantar",
+                          "collab":  false,
+                          "spotify_id":  "0Z64VYDXM5lVZziPJHEd9L"
+                      },
+                      {
+                          "year":  1975,
+                          "title":  "Shining Star",
+                          "artist":  "Earth, Wind \u0026 Fire",
+                          "collab":  true,
+                          "spotify_id":  "0RgcOUQg4qYAEt9RIdf3oB"
+                      },
+                      {
+                          "year":  1975,
+                          "title":  "Bohemian Rhapsody",
+                          "artist":  "Queen",
+                          "collab":  true,
+                          "spotify_id":  "2JiDi0qAXsPwhPqA2qaKGt"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1975_3",
+        "songs":  [
+                      {
+                          "year":  1975,
+                          "title":  "No Woman, No Cry (Live)",
+                          "artist":  "Bob Marley \u0026 The Wailers",
+                          "collab":  true,
+                          "spotify_id":  "423hwXFgoN8RYmqLoLuVvY"
+                      },
+                      {
+                          "year":  1975,
+                          "title":  "That\u0027s the Way (I Like It)",
+                          "artist":  "KC and the Sunshine Band",
+                          "collab":  true,
+                          "spotify_id":  "7s3FSodLpnKMzeMj17G5d0"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1976_1",
+        "songs":  [
+                      {
+                          "year":  1976,
+                          "title":  "Dancing Queen",
+                          "artist":  "ABBA",
+                          "collab":  true,
+                          "spotify_id":  "0GjEhVFGZW8afUYGChu3Rr"
+                      },
+                      {
+                          "year":  1976,
+                          "title":  "Hotel California",
+                          "artist":  "Eagles",
+                          "collab":  true,
+                          "spotify_id":  "40riOy7x9W7GXjyGp4pjAv"
+                      },
+                      {
+                          "year":  1976,
+                          "title":  "Blitzkrieg Bop",
+                          "artist":  "Ramones",
+                          "collab":  true,
+                          "spotify_id":  "2kDbuiDeCA8jcZkmJnhTQK"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1976_2",
+        "songs":  [
+                      {
+                          "year":  1976,
+                          "title":  "Daddy Cool",
+                          "artist":  "Boney M.",
+                          "collab":  true,
+                          "spotify_id":  "3WMbD1OyfKuwWDWMNbPQ4g"
+                      },
+                      {
+                          "year":  1976,
+                          "title":  "Parostatek",
+                          "artist":  "Krzysztof Krawczyk",
+                          "collab":  false,
+                          "spotify_id":  "7gCrCKjlB10ITK1T5Xp90O"
+                      },
+                      {
+                          "year":  1976,
+                          "title":  "Przechodniem byłem między wami",
+                          "artist":  "Budka Suflera",
+                          "collab":  true,
+                          "spotify_id":  "4rfFYP7iinmvcnuWmUcRnO"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1976_3",
+        "songs":  [
+                      {
+                          "year":  1976,
+                          "title":  "More Than a Feeling",
+                          "artist":  "Boston",
+                          "collab":  true,
+                          "spotify_id":  "1QEEqeFIZktqIpPI4jSVSF"
+                      },
+                      {
+                          "year":  1976,
+                          "title":  "Somebody to Love",
+                          "artist":  "Queen",
+                          "collab":  true,
+                          "spotify_id":  "18OMrZoyyZuVy06FttIFhq"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1977_1",
+        "songs":  [
+                      {
+                          "year":  1977,
+                          "title":  "Stayin\u0027 Alive",
+                          "artist":  "Bee Gees",
+                          "collab":  true,
+                          "spotify_id":  "4UDmDIqJIbrW0hMBQMFOsM"
+                      },
+                      {
+                          "year":  1977,
+                          "title":  "Dreams",
+                          "artist":  "Fleetwood Mac",
+                          "collab":  true,
+                          "spotify_id":  "0ofHAoxe9vBkTCp2UQIavz"
+                      },
+                      {
+                          "year":  1977,
+                          "title":  "We Will Rock You",
+                          "artist":  "Queen",
+                          "collab":  true,
+                          "spotify_id":  "2ELSVi4kwWOXgxiIC592tJ"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1977_2",
+        "songs":  [
+                      {
+                          "year":  1977,
+                          "title":  "Jamming",
+                          "artist":  "Bob Marley \u0026 The Wailers",
+                          "collab":  true,
+                          "spotify_id":  "3GIChxHmuLmBm5PTNZGDtj"
+                      },
+                      {
+                          "year":  1977,
+                          "title":  "Jak minął dzień",
+                          "artist":  "Krzysztof Krawczyk",
+                          "collab":  false,
+                          "spotify_id":  "6VNJ2sEXYYDbO8l6Z72XJV"
+                      },
+                      {
+                          "year":  1977,
+                          "title":  "God Save the Queen",
+                          "artist":  "Sex Pistols",
+                          "collab":  true,
+                          "spotify_id":  "2mHchPRtQWet3iIS3jANr1"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1977_3",
+        "songs":  [
+                      {
+                          "year":  1977,
+                          "title":  "Heroes",
+                          "artist":  "David Bowie",
+                          "collab":  false,
+                          "spotify_id":  "7Jh1bpe76CNTCgdgAdBw4Z"
+                      },
+                      {
+                          "year":  1977,
+                          "title":  "Remedium",
+                          "artist":  "Maryla Rodowicz",
+                          "collab":  false,
+                          "spotify_id":  "6PyoARCP7y45lLHlqEJVXa"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1978_1",
+        "songs":  [
+                      {
+                          "year":  1978,
+                          "title":  "Heart of Glass",
+                          "artist":  "Blondie",
+                          "collab":  true,
+                          "spotify_id":  "4v2rkl1mC3zVAz0nXMx9r4"
+                      },
+                      {
+                          "year":  1978,
+                          "title":  "Sultans of Swing",
+                          "artist":  "Dire Straits",
+                          "collab":  true,
+                          "spotify_id":  "37Tmv4NnfQeb0ZgUC4fOJj"
+                      },
+                      {
+                          "year":  1978,
+                          "title":  "Runnin\u0027 with the Devil",
+                          "artist":  "Van Halen",
+                          "collab":  true,
+                          "spotify_id":  "5sc0iho3rpmq7uBSrCNuSL"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1978_2",
+        "songs":  [
+                      {
+                          "year":  1978,
+                          "title":  "Rasputin",
+                          "artist":  "Boney M.",
+                          "collab":  true,
+                          "spotify_id":  "5jkFvD4UJrmdoezzT1FRoP"
+                      },
+                      {
+                          "year":  1978,
+                          "title":  "Pamiętam ciebie z tamtych lat",
+                          "artist":  "Krzysztof Krawczyk",
+                          "collab":  false,
+                          "spotify_id":  "59IgciionlyHWcbAIQmiYd"
+                      },
+                      {
+                          "year":  1978,
+                          "title":  "Zacznij od Bacha",
+                          "artist":  "Zbigniew Wodecki",
+                          "collab":  false,
+                          "spotify_id":  "4Wm4rtJTkXIGOIWrEvTtzN"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1978_3",
+        "songs":  [
+                      {
+                          "year":  1978,
+                          "title":  "Le Freak",
+                          "artist":  "Chic",
+                          "collab":  true,
+                          "spotify_id":  "4qL9VYPB4XwJKAOq4xn2Mh"
+                      },
+                      {
+                          "year":  1978,
+                          "title":  "Roxanne",
+                          "artist":  "The Police",
+                          "collab":  true,
+                          "spotify_id":  "3EYOJ48Et32uATr9ZmLnAo"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1979_1",
+        "songs":  [
+                      {
+                          "year":  1979,
+                          "title":  "Highway to Hell",
+                          "artist":  "AC/DC",
+                          "collab":  true,
+                          "spotify_id":  "2zYzyRzz6pRmhPzyfMEC8s"
+                      },
+                      {
+                          "year":  1979,
+                          "title":  "Another Brick in the Wall, Pt. 2",
+                          "artist":  "Pink Floyd",
+                          "collab":  true,
+                          "spotify_id":  "4gMgiXfqyzZLMhsksGmbQV"
+                      },
+                      {
+                          "year":  1979,
+                          "title":  "A Message to You Rudy",
+                          "artist":  "The Specials",
+                          "collab":  true,
+                          "spotify_id":  "49slT7gVW0zj1KIG8w6DoL"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1979_2",
+        "songs":  [
+                      {
+                          "year":  1979,
+                          "title":  "Cars",
+                          "artist":  "Gary Numan",
+                          "collab":  false,
+                          "spotify_id":  "4QQEzkxcONBthDLfzqIh9S"
+                      },
+                      {
+                          "year":  1979,
+                          "title":  "Video Killed the Radio Star",
+                          "artist":  "The Buggles",
+                          "collab":  true,
+                          "spotify_id":  "7o7E1nrHWncYY7PY94gCiX"
+                      },
+                      {
+                          "year":  1979,
+                          "title":  "Rapper\u0027s Delight",
+                          "artist":  "The Sugarhill Gang",
+                          "collab":  true,
+                          "spotify_id":  "2XbwFs07dfm2MGQuYmRMZT"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1979_3",
+        "songs":  [
+                      {
+                          "year":  1979,
+                          "title":  "Hej rock and roll",
+                          "artist":  "Kombi",
+                          "collab":  true,
+                          "spotify_id":  "29UVbcO52nPGAAqxhpZqqV"
+                      },
+                      {
+                          "year":  1979,
+                          "title":  "London Calling",
+                          "artist":  "The Clash",
+                          "collab":  true,
+                          "spotify_id":  "124Y9LPRCAz3q2OP0iCvcJ"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1980_1",
+        "songs":  [
+                      {
+                          "year":  1980,
+                          "title":  "Back in Black",
+                          "artist":  "AC/DC",
+                          "collab":  true,
+                          "spotify_id":  "08mG3Y1vljYA6bvDt4Wqkj"
+                      },
+                      {
+                          "year":  1980,
+                          "title":  "Love Will Tear Us Apart",
+                          "artist":  "Joy Division",
+                          "collab":  true,
+                          "spotify_id":  "2JO3HwMRPeya8bXbtbyPcf"
+                      },
+                      {
+                          "year":  1980,
+                          "title":  "Stoję, stoję, czuję się świetnie",
+                          "artist":  "Maanam",
+                          "collab":  true,
+                          "spotify_id":  "5CPDxexkORlhBWF2IVviW1"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1980_2",
+        "songs":  [
+                      {
+                          "year":  1980,
+                          "title":  "Call Me",
+                          "artist":  "Blondie",
+                          "collab":  true,
+                          "spotify_id":  "4qO03RMQm88DdpTJcxlglY"
+                      },
+                      {
+                          "year":  1980,
+                          "title":  "Hotel twoich snów",
+                          "artist":  "Kombi",
+                          "collab":  true,
+                          "spotify_id":  "1U6M4L0ax3X3shHFk62Cam"
+                      },
+                      {
+                          "year":  1980,
+                          "title":  "A Forest",
+                          "artist":  "The Cure",
+                          "collab":  true,
+                          "spotify_id":  "4iVTSRiJAA18d3QglhyJ6Q"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1980_3",
+        "songs":  [
+                      {
+                          "year":  1980,
+                          "title":  "Could You Be Loved",
+                          "artist":  "Bob Marley \u0026 The Wailers",
+                          "collab":  true,
+                          "spotify_id":  "5O4erNlJ74PIF6kGol1ZrC"
+                      },
+                      {
+                          "year":  1980,
+                          "title":  "Funkytown",
+                          "artist":  "Lipps Inc.",
+                          "collab":  true,
+                          "spotify_id":  "2XVQdI3m0giGxNrwUhV3yP"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1981_1",
+        "songs":  [
+                      {
+                          "year":  1981,
+                          "title":  "Just Can\u0027t Get Enough",
+                          "artist":  "Depeche Mode",
+                          "collab":  true,
+                          "spotify_id":  "0qi4b1l0eT3jpzeNHeFXDT"
+                      },
+                      {
+                          "year":  1981,
+                          "title":  "Nie płacz Ewka",
+                          "artist":  "Perfect",
+                          "collab":  true,
+                          "spotify_id":  "0SQx1rzFdxMDRRecifKZ2u"
+                      },
+                      {
+                          "year":  1981,
+                          "title":  "Should I Stay or Should I Go",
+                          "artist":  "The Clash",
+                          "collab":  true,
+                          "spotify_id":  "39shmbIHICJ2Wxnk1fPSdz"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1981_2",
+        "songs":  [
+                      {
+                          "year":  1981,
+                          "title":  "Szare miraże",
+                          "artist":  "Maanam",
+                          "collab":  true,
+                          "spotify_id":  "5kruxMsxFfAadntmuoDVTj"
+                      },
+                      {
+                          "year":  1981,
+                          "title":  "Kombinat",
+                          "artist":  "Republika",
+                          "collab":  true,
+                          "spotify_id":  "7dPYZ2zbPzvxPqSa15dmEC"
+                      },
+                      {
+                          "year":  1981,
+                          "title":  "Don\u0027t You Want Me",
+                          "artist":  "The Human League",
+                          "collab":  true,
+                          "spotify_id":  "3AIEEEIDJFnqv8rozNVCRZ"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1981_3",
+        "songs":  [
+                      {
+                          "year":  1981,
+                          "title":  "Ace of Spades",
+                          "artist":  "Motörhead",
+                          "collab":  true,
+                          "spotify_id":  "3CIOopLwvyMvXk97ZEksKO"
+                      },
+                      {
+                          "year":  1981,
+                          "title":  "Tainted Love",
+                          "artist":  "Soft Cell",
+                          "collab":  true,
+                          "spotify_id":  "0cGG2EouYCEEC3xfa0tDFV"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1982_1",
+        "songs":  [
+                      {
+                          "year":  1982,
+                          "title":  "The Message",
+                          "artist":  "Grandmaster Flash \u0026 The Furious Five",
+                          "collab":  true,
+                          "spotify_id":  "4ZIw3JAHPjI57WvWW47lQT"
+                      },
+                      {
+                          "year":  1982,
+                          "title":  "Ten wasz świat",
+                          "artist":  "Oddział Zamknięty",
+                          "collab":  true,
+                          "spotify_id":  "4mlGR53H8B4e11iz2sax9G"
+                      },
+                      {
+                          "year":  1982,
+                          "title":  "Let\u0027s Go to Bed",
+                          "artist":  "The Cure",
+                          "collab":  true,
+                          "spotify_id":  "7yZvWX3xZ50oh555vREpin"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1982_2",
+        "songs":  [
+                      {
+                          "year":  1982,
+                          "title":  "Run to the Hills",
+                          "artist":  "Iron Maiden",
+                          "collab":  true,
+                          "spotify_id":  "3usrOqqS6BIG4yPzWoOtKI"
+                      },
+                      {
+                          "year":  1982,
+                          "title":  "Autobiografia",
+                          "artist":  "Perfect",
+                          "collab":  true,
+                          "spotify_id":  "68oEr8XOWURWoheb2VatZi"
+                      },
+                      {
+                          "year":  1982,
+                          "title":  "Africa",
+                          "artist":  "Toto",
+                          "collab":  true,
+                          "spotify_id":  "2374M0fQpWi3dLnB54qaLX"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1982_3",
+        "songs":  [
+                      {
+                          "year":  1982,
+                          "title":  "Mała Lady Punk",
+                          "artist":  "Lady Pank",
+                          "collab":  true,
+                          "spotify_id":  "3Fx1lM9ZV6URf3B1BNnefj"
+                      },
+                      {
+                          "year":  1982,
+                          "title":  "Eye of the Tiger",
+                          "artist":  "Survivor",
+                          "collab":  true,
+                          "spotify_id":  "2HHtWyy5CgaQbC7XSoOb0e"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1983_1",
+        "songs":  [
+                      {
+                          "year":  1983,
+                          "title":  "Sweet Dreams (Are Made of This)",
+                          "artist":  "Eurythmics",
+                          "collab":  true,
+                          "spotify_id":  "6zIfdCmmhPCX0cMquBsC37"
+                      },
+                      {
+                          "year":  1983,
+                          "title":  "Billie Jean",
+                          "artist":  "Michael Jackson",
+                          "collab":  false,
+                          "spotify_id":  "7J1uxwnxfQLu4APicE5Rnj"
+                      },
+                      {
+                          "year":  1983,
+                          "title":  "Every Breath You Take",
+                          "artist":  "The Police",
+                          "collab":  true,
+                          "spotify_id":  "1JSTJqkT5qHq8MDJnJbRE1"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1983_2",
+        "songs":  [
+                      {
+                          "year":  1983,
+                          "title":  "Mniej niż zero",
+                          "artist":  "Lady Pank",
+                          "collab":  true,
+                          "spotify_id":  "2ViBbCUGyqrs60f3GIpDbq"
+                      },
+                      {
+                          "year":  1983,
+                          "title":  "Blue Monday",
+                          "artist":  "New Order",
+                          "collab":  true,
+                          "spotify_id":  "6hHc7Pks7wtBIW8Z6A0iFq"
+                      },
+                      {
+                          "year":  1983,
+                          "title":  "Dmuchawce, latawce, wiatr",
+                          "artist":  "Urszula",
+                          "collab":  false,
+                          "spotify_id":  "4itxKC1nLYQ8H4e2ejj1E3"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1983_3",
+        "songs":  [
+                      {
+                          "year":  1983,
+                          "title":  "Kocham cię, kochanie moje",
+                          "artist":  "Maanam",
+                          "collab":  true,
+                          "spotify_id":  "6CwbrtZnJNqef5CqSLqPdX"
+                      },
+                      {
+                          "year":  1983,
+                          "title":  "Biała flaga",
+                          "artist":  "Republika",
+                          "collab":  true,
+                          "spotify_id":  "0cr5D15Kn6PWGYoSFaGe5M"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1984_1",
+        "songs":  [
+                      {
+                          "year":  1984,
+                          "title":  "Forever Young",
+                          "artist":  "Alphaville",
+                          "collab":  true,
+                          "spotify_id":  "4S1VYqwfkLit9mKVY3MXoo"
+                      },
+                      {
+                          "year":  1984,
+                          "title":  "Relax",
+                          "artist":  "Frankie Goes to Hollywood",
+                          "collab":  true,
+                          "spotify_id":  "2K22nUTdyr48JDwI5t906t"
+                      },
+                      {
+                          "year":  1984,
+                          "title":  "It\u0027s Like That",
+                          "artist":  "Run-D.M.C.",
+                          "collab":  true,
+                          "spotify_id":  "2J6QnTjHIWwXErNWyF0RUC"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1984_2",
+        "songs":  [
+                      {
+                          "year":  1984,
+                          "title":  "Born in the U.S.A.",
+                          "artist":  "Bruce Springsteen",
+                          "collab":  false,
+                          "spotify_id":  "0dOg1ySSI7NkpAe89Zo0b9"
+                      },
+                      {
+                          "year":  1984,
+                          "title":  "For Whom the Bell Tolls",
+                          "artist":  "Metallica",
+                          "collab":  true,
+                          "spotify_id":  "2dXsILW8gzkosqleHAvl0v"
+                      },
+                      {
+                          "year":  1984,
+                          "title":  "Wake Me Up Before You Go-Go",
+                          "artist":  "Wham!",
+                          "collab":  true,
+                          "spotify_id":  "0ikz6tENMONtK6qGkOrU3c"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1984_3",
+        "songs":  [
+                      {
+                          "year":  1984,
+                          "title":  "Jolka, Jolka pamiętasz",
+                          "artist":  "Budka Suflera",
+                          "collab":  true,
+                          "spotify_id":  "6RwPrRaUGHmorplKAgf3yY"
+                      },
+                      {
+                          "year":  1984,
+                          "title":  "Purple Rain",
+                          "artist":  "Prince",
+                          "collab":  false,
+                          "spotify_id":  "1uvyZBs4IZYRebHIB1747m"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1985_1",
+        "songs":  [
+                      {
+                          "year":  1985,
+                          "title":  "Skóra",
+                          "artist":  "Aya RL",
+                          "collab":  true,
+                          "spotify_id":  "4ESWdcgl1TfEIW5hmCHnkN"
+                      },
+                      {
+                          "year":  1985,
+                          "title":  "Running Up That Hill",
+                          "artist":  "Kate Bush",
+                          "collab":  false,
+                          "spotify_id":  "1PtQJZVZIdWIYdARpZRDFO"
+                      },
+                      {
+                          "year":  1985,
+                          "title":  "Everybody Wants to Rule the World",
+                          "artist":  "Tears for Fears",
+                          "collab":  true,
+                          "spotify_id":  "4RvWPyQ5RL0ao9LPZeSouE"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1985_2",
+        "songs":  [
+                      {
+                          "year":  1985,
+                          "title":  "Money for Nothing",
+                          "artist":  "Dire Straits",
+                          "collab":  true,
+                          "spotify_id":  "3BaNanHZ2T0teccVmgufO9"
+                      },
+                      {
+                          "year":  1985,
+                          "title":  "Słodkiego miłego życia",
+                          "artist":  "Kombi",
+                          "collab":  true,
+                          "spotify_id":  "3c0hQgk0PysO99s5KfRETu"
+                      },
+                      {
+                          "year":  1985,
+                          "title":  "Take on Me",
+                          "artist":  "a-ha",
+                          "collab":  true,
+                          "spotify_id":  "2WfaOiMkCvy7F5fcp2zZ8L"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1985_3",
+        "songs":  [
+                      {
+                          "year":  1985,
+                          "title":  "Rock Me Amadeus",
+                          "artist":  "Falco",
+                          "collab":  false,
+                          "spotify_id":  "0DfG1ltJnZyq4Tx3ZLL7ZU"
+                      },
+                      {
+                          "year":  1985,
+                          "title":  "Naj Story",
+                          "artist":  "Papa Dance",
+                          "collab":  true,
+                          "spotify_id":  "3bLAuXGhQksLGsMT0geTNY"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1986_1",
+        "songs":  [
+                      {
+                          "year":  1986,
+                          "title":  "(You Gotta) Fight for Your Right (To Party!)",
+                          "artist":  "Beastie Boys",
+                          "collab":  true,
+                          "spotify_id":  "5NLuC70kZQv8q34QyQa1DP"
+                      },
+                      {
+                          "year":  1986,
+                          "title":  "The Final Countdown",
+                          "artist":  "Europe",
+                          "collab":  true,
+                          "spotify_id":  "3MrRksHupTVEQ7YbA0FsZK"
+                      },
+                      {
+                          "year":  1986,
+                          "title":  "West End Girls",
+                          "artist":  "Pet Shop Boys",
+                          "collab":  true,
+                          "spotify_id":  "5Dqik1P9toCJTLj5rEm78s"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1986_2",
+        "songs":  [
+                      {
+                          "year":  1986,
+                          "title":  "Take My Breath Away",
+                          "artist":  "Berlin",
+                          "collab":  true,
+                          "spotify_id":  "6DTkA3ZHXikYJtd28t84YT"
+                      },
+                      {
+                          "year":  1986,
+                          "title":  "Krew Boga",
+                          "artist":  "Kult",
+                          "collab":  true,
+                          "spotify_id":  "3IEnTBT73UBrJr1U0KoSvG"
+                      },
+                      {
+                          "year":  1986,
+                          "title":  "Sledgehammer",
+                          "artist":  "Peter Gabriel",
+                          "collab":  false,
+                          "spotify_id":  "029NqmIySn1kOY305AAhxT"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1986_3",
+        "songs":  [
+                      {
+                          "year":  1986,
+                          "title":  "Livin\u0027 on a Prayer",
+                          "artist":  "Bon Jovi",
+                          "collab":  true,
+                          "spotify_id":  "37ZJ0p5Jm13JPevGcx4SkF"
+                      },
+                      {
+                          "year":  1986,
+                          "title":  "Master of Puppets",
+                          "artist":  "Metallica",
+                          "collab":  true,
+                          "spotify_id":  "2MuWTIM3b0YEAskbeeFE1i"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1987_1",
+        "songs":  [
+                      {
+                          "year":  1987,
+                          "title":  "Paid in Full",
+                          "artist":  "Eric B. \u0026 Rakim",
+                          "collab":  true,
+                          "spotify_id":  "5XQPpKiBjXUI4bIenLBxci"
+                      },
+                      {
+                          "year":  1987,
+                          "title":  "Need You Tonight",
+                          "artist":  "INXS",
+                          "collab":  true,
+                          "spotify_id":  "3h04eZTnmFLRMjZajbrp2R"
+                      },
+                      {
+                          "year":  1987,
+                          "title":  "With or Without You",
+                          "artist":  "U2",
+                          "collab":  true,
+                          "spotify_id":  "6ADSaE87h8Y3lccZlBJdXH"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1987_2",
+        "songs":  [
+                      {
+                          "year":  1987,
+                          "title":  "Faith",
+                          "artist":  "George Michael",
+                          "collab":  false,
+                          "spotify_id":  "1BPV0o3XxA6vItAFSrMMEj"
+                      },
+                      {
+                          "year":  1987,
+                          "title":  "Kocham cię jak Irlandię",
+                          "artist":  "Kobranocka",
+                          "collab":  true,
+                          "spotify_id":  "4fJGiLOU3etMQTOE3HFIEz"
+                      },
+                      {
+                          "year":  1987,
+                          "title":  "I Wanna Dance with Somebody",
+                          "artist":  "Whitney Houston",
+                          "collab":  false,
+                          "spotify_id":  "2tUBqZG2AbRi7Q0BIrVrEj"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1987_3",
+        "songs":  [
+                      {
+                          "year":  1987,
+                          "title":  "Welcome to the Jungle",
+                          "artist":  "Guns N\u0027 Roses",
+                          "collab":  true,
+                          "spotify_id":  "0G21yYKMZoHa30cYVi1iA8"
+                      },
+                      {
+                          "year":  1987,
+                          "title":  "It\u0027s a Sin",
+                          "artist":  "Pet Shop Boys",
+                          "collab":  true,
+                          "spotify_id":  "3GNwCZIv4xKUiyoaQfj9Ah"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1988_1",
+        "songs":  [
+                      {
+                          "year":  1988,
+                          "title":  "Kocham wolność",
+                          "artist":  "Chłopcy z Placu Broni",
+                          "collab":  true,
+                          "spotify_id":  "4BxBmb83wZO3IfXBQ6rdvU"
+                      },
+                      {
+                          "year":  1988,
+                          "title":  "Się ściemnia",
+                          "artist":  "Maanam",
+                          "collab":  true,
+                          "spotify_id":  "5bvj8BMNIYUgJTvhgD7vV4"
+                      },
+                      {
+                          "year":  1988,
+                          "title":  "Theme from S-Express",
+                          "artist":  "S\u0027Express",
+                          "collab":  true,
+                          "spotify_id":  "7BbUJdbRtW7vqRYt6qWQ1d"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1988_2",
+        "songs":  [
+                      {
+                          "year":  1988,
+                          "title":  "Sweet Child o\u0027 Mine",
+                          "artist":  "Guns N\u0027 Roses",
+                          "collab":  true,
+                          "spotify_id":  "7snQQk1zcKl8gZ92AnueZW"
+                      },
+                      {
+                          "year":  1988,
+                          "title":  "Smooth Criminal",
+                          "artist":  "Michael Jackson",
+                          "collab":  false,
+                          "spotify_id":  "7nXL24YeHwgPdHZ4bdIMST"
+                      },
+                      {
+                          "year":  1988,
+                          "title":  "Fast Car",
+                          "artist":  "Tracy Chapman",
+                          "collab":  false,
+                          "spotify_id":  "2M9ro2krNb7nr7HSprkEgo"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1988_3",
+        "songs":  [
+                      {
+                          "year":  1988,
+                          "title":  "Arahja",
+                          "artist":  "Kult",
+                          "collab":  true,
+                          "spotify_id":  "3mFRiJ6c2XXkd0Hd9qWP46"
+                      },
+                      {
+                          "year":  1988,
+                          "title":  "Straight Outta Compton",
+                          "artist":  "N.W.A",
+                          "collab":  true,
+                          "spotify_id":  "6KIKRz9eSTXdNsGUnomdtW"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1989_1",
+        "songs":  [
+                      {
+                          "year":  1989,
+                          "title":  "Personal Jesus",
+                          "artist":  "Depeche Mode",
+                          "collab":  true,
+                          "spotify_id":  "2wUlYDGGXlSvm2NkGj0Qio"
+                      },
+                      {
+                          "year":  1989,
+                          "title":  "Like a Prayer",
+                          "artist":  "Madonna",
+                          "collab":  false,
+                          "spotify_id":  "2v7ywbUzCgcVohHaKUcacV"
+                      },
+                      {
+                          "year":  1989,
+                          "title":  "Love Shack",
+                          "artist":  "The B-52\u0027s",
+                          "collab":  true,
+                          "spotify_id":  "4W4wYHtsrgDiivRASVOINL"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1989_2",
+        "songs":  [
+                      {
+                          "year":  1989,
+                          "title":  "Whisky",
+                          "artist":  "Dżem",
+                          "collab":  true,
+                          "spotify_id":  "3UJwDBiBkHXmsKFSNR8VEE"
+                      },
+                      {
+                          "year":  1989,
+                          "title":  "Fight the Power",
+                          "artist":  "Public Enemy",
+                          "collab":  true,
+                          "spotify_id":  "1NoVCAYmOWJLvowTHXDtgE"
+                      },
+                      {
+                          "year":  1989,
+                          "title":  "Lovesong",
+                          "artist":  "The Cure",
+                          "collab":  true,
+                          "spotify_id":  "49edirvFZwWjxAMZJRg1hN"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1989_3",
+        "songs":  [
+                      {
+                          "year":  1989,
+                          "title":  "Epic",
+                          "artist":  "Faith No More",
+                          "collab":  true,
+                          "spotify_id":  "4ReyTz0y3TGkX48wO3Llot"
+                      },
+                      {
+                          "year":  1989,
+                          "title":  "Pump Up the Jam",
+                          "artist":  "Technotronic",
+                          "collab":  true,
+                          "spotify_id":  "21qnJAMtzC6S5SESuqQLEK"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1990_1",
+        "songs":  [
+                      {
+                          "year":  1990,
+                          "title":  "Kochać inaczej",
+                          "artist":  "De Mono",
+                          "collab":  true,
+                          "spotify_id":  "29zaowvyd9HlFUhEK7KVJx"
+                      },
+                      {
+                          "year":  1990,
+                          "title":  "Vogue",
+                          "artist":  "Madonna",
+                          "collab":  false,
+                          "spotify_id":  "7j5TIXPi0cCbSSqItmbyZy"
+                      },
+                      {
+                          "year":  1990,
+                          "title":  "Nothing Compares 2 U",
+                          "artist":  "Sinéad O\u0027Connor",
+                          "collab":  false,
+                          "spotify_id":  "5GHY1DFWKz3Prg2V0Iodqo"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1990_2",
+        "songs":  [
+                      {
+                          "year":  1990,
+                          "title":  "Enjoy the Silence",
+                          "artist":  "Depeche Mode",
+                          "collab":  true,
+                          "spotify_id":  "1JekRMGQ8iN4G1AAdh0SBa"
+                      },
+                      {
+                          "year":  1990,
+                          "title":  "Holy Wars... The Punishment Due",
+                          "artist":  "Megadeth",
+                          "collab":  true,
+                          "spotify_id":  "0bM9c5A7CterSOEssmWqAa"
+                      },
+                      {
+                          "year":  1990,
+                          "title":  "The Power",
+                          "artist":  "Snap!",
+                          "collab":  true,
+                          "spotify_id":  "3P5dVXm98CgVuEpcW2HsUk"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1990_3",
+        "songs":  [
+                      {
+                          "year":  1990,
+                          "title":  "Do Ani",
+                          "artist":  "Kult",
+                          "collab":  true,
+                          "spotify_id":  "0Ar8ZNXQPcqod7jETJwgrx"
+                      },
+                      {
+                          "year":  1990,
+                          "title":  "Wind of Change",
+                          "artist":  "Scorpions",
+                          "collab":  true,
+                          "spotify_id":  "3ovjw5HZZv43SxTwApooCM"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1991_1",
+        "songs":  [
+                      {
+                          "year":  1991,
+                          "title":  "Get Ready for This",
+                          "artist":  "2 Unlimited",
+                          "collab":  true,
+                          "spotify_id":  "7bKGoioIGOI7vuQUXr8gNx"
+                      },
+                      {
+                          "year":  1991,
+                          "title":  "List do M.",
+                          "artist":  "Dżem",
+                          "collab":  true,
+                          "spotify_id":  "0BklIqbRmxVGOV5k5kWiOV"
+                      },
+                      {
+                          "year":  1991,
+                          "title":  "Losing My Religion",
+                          "artist":  "R.E.M.",
+                          "collab":  true,
+                          "spotify_id":  "31AOj9sFz2gM0O3hMARRBx"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1991_2",
+        "songs":  [
+                      {
+                          "year":  1991,
+                          "title":  "Scenario",
+                          "artist":  "A Tribe Called Quest",
+                          "collab":  true,
+                          "spotify_id":  "1BdB4WEjZUTaQLzvHqQeaV"
+                      },
+                      {
+                          "year":  1991,
+                          "title":  "Enter Sandman",
+                          "artist":  "Metallica",
+                          "collab":  true,
+                          "spotify_id":  "3DwQ7AH3xGD9h65ezslm6q"
+                      },
+                      {
+                          "year":  1991,
+                          "title":  "One",
+                          "artist":  "U2",
+                          "collab":  true,
+                          "spotify_id":  "3G69vJMWsX6ZohTykad2AU"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1991_3",
+        "songs":  [
+                      {
+                          "year":  1991,
+                          "title":  "(Everything I Do) I Do It for You",
+                          "artist":  "Bryan Adams",
+                          "collab":  false,
+                          "spotify_id":  "1Eb90nmqTrxylKFhcUzW8P"
+                      },
+                      {
+                          "year":  1991,
+                          "title":  "Smells Like Teen Spirit",
+                          "artist":  "Nirvana",
+                          "collab":  true,
+                          "spotify_id":  "4CeeEOM32jQcH3eN9Q2dGj"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1992_1",
+        "songs":  [
+                      {
+                          "year":  1992,
+                          "title":  "It\u0027s My Life",
+                          "artist":  "Dr. Alban",
+                          "collab":  false,
+                          "spotify_id":  "4TOGkYS141L15SkVosAp7Z"
+                      },
+                      {
+                          "year":  1992,
+                          "title":  "Killing in the Name",
+                          "artist":  "Rage Against the Machine",
+                          "collab":  true,
+                          "spotify_id":  "59WN2psjkt1tyaxjspN8fp"
+                      },
+                      {
+                          "year":  1992,
+                          "title":  "Cats in the Cradle",
+                          "artist":  "Ugly Kid Joe",
+                          "collab":  true,
+                          "spotify_id":  "5x9RZg7HfXGY3JayXL3seF"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1992_2",
+        "songs":  [
+                      {
+                          "year":  1992,
+                          "title":  "Moja i twoja nadzieja",
+                          "artist":  "Hey",
+                          "collab":  true,
+                          "spotify_id":  "6TNtD6AHBGhMF5TqfHrlTS"
+                      },
+                      {
+                          "year":  1992,
+                          "title":  "Rhythm Is a Dancer",
+                          "artist":  "Snap!",
+                          "collab":  true,
+                          "spotify_id":  "5uFYYOyT3EclOVhiFzPJSz"
+                      },
+                      {
+                          "year":  1992,
+                          "title":  "Baśka",
+                          "artist":  "Wilki",
+                          "collab":  true,
+                          "spotify_id":  "5B30jIcaGzKSRpQIxfKOXL"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1992_3",
+        "songs":  [
+                      {
+                          "year":  1992,
+                          "title":  "Jump Around",
+                          "artist":  "House of Pain",
+                          "collab":  true,
+                          "spotify_id":  "6JymsaWDHk2Yj4e0yNBIFH"
+                      },
+                      {
+                          "year":  1992,
+                          "title":  "Out of Space",
+                          "artist":  "The Prodigy",
+                          "collab":  true,
+                          "spotify_id":  "37m2khXl5lnBzicq1mGoZG"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1993_1",
+        "songs":  [
+                      {
+                          "year":  1993,
+                          "title":  "What\u0027s Up?",
+                          "artist":  "4 Non Blondes",
+                          "collab":  true,
+                          "spotify_id":  "0jWgAnTrNZmOGmqgvHhZEm"
+                      },
+                      {
+                          "year":  1993,
+                          "title":  "What Is Love",
+                          "artist":  "Haddaway",
+                          "collab":  false,
+                          "spotify_id":  "4hNOR5y4R9ZMZO7QJBDPDE"
+                      },
+                      {
+                          "year":  1993,
+                          "title":  "Runaway Train",
+                          "artist":  "Soul Asylum",
+                          "collab":  true,
+                          "spotify_id":  "3Ib3SJV8ZXuLvDiDb2w1As"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1993_2",
+        "songs":  [
+                      {
+                          "year":  1993,
+                          "title":  "Mr. Vain",
+                          "artist":  "Culture Beat",
+                          "collab":  true,
+                          "spotify_id":  "2rTYgHxgcndkUrRoU7x0Sv"
+                      },
+                      {
+                          "year":  1993,
+                          "title":  "Teksański",
+                          "artist":  "Hey",
+                          "collab":  true,
+                          "spotify_id":  "1yuX7XjM3l9Gz0grQwxDIl"
+                      },
+                      {
+                          "year":  1993,
+                          "title":  "Linger",
+                          "artist":  "The Cranberries",
+                          "collab":  true,
+                          "spotify_id":  "3he87w7hOpYfXistBZVPza"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1993_3",
+        "songs":  [
+                      {
+                          "year":  1993,
+                          "title":  "Insane in the Brain",
+                          "artist":  "Cypress Hill",
+                          "collab":  true,
+                          "spotify_id":  "1oTHteQbmJw15rPxPVXUTv"
+                      },
+                      {
+                          "year":  1993,
+                          "title":  "Creep",
+                          "artist":  "Radiohead",
+                          "collab":  true,
+                          "spotify_id":  "70LcF31zb1H0PyJoS1Sx1r"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1994_1",
+        "songs":  [
+                      {
+                          "year":  1994,
+                          "title":  "To nie ja!",
+                          "artist":  "Edyta Górniak",
+                          "collab":  false,
+                          "spotify_id":  "4jGkGJP3PnabBZeATBT2lm"
+                      },
+                      {
+                          "year":  1994,
+                          "title":  "Jak rzecz",
+                          "artist":  "Kasia Kowalska",
+                          "collab":  false,
+                          "spotify_id":  "7LWIGSn1TmKT3Wrb9cO9U4"
+                      },
+                      {
+                          "year":  1994,
+                          "title":  "No Good (Start the Dance)",
+                          "artist":  "The Prodigy",
+                          "collab":  true,
+                          "spotify_id":  "2Jb5Qyy37fdGOTJ6iPYq1y"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1994_2",
+        "songs":  [
+                      {
+                          "year":  1994,
+                          "title":  "Basket Case",
+                          "artist":  "Green Day",
+                          "collab":  true,
+                          "spotify_id":  "6L89mwZXSOwYl76YXfX13s"
+                      },
+                      {
+                          "year":  1994,
+                          "title":  "N.Y. State of Mind",
+                          "artist":  "Nas",
+                          "collab":  false,
+                          "spotify_id":  "0trHOzAhNpGCsGBEu7dOJo"
+                      },
+                      {
+                          "year":  1994,
+                          "title":  "Bóg",
+                          "artist":  "T.Love",
+                          "collab":  true,
+                          "spotify_id":  "7lYDYaaMLD1BWWD4wZ0Z9G"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1994_3",
+        "songs":  [
+                      {
+                          "year":  1994,
+                          "title":  "Here Comes the Hotstepper",
+                          "artist":  "Ini Kamoze",
+                          "collab":  false,
+                          "spotify_id":  "1G88BbuMts7HC0nHGoHmhv"
+                      },
+                      {
+                          "year":  1994,
+                          "title":  "Zombie",
+                          "artist":  "The Cranberries",
+                          "collab":  true,
+                          "spotify_id":  "49wOjOkS4pBK3PQnPnNYjb"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1995_1",
+        "songs":  [
+                      {
+                          "year":  1995,
+                          "title":  "California Love",
+                          "artist":  "2Pac",
+                          "collab":  false,
+                          "spotify_id":  "1TdfRFmp4z1h2ecflxCaV3"
+                      },
+                      {
+                          "year":  1995,
+                          "title":  "Be My Lover",
+                          "artist":  "La Bouche",
+                          "collab":  true,
+                          "spotify_id":  "3YB6nCSuFqNiqOvPtAPK9X"
+                      },
+                      {
+                          "year":  1995,
+                          "title":  "\u002774-\u002775",
+                          "artist":  "The Connells",
+                          "collab":  true,
+                          "spotify_id":  "2MAVcVr2oylw2OZ3hojWYj"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1995_2",
+        "songs":  [
+                      {
+                          "year":  1995,
+                          "title":  "Gangsta\u0027s Paradise",
+                          "artist":  "Coolio feat. L.V.",
+                          "collab":  true,
+                          "spotify_id":  "1DIXPcTDzTj8ZMHt3PDt8p"
+                      },
+                      {
+                          "year":  1995,
+                          "title":  "Wonderwall",
+                          "artist":  "Oasis",
+                          "collab":  true,
+                          "spotify_id":  "35EfXlRKogBr1RvrkFBMHr"
+                      },
+                      {
+                          "year":  1995,
+                          "title":  "Poison",
+                          "artist":  "The Prodigy",
+                          "collab":  true,
+                          "spotify_id":  "6UiDSIFkHMOhW8QxbccGb9"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1995_3",
+        "songs":  [
+                      {
+                          "year":  1995,
+                          "title":  "Ostatni",
+                          "artist":  "Edyta Bartosiewicz",
+                          "collab":  false,
+                          "spotify_id":  "0IZ26aAErwbYaRqawB2nSL"
+                      },
+                      {
+                          "year":  1995,
+                          "title":  "Scatman (Ski-Ba-Bop-Ba-Dop-Bop)",
+                          "artist":  "Scatman John",
+                          "collab":  false,
+                          "spotify_id":  "623rRTKwGmgjH6sjE9uWLh"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1996_1",
+        "songs":  [
+                      {
+                          "year":  1996,
+                          "title":  "Insomnia",
+                          "artist":  "Faithless",
+                          "collab":  true,
+                          "spotify_id":  "3XTefle3zvDkjgS1Fiq14A"
+                      },
+                      {
+                          "year":  1996,
+                          "title":  "Fleciki",
+                          "artist":  "Kayah",
+                          "collab":  false,
+                          "spotify_id":  "0owGZreX6phuxB6Lke2U6u"
+                      },
+                      {
+                          "year":  1996,
+                          "title":  "Lovefool",
+                          "artist":  "The Cardigans",
+                          "collab":  true,
+                          "spotify_id":  "7aQjPecQdIuNd1sz3KCDhD"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1996_2",
+        "songs":  [
+                      {
+                          "year":  1996,
+                          "title":  "Killing Me Softly",
+                          "artist":  "Fugees",
+                          "collab":  true,
+                          "spotify_id":  "7IuR13GY471Tbz4lp9DKOZ"
+                      },
+                      {
+                          "year":  1996,
+                          "title":  "Wannabe",
+                          "artist":  "Spice Girls",
+                          "collab":  true,
+                          "spotify_id":  "7qpvLstF3L1UgyEDBV4pjx"
+                      },
+                      {
+                          "year":  1996,
+                          "title":  "Firestarter",
+                          "artist":  "The Prodigy",
+                          "collab":  true,
+                          "spotify_id":  "79CUrU5o2KAVDTNm4x3eGU"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1996_3",
+        "songs":  [
+                      {
+                          "year":  1996,
+                          "title":  "Kolorowe sny",
+                          "artist":  "Just 5",
+                          "collab":  true,
+                          "spotify_id":  "2P1OLuJIL72VC1tzr5zTIK"
+                      },
+                      {
+                          "year":  1996,
+                          "title":  "What I Got",
+                          "artist":  "Sublime",
+                          "collab":  true,
+                          "spotify_id":  "3B4q6KbHbGV51HO3GznBFF"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1997_1",
+        "songs":  [
+                      {
+                          "year":  1997,
+                          "title":  "Dammit",
+                          "artist":  "Blink-182",
+                          "collab":  true,
+                          "spotify_id":  "6HvUYS1xDfTCGWoeVrv3XS"
+                      },
+                      {
+                          "year":  1997,
+                          "title":  "Co ty tutaj robisz",
+                          "artist":  "Elektryczne Gitary",
+                          "collab":  true,
+                          "spotify_id":  "5xsNmKPDAkR5U85OPyjGg3"
+                      },
+                      {
+                          "year":  1997,
+                          "title":  "Du hast",
+                          "artist":  "Rammstein",
+                          "collab":  true,
+                          "spotify_id":  "5awDvzxWfd53SSrsRZ8pXO"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1997_2",
+        "songs":  [
+                      {
+                          "year":  1997,
+                          "title":  "Tubthumping",
+                          "artist":  "Chumbawamba",
+                          "collab":  true,
+                          "spotify_id":  "5YScXJKtefsgdskIy60N7A"
+                      },
+                      {
+                          "year":  1997,
+                          "title":  "The Rain (Supa Dupa Fly)",
+                          "artist":  "Missy Elliott",
+                          "collab":  false,
+                          "spotify_id":  "2WRzpLD8qDRrxMXc63E5WJ"
+                      },
+                      {
+                          "year":  1997,
+                          "title":  "Bitter Sweet Symphony",
+                          "artist":  "The Verve",
+                          "collab":  true,
+                          "spotify_id":  "6v7ksjl8Nd5PehjdxaOAKM"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1997_3",
+        "songs":  [
+                      {
+                          "year":  1997,
+                          "title":  "Around the World",
+                          "artist":  "Daft Punk",
+                          "collab":  true,
+                          "spotify_id":  "1pKYYY0dkg23sQQXi0Q5zN"
+                      },
+                      {
+                          "year":  1997,
+                          "title":  "Im więcej ciebie tym mniej",
+                          "artist":  "Natalia Kukulska",
+                          "collab":  false,
+                          "spotify_id":  "3o27KMyW0hyzCsWZr8Mxes"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1998_1",
+        "songs":  [
+                      {
+                          "year":  1998,
+                          "title":  "Believe",
+                          "artist":  "Cher",
+                          "collab":  false,
+                          "spotify_id":  "2goLsvvODILDzeeiT4dAoR"
+                      },
+                      {
+                          "year":  1998,
+                          "title":  "Doo Wop (That Thing)",
+                          "artist":  "Lauryn Hill",
+                          "collab":  false,
+                          "spotify_id":  "0uEp9E98JB5awlA084uaIg"
+                      },
+                      {
+                          "year":  1998,
+                          "title":  "Sugar",
+                          "artist":  "System of a Down",
+                          "collab":  true,
+                          "spotify_id":  "7jDhsoXLKVsKi3fk3s4M4Z"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1998_2",
+        "songs":  [
+                      {
+                          "year":  1998,
+                          "title":  "The Rockafeller Skank",
+                          "artist":  "Fatboy Slim",
+                          "collab":  false,
+                          "spotify_id":  "5AgCO3dc2kuSicCsw09YCA"
+                      },
+                      {
+                          "year":  1998,
+                          "title":  "Fly Away",
+                          "artist":  "Lenny Kravitz",
+                          "collab":  false,
+                          "spotify_id":  "1OxcIUqVmVYxT6427tbhDW"
+                      },
+                      {
+                          "year":  1998,
+                          "title":  "Pretty Fly (For a White Guy)",
+                          "artist":  "The Offspring",
+                          "collab":  true,
+                          "spotify_id":  "3SFXsFpeGmBTtQvKiwYMDA"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1998_3",
+        "songs":  [
+                      {
+                          "year":  1998,
+                          "title":  "Prawy do lewego",
+                          "artist":  "Kayah \u0026 Bregović",
+                          "collab":  true,
+                          "spotify_id":  "5qJxjjK0Oa82E2b10fSIyY"
+                      },
+                      {
+                          "year":  1998,
+                          "title":  "Sing It Back",
+                          "artist":  "Moloko",
+                          "collab":  true,
+                          "spotify_id":  "0JAuefEn9V3NCNKb31IF0O"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1999_1",
+        "songs":  [
+                      {
+                          "year":  1999,
+                          "title":  "Freestyler",
+                          "artist":  "Bomfunk MC\u0027s",
+                          "collab":  true,
+                          "spotify_id":  "4eZO97RGFo7IN6gm24Nv0S"
+                      },
+                      {
+                          "year":  1999,
+                          "title":  "Blue (Da Ba Dee)",
+                          "artist":  "Eiffel 65",
+                          "collab":  true,
+                          "spotify_id":  "278yMllAAAQcRRIlTPGMN9"
+                      },
+                      {
+                          "year":  1999,
+                          "title":  "Californication",
+                          "artist":  "Red Hot Chili Peppers",
+                          "collab":  true,
+                          "spotify_id":  "48UPSzbZjgc449aqz8bxox"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1999_2",
+        "songs":  [
+                      {
+                          "year":  1999,
+                          "title":  "...Baby One More Time",
+                          "artist":  "Britney Spears",
+                          "collab":  false,
+                          "spotify_id":  "3MjUtNVVq3C8Fn0MP3zhXa"
+                      },
+                      {
+                          "year":  1999,
+                          "title":  "Śpij kochanie, śpij",
+                          "artist":  "Kayah \u0026 Bregović",
+                          "collab":  true,
+                          "spotify_id":  "77ppwEoKPhNZx8h3Nskr7H"
+                      },
+                      {
+                          "year":  1999,
+                          "title":  "Wait and Bleed",
+                          "artist":  "Slipknot",
+                          "collab":  true,
+                          "spotify_id":  "4JhDrE8Gats9FqKdPJY7Ss"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "1999_3",
+        "songs":  [
+                      {
+                          "year":  1999,
+                          "title":  "Still D.R.E.",
+                          "artist":  "Dr. Dre feat. Snoop Dogg",
+                          "collab":  true,
+                          "spotify_id":  "3n4cCOBMqolImjZXPwWg1f"
+                      },
+                      {
+                          "year":  1999,
+                          "title":  "Długość dźwięku samotności",
+                          "artist":  "Myslovitz",
+                          "collab":  true,
+                          "spotify_id":  "5ytkHKps6RVVDFZwAqVDCB"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2000_1",
+        "songs":  [
+                      {
+                          "year":  2000,
+                          "title":  "The Summer",
+                          "artist":  "ATB",
+                          "collab":  false,
+                          "spotify_id":  "1K0A8GDAqtpE0gAIHtzMn8"
+                      },
+                      {
+                          "year":  2000,
+                          "title":  "The Real Slim Shady",
+                          "artist":  "Eminem",
+                          "collab":  false,
+                          "spotify_id":  "3yfqSUWxFvZELEM4PmlwIR"
+                      },
+                      {
+                          "year":  2000,
+                          "title":  "Lady (Hear Me Tonight)",
+                          "artist":  "Modjo",
+                          "collab":  true,
+                          "spotify_id":  "49X0LAl6faAusYq02PRAY6"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2000_2",
+        "songs":  [
+                      {
+                          "year":  2000,
+                          "title":  "Sandstorm",
+                          "artist":  "Darude",
+                          "collab":  false,
+                          "spotify_id":  "3dxDj8pDPlIHCIrUPXuCeG"
+                      },
+                      {
+                          "year":  2000,
+                          "title":  "A wszystko to... (bo ciebie kocham)!",
+                          "artist":  "Ich Troje",
+                          "collab":  true,
+                          "spotify_id":  "0CBj18X3J7MabwDqKeMxuo"
+                      },
+                      {
+                          "year":  2000,
+                          "title":  "Rock DJ",
+                          "artist":  "Robbie Williams",
+                          "collab":  false,
+                          "spotify_id":  "4pbyDPjFgfPqFTcIMC8xpK"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2000_3",
+        "songs":  [
+                      {
+                          "year":  2000,
+                          "title":  "Change (In the House of Flies)",
+                          "artist":  "Deftones",
+                          "collab":  true,
+                          "spotify_id":  "51c94ac31swyDQj9B3Lzs3"
+                      },
+                      {
+                          "year":  2000,
+                          "title":  "In the End",
+                          "artist":  "Linkin Park",
+                          "collab":  true,
+                          "spotify_id":  "60a0Rd6pjrkxjPbaKzXjfq"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2001_1",
+        "songs":  [
+                      {
+                          "year":  2001,
+                          "title":  "Harder, Better, Faster, Stronger",
+                          "artist":  "Daft Punk",
+                          "collab":  true,
+                          "spotify_id":  "5W3cjX2J3tjhG8zb6u0qHn"
+                      },
+                      {
+                          "year":  2001,
+                          "title":  "Can\u0027t Get You Out of My Head",
+                          "artist":  "Kylie Minogue",
+                          "collab":  false,
+                          "spotify_id":  "2HpWHLtZldOcDn5qzX8kb2"
+                      },
+                      {
+                          "year":  2001,
+                          "title":  "Chop Suey!",
+                          "artist":  "System of a Down",
+                          "collab":  true,
+                          "spotify_id":  "2DlHlPMa4M17kufBvI2lEN"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2001_2",
+        "songs":  [
+                      {
+                          "year":  2001,
+                          "title":  "Powiedz",
+                          "artist":  "Ich Troje",
+                          "collab":  true,
+                          "spotify_id":  "3ntFHnnjthR8F6xr42KXTC"
+                      },
+                      {
+                          "year":  2001,
+                          "title":  "Get Ur Freak On",
+                          "artist":  "Missy Elliott",
+                          "collab":  false,
+                          "spotify_id":  "6zsk6uF3MxfIeHPlubKBvR"
+                      },
+                      {
+                          "year":  2001,
+                          "title":  "Fell in Love with a Girl",
+                          "artist":  "The White Stripes",
+                          "collab":  true,
+                          "spotify_id":  "21Qsj3cMVCx2xF2EVVNbEu"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2001_3",
+        "songs":  [
+                      {
+                          "year":  2001,
+                          "title":  "Antidotum",
+                          "artist":  "Kasia Kowalska",
+                          "collab":  false,
+                          "spotify_id":  "0MYaObalRrtwv5IGgrsrtA"
+                      },
+                      {
+                          "year":  2001,
+                          "title":  "Whenever, Wherever",
+                          "artist":  "Shakira",
+                          "collab":  false,
+                          "spotify_id":  "2lnzGkdtDj5mtlcOW2yRtG"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2002_1",
+        "songs":  [
+                      {
+                          "year":  2002,
+                          "title":  "Complicated",
+                          "artist":  "Avril Lavigne",
+                          "collab":  false,
+                          "spotify_id":  "5xEM5hIgJ1jjgcEBfpkt2F"
+                      },
+                      {
+                          "year":  2002,
+                          "title":  "Lepszy model",
+                          "artist":  "Kasia Klich",
+                          "collab":  false,
+                          "spotify_id":  "4jWVMq7RtqLXTXGRynGO1W"
+                      },
+                      {
+                          "year":  2002,
+                          "title":  "Star Guitar",
+                          "artist":  "The Chemical Brothers",
+                          "collab":  true,
+                          "spotify_id":  "19mC6xktT1JyyycK6cQaXA"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2002_2",
+        "songs":  [
+                      {
+                          "year":  2002,
+                          "title":  "You May Be in Love",
+                          "artist":  "Blue Café",
+                          "collab":  true,
+                          "spotify_id":  "6CZgP2vcA9fjWymCzak2Z9"
+                      },
+                      {
+                          "year":  2002,
+                          "title":  "No One Knows",
+                          "artist":  "Queens of the Stone Age",
+                          "collab":  true,
+                          "spotify_id":  "6y20BV5L33R8YXM0YuI38N"
+                      },
+                      {
+                          "year":  2002,
+                          "title":  "All the Things She Said",
+                          "artist":  "t.A.T.u.",
+                          "collab":  true,
+                          "spotify_id":  "4bJygwUKrRgq1stlNXcgMg"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2002_3",
+        "songs":  [
+                      {
+                          "year":  2002,
+                          "title":  "Lose Yourself",
+                          "artist":  "Eminem",
+                          "collab":  false,
+                          "spotify_id":  "6GkTKjv1XbFVdI2D8vvDPu"
+                      },
+                      {
+                          "year":  2002,
+                          "title":  "Gimme the Light",
+                          "artist":  "Sean Paul",
+                          "collab":  false,
+                          "spotify_id":  "5WavgurgGX48eZv1q1E3on"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2003_1",
+        "songs":  [
+                      {
+                          "year":  2003,
+                          "title":  "In da Club",
+                          "artist":  "50 Cent",
+                          "collab":  false,
+                          "spotify_id":  "7iL6o9tox1zgHpKUfh9vuC"
+                      },
+                      {
+                          "year":  2003,
+                          "title":  "Bring Me to Life",
+                          "artist":  "Evanescence",
+                          "collab":  true,
+                          "spotify_id":  "0COqiPhxzoWICwFCS4eZcp"
+                      },
+                      {
+                          "year":  2003,
+                          "title":  "In the Shadows",
+                          "artist":  "The Rasmus",
+                          "collab":  true,
+                          "spotify_id":  "1fr92Vupmcs2vgLMFVQ7rd"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2003_2",
+        "songs":  [
+                      {
+                          "year":  2003,
+                          "title":  "Crazy in Love",
+                          "artist":  "Beyoncé feat. Jay-Z",
+                          "collab":  true,
+                          "spotify_id":  "5Vehnf0vRkgiLStRmu3Jy6"
+                      },
+                      {
+                          "year":  2003,
+                          "title":  "Hey Ya!",
+                          "artist":  "OutKast",
+                          "collab":  true,
+                          "spotify_id":  "2PpruBYCo4H7WOBJ7Q2EwM"
+                      },
+                      {
+                          "year":  2003,
+                          "title":  "Seven Nation Army",
+                          "artist":  "The White Stripes",
+                          "collab":  true,
+                          "spotify_id":  "3dPQuX8Gs42Y7b454ybpMR"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2003_3",
+        "songs":  [
+                      {
+                          "year":  2003,
+                          "title":  "Impossible",
+                          "artist":  "Edyta Górniak",
+                          "collab":  false,
+                          "spotify_id":  "2k1CwPCpo3jACpPkgRgtrU"
+                      },
+                      {
+                          "year":  2003,
+                          "title":  "I Believe in a Thing Called Love",
+                          "artist":  "The Darkness",
+                          "collab":  true,
+                          "spotify_id":  "756CJtQRFSxEx9jV4P9hpA"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2004_1",
+        "songs":  [
+                      {
+                          "year":  2004,
+                          "title":  "Ten",
+                          "artist":  "Brodka",
+                          "collab":  false,
+                          "spotify_id":  "7r3SAryC3n7wpfiamkQSL2"
+                      },
+                      {
+                          "year":  2004,
+                          "title":  "This Love",
+                          "artist":  "Maroon 5",
+                          "collab":  true,
+                          "spotify_id":  "6ECp64rv50XVz93WvxXMGF"
+                      },
+                      {
+                          "year":  2004,
+                          "title":  "Adagio for Strings",
+                          "artist":  "Tiesto",
+                          "collab":  false,
+                          "spotify_id":  "6TnnyFi6wLxV74NFpgNX0r"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2004_2",
+        "songs":  [
+                      {
+                          "year":  2004,
+                          "title":  "Spadam",
+                          "artist":  "Coma",
+                          "collab":  true,
+                          "spotify_id":  "7gA8MI78dKel6xn4Hf1nyA"
+                      },
+                      {
+                          "year":  2004,
+                          "title":  "Dragostea Din Tei",
+                          "artist":  "O-Zone",
+                          "collab":  true,
+                          "spotify_id":  "52Zr0sinhWTCRrQhRRY4EP"
+                      },
+                      {
+                          "year":  2004,
+                          "title":  "Yeah!",
+                          "artist":  "Usher feat. Lil Jon \u0026 Ludacris",
+                          "collab":  true,
+                          "spotify_id":  "5rb9QrpfcKFHM1EUbSIurX"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2004_3",
+        "songs":  [
+                      {
+                          "year":  2004,
+                          "title":  "Take Me Out",
+                          "artist":  "Franz Ferdinand",
+                          "collab":  true,
+                          "spotify_id":  "20I8RduZC2PWMWTDCZuuAN"
+                      },
+                      {
+                          "year":  2004,
+                          "title":  "Duality",
+                          "artist":  "Slipknot",
+                          "collab":  true,
+                          "spotify_id":  "61mWefnWQOLf90gepjOCb3"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2005_1",
+        "songs":  [
+                      {
+                          "year":  2005,
+                          "title":  "I Bet You Look Good on the Dancefloor",
+                          "artist":  "Arctic Monkeys",
+                          "collab":  true,
+                          "spotify_id":  "6uV5q0yxaOujbxkwUCUEEf"
+                      },
+                      {
+                          "year":  2005,
+                          "title":  "Hung Up",
+                          "artist":  "Madonna",
+                          "collab":  false,
+                          "spotify_id":  "3850dYVgOFIXJh5U4BFEWH"
+                      },
+                      {
+                          "year":  2005,
+                          "title":  "B.Y.O.B.",
+                          "artist":  "System of a Down",
+                          "collab":  true,
+                          "spotify_id":  "0EYOdF5FCkgOJJla8DI2Md"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2005_2",
+        "songs":  [
+                      {
+                          "year":  2005,
+                          "title":  "Znak pokoju",
+                          "artist":  "Virgin",
+                          "collab":  true,
+                          "spotify_id":  "3snHSbZBRSETLEBXoU0fJl"
+                      },
+                      {
+                          "year":  2005,
+                          "title":  "Mieć czy być",
+                          "artist":  "Myslovitz",
+                          "collab":  true,
+                          "spotify_id":  "0z3GnQC4I6HDNHM16Cgvj8"
+                      },
+                      {
+                          "year":  2005,
+                          "title":  "Don\u0027t Cha",
+                          "artist":  "The Pussycat Dolls feat. Busta Rhymes",
+                          "collab":  true,
+                          "spotify_id":  "6P2qq27khopL29q3Bh2YEo"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2005_3",
+        "songs":  [
+                      {
+                          "year":  2005,
+                          "title":  "Feel Good Inc.",
+                          "artist":  "Gorillaz",
+                          "collab":  true,
+                          "spotify_id":  "0d28khcov6AiegSCpG5TuT"
+                      },
+                      {
+                          "year":  2005,
+                          "title":  "We Be Burnin\u0027",
+                          "artist":  "Sean Paul",
+                          "collab":  false,
+                          "spotify_id":  "4kOTDj4SiZPkW1p96WMDNv"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2006_1",
+        "songs":  [
+                      {
+                          "year":  2006,
+                          "title":  "World, Hold On",
+                          "artist":  "Bob Sinclar feat. Steve Edwards",
+                          "collab":  true,
+                          "spotify_id":  "3HGwI9qwq5XqBDeZBV3zti"
+                      },
+                      {
+                          "year":  2006,
+                          "title":  "SexyBack",
+                          "artist":  "Justin Timberlake",
+                          "collab":  false,
+                          "spotify_id":  "0O45fw2L5vsWpdsOdXwNAR"
+                      },
+                      {
+                          "year":  2006,
+                          "title":  "Maneater",
+                          "artist":  "Nelly Furtado",
+                          "collab":  false,
+                          "spotify_id":  "4wH4dJgrsxONID6KS2tDQM"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2006_2",
+        "songs":  [
+                      {
+                          "year":  2006,
+                          "title":  "Crazy",
+                          "artist":  "Gnarls Barkley",
+                          "collab":  true,
+                          "spotify_id":  "0BtXtxmKBm1HwGnM3kO3rY"
+                      },
+                      {
+                          "year":  2006,
+                          "title":  "Empire",
+                          "artist":  "Kasabian",
+                          "collab":  true,
+                          "spotify_id":  "14QIAOdHU2moF53egeO6RS"
+                      },
+                      {
+                          "year":  2006,
+                          "title":  "When You Were Young",
+                          "artist":  "The Killers",
+                          "collab":  true,
+                          "spotify_id":  "70wYA8oYHoMzhRRkARoMhU"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2006_3",
+        "songs":  [
+                      {
+                          "year":  2006,
+                          "title":  "Take This Life",
+                          "artist":  "In Flames",
+                          "collab":  true,
+                          "spotify_id":  "0cEZ1p68dXFoN5diP3aEEV"
+                      },
+                      {
+                          "year":  2006,
+                          "title":  "Nocnym pociągiem aż do końca świata",
+                          "artist":  "Myslovitz",
+                          "collab":  true,
+                          "spotify_id":  "24jVhAsRXxmoN91ThJVSeI"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2007_1",
+        "songs":  [
+                      {
+                          "year":  2007,
+                          "title":  "Fluorescent Adolescent",
+                          "artist":  "Arctic Monkeys",
+                          "collab":  true,
+                          "spotify_id":  "2x8evxqUlF0eRabbW2JBJd"
+                      },
+                      {
+                          "year":  2007,
+                          "title":  "A gdy jest już ciemno",
+                          "artist":  "Feel",
+                          "collab":  true,
+                          "spotify_id":  "43EA6WfNRligIsFL9Ui6pH"
+                      },
+                      {
+                          "year":  2007,
+                          "title":  "Umbrella",
+                          "artist":  "Rihanna feat. Jay-Z",
+                          "collab":  true,
+                          "spotify_id":  "383ZPpWALof7XtIwUoWrdn"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2007_2",
+        "songs":  [
+                      {
+                          "year":  2007,
+                          "title":  "Afterlife",
+                          "artist":  "Avenged Sevenfold",
+                          "collab":  true,
+                          "spotify_id":  "7zAt4tdL44D3VuzsvM0N8n"
+                      },
+                      {
+                          "year":  2007,
+                          "title":  "D.A.N.C.E.",
+                          "artist":  "Justice",
+                          "collab":  true,
+                          "spotify_id":  "33yAEqzKXexYM3WlOYtTfQ"
+                      },
+                      {
+                          "year":  2007,
+                          "title":  "Apologize",
+                          "artist":  "Timbaland feat. OneRepublic",
+                          "collab":  true,
+                          "spotify_id":  "3mAvCG9uiOxYNJioyruZES"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2007_3",
+        "songs":  [
+                      {
+                          "year":  2007,
+                          "title":  "Katharsis",
+                          "artist":  "Doda",
+                          "collab":  false,
+                          "spotify_id":  "5WbZkXXOcHvmLxbuBfjB9G"
+                      },
+                      {
+                          "year":  2007,
+                          "title":  "Paper Planes",
+                          "artist":  "M.I.A.",
+                          "collab":  false,
+                          "spotify_id":  "1ixbwbeBi5ufN4noUKmW5a"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2008_1",
+        "songs":  [
+                      {
+                          "year":  2008,
+                          "title":  "Viva la Vida",
+                          "artist":  "Coldplay",
+                          "collab":  true,
+                          "spotify_id":  "1mea3bSkSGXuIRvnydlB5b"
+                      },
+                      {
+                          "year":  2008,
+                          "title":  "Sex on Fire",
+                          "artist":  "Kings of Leon",
+                          "collab":  true,
+                          "spotify_id":  "0ntQJM78wzOLVeCUAW7Y45"
+                      },
+                      {
+                          "year":  2008,
+                          "title":  "Propane Nightmares",
+                          "artist":  "Pendulum",
+                          "collab":  true,
+                          "spotify_id":  "6tC2iHfUlzB2W4ntXXL2BH"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2008_2",
+        "songs":  [
+                      {
+                          "year":  2008,
+                          "title":  "This Is the Life",
+                          "artist":  "Amy MacDonald",
+                          "collab":  false,
+                          "spotify_id":  "2T3jgoAMbBXiMMD8pSc6QL"
+                      },
+                      {
+                          "year":  2008,
+                          "title":  "Poker Face",
+                          "artist":  "Lady Gaga",
+                          "collab":  false,
+                          "spotify_id":  "1QV6tiMFM6fSOKOGLMHYYg"
+                      },
+                      {
+                          "year":  2008,
+                          "title":  "Soft",
+                          "artist":  "Video",
+                          "collab":  true,
+                          "spotify_id":  "2S58whKfzIQKYRqFRkcssi"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2008_3",
+        "songs":  [
+                      {
+                          "year":  2008,
+                          "title":  "Jak anioła głos",
+                          "artist":  "Feel",
+                          "collab":  true,
+                          "spotify_id":  "4suRblsNFx3jGRvWGtify9"
+                      },
+                      {
+                          "year":  2008,
+                          "title":  "Kids",
+                          "artist":  "MGMT",
+                          "collab":  true,
+                          "spotify_id":  "1jJci4qxiYcOHhQR247rEU"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2009_1",
+        "songs":  [
+                      {
+                          "year":  2009,
+                          "title":  "Pray 4 Love",
+                          "artist":  "Afromental",
+                          "collab":  true,
+                          "spotify_id":  "4uf6KZSIUZ8ZIZu1VJW4M1"
+                      },
+                      {
+                          "year":  2009,
+                          "title":  "Cicho",
+                          "artist":  "Ewa Farna",
+                          "collab":  false,
+                          "spotify_id":  "48gGFK4XOnHJGEustPX0xH"
+                      },
+                      {
+                          "year":  2009,
+                          "title":  "Oblivion",
+                          "artist":  "Mastodon",
+                          "collab":  true,
+                          "spotify_id":  "4Ynr1SPCeUI0W0YPeSFSIK"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2009_2",
+        "songs":  [
+                      {
+                          "year":  2009,
+                          "title":  "Crying Lightning",
+                          "artist":  "Arctic Monkeys",
+                          "collab":  true,
+                          "spotify_id":  "6wVWJl64yoTzU27EI8ep20"
+                      },
+                      {
+                          "year":  2009,
+                          "title":  "Bad Romance",
+                          "artist":  "Lady Gaga",
+                          "collab":  false,
+                          "spotify_id":  "0SiywuOBRcynK0uKGWdCnn"
+                      },
+                      {
+                          "year":  2009,
+                          "title":  "I Gotta Feeling",
+                          "artist":  "The Black Eyed Peas",
+                          "collab":  true,
+                          "spotify_id":  "4kLLWz7srcuLKA7Et40PQR"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2009_3",
+        "songs":  [
+                      {
+                          "year":  2009,
+                          "title":  "When Love Takes Over",
+                          "artist":  "David Guetta feat. Kelly Rowland",
+                          "collab":  true,
+                          "spotify_id":  "0GWGZA5mxo9nHuSyrj70uo"
+                      },
+                      {
+                          "year":  2009,
+                          "title":  "Pon de Floor",
+                          "artist":  "Major Lazer",
+                          "collab":  true,
+                          "spotify_id":  "4qN6CAXr5IIwGLmlPP2D2Y"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2010_1",
+        "songs":  [
+                      {
+                          "year":  2010,
+                          "title":  "Nightmare",
+                          "artist":  "Avenged Sevenfold",
+                          "collab":  true,
+                          "spotify_id":  "4UEo1b0wWrtHMC8bVqPiH8"
+                      },
+                      {
+                          "year":  2010,
+                          "title":  "Power",
+                          "artist":  "Kanye West",
+                          "collab":  false,
+                          "spotify_id":  "2gZUPNdnz5Y45eiGxpHGSc"
+                      },
+                      {
+                          "year":  2010,
+                          "title":  "Waka Waka (This Time for Africa)",
+                          "artist":  "Shakira feat. Freshlyground",
+                          "collab":  true,
+                          "spotify_id":  "63Tl9k1sH8tznn3bqoMuyF"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2010_2",
+        "songs":  [
+                      {
+                          "year":  2010,
+                          "title":  "W pięciu smakach",
+                          "artist":  "Brodka",
+                          "collab":  false,
+                          "spotify_id":  "0JPQmvhG61f6RXBtDzipkK"
+                      },
+                      {
+                          "year":  2010,
+                          "title":  "Watercolour",
+                          "artist":  "Pendulum",
+                          "collab":  true,
+                          "spotify_id":  "7Ed5xUGmIzU2C5AjAV0ulu"
+                      },
+                      {
+                          "year":  2010,
+                          "title":  "One (Your Name)",
+                          "artist":  "Swedish House Mafia",
+                          "collab":  true,
+                          "spotify_id":  "4xr1Azj8mCbz6u8CITf8ef"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2010_3",
+        "songs":  [
+                      {
+                          "year":  2010,
+                          "title":  "Ewakuacja",
+                          "artist":  "Ewa Farna",
+                          "collab":  false,
+                          "spotify_id":  "6Y7CXp4HBvs06CoDaDXW1o"
+                      },
+                      {
+                          "year":  2010,
+                          "title":  "Only Girl (In the World)",
+                          "artist":  "Rihanna",
+                          "collab":  false,
+                          "spotify_id":  "0AH6WMe3OlAlUb5miXt2FQ"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2011_1",
+        "songs":  [
+                      {
+                          "year":  2011,
+                          "title":  "Rolling in the Deep",
+                          "artist":  "Adele",
+                          "collab":  false,
+                          "spotify_id":  "4OSBTYWVwsQhGLF9NHvIbR"
+                      },
+                      {
+                          "year":  2011,
+                          "title":  "Somebody That I Used to Know",
+                          "artist":  "Gotye feat. Kimbra",
+                          "collab":  true,
+                          "spotify_id":  "1qDrWA6lyx8cLECdZE7TV7"
+                      },
+                      {
+                          "year":  2011,
+                          "title":  "Bangarang",
+                          "artist":  "Skrillex",
+                          "collab":  false,
+                          "spotify_id":  "6VRhkROS2SZHGlp0pxndbJ"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2011_2",
+        "songs":  [
+                      {
+                          "year":  2011,
+                          "title":  "Walk",
+                          "artist":  "Foo Fighters",
+                          "collab":  true,
+                          "spotify_id":  "76Je5Wklky23mVoxiRszcN"
+                      },
+                      {
+                          "year":  2011,
+                          "title":  "Party Rock Anthem",
+                          "artist":  "LMFAO",
+                          "collab":  true,
+                          "spotify_id":  "7mitXLIMCflkhZiD34uEQI"
+                      },
+                      {
+                          "year":  2011,
+                          "title":  "Małe rzeczy",
+                          "artist":  "Sylwia Grzeszczak",
+                          "collab":  false,
+                          "spotify_id":  "49ZeX1Mfls6dP6dm4OyWQP"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2011_3",
+        "songs":  [
+                      {
+                          "year":  2011,
+                          "title":  "Pumped Up Kicks",
+                          "artist":  "Foster the People",
+                          "collab":  true,
+                          "spotify_id":  "7w87IxuO7BDcJ3YUqCyMTT"
+                      },
+                      {
+                          "year":  2011,
+                          "title":  "Midnight City",
+                          "artist":  "M83",
+                          "collab":  true,
+                          "spotify_id":  "6GyFP1nfCDB8lbD2bG0Hq9"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2012_1",
+        "songs":  [
+                      {
+                          "year":  2012,
+                          "title":  "Sweet Nothing",
+                          "artist":  "Calvin Harris feat. Florence Welch",
+                          "collab":  true,
+                          "spotify_id":  "24LS4lQShWyixJ0ZrJXfJ5"
+                      },
+                      {
+                          "year":  2012,
+                          "title":  "Napraw",
+                          "artist":  "LemON",
+                          "collab":  true,
+                          "spotify_id":  "5XXpDjTl3YAd17lmZmcSYN"
+                      },
+                      {
+                          "year":  2012,
+                          "title":  "Diamonds",
+                          "artist":  "Rihanna",
+                          "collab":  false,
+                          "spotify_id":  "6O20JhBJPePEkBdrB5sqRx"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2012_2",
+        "songs":  [
+                      {
+                          "year":  2012,
+                          "title":  "Skrzydlate ręce",
+                          "artist":  "Enej",
+                          "collab":  true,
+                          "spotify_id":  "7ljM68o858hnx5UVXMxA4D"
+                      },
+                      {
+                          "year":  2012,
+                          "title":  "Thrift Shop",
+                          "artist":  "Macklemore \u0026 Ryan Lewis feat. Wanz",
+                          "collab":  true,
+                          "spotify_id":  "7bYZBVrnRfqeaPbhRyEvK3"
+                      },
+                      {
+                          "year":  2012,
+                          "title":  "Carolus Rex",
+                          "artist":  "Sabaton",
+                          "collab":  true,
+                          "spotify_id":  "6F7niHdLsdoFPSpKq6rh23"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2012_3",
+        "songs":  [
+                      {
+                          "year":  2012,
+                          "title":  "Bonfire",
+                          "artist":  "Knife Party",
+                          "collab":  true,
+                          "spotify_id":  "0QIYINh2AwmOmdu8CRYvlw"
+                      },
+                      {
+                          "year":  2012,
+                          "title":  "Come Alive",
+                          "artist":  "Netsky",
+                          "collab":  false,
+                          "spotify_id":  "7JSRgtiKwuyhZBbJ52cFkb"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2013_1",
+        "songs":  [
+                      {
+                          "year":  2013,
+                          "title":  "Do I Wanna Know?",
+                          "artist":  "Arctic Monkeys",
+                          "collab":  true,
+                          "spotify_id":  "5FVd6KXrgO9B3JPmC8OPst"
+                      },
+                      {
+                          "year":  2013,
+                          "title":  "Get Lucky",
+                          "artist":  "Daft Punk feat. Pharrell Williams",
+                          "collab":  true,
+                          "spotify_id":  "69kOkLUCkxIZYexIgSG8rq"
+                      },
+                      {
+                          "year":  2013,
+                          "title":  "Royals",
+                          "artist":  "Lorde",
+                          "collab":  false,
+                          "spotify_id":  "4SDWMFvYJKtK1QPhIOeZhd"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2013_2",
+        "songs":  [
+                      {
+                          "year":  2013,
+                          "title":  "Wake Me Up",
+                          "artist":  "Avicii",
+                          "collab":  false,
+                          "spotify_id":  "0nrRP2bk19rLc0orkWPQk2"
+                      },
+                      {
+                          "year":  2013,
+                          "title":  "Trójkąty i kwadraty",
+                          "artist":  "Dawid Podsiadło",
+                          "collab":  false,
+                          "spotify_id":  "3v0fVON6z5CnRlle3SJZU1"
+                      },
+                      {
+                          "year":  2013,
+                          "title":  "Thank You Very Much",
+                          "artist":  "Margaret",
+                          "collab":  false,
+                          "spotify_id":  "0qOSEgpYFuo4xE8IXThnAx"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2013_3",
+        "songs":  [
+                      {
+                          "year":  2013,
+                          "title":  "Can You Feel My Heart",
+                          "artist":  "Bring Me the Horizon",
+                          "collab":  true,
+                          "spotify_id":  "0WSa1sucoNRcEeULlZVQXj"
+                      },
+                      {
+                          "year":  2013,
+                          "title":  "White Noise",
+                          "artist":  "Disclosure feat. AlunaGeorge",
+                          "collab":  true,
+                          "spotify_id":  "7ANO3LRdvefIongRYm5Smz"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2014_1",
+        "songs":  [
+                      {
+                          "year":  2014,
+                          "title":  "Turn Down for What",
+                          "artist":  "DJ Snake \u0026 Lil Jon",
+                          "collab":  true,
+                          "spotify_id":  "1PcsV02QYSferJIFvkGuOp"
+                      },
+                      {
+                          "year":  2014,
+                          "title":  "Fastrygi",
+                          "artist":  "Mela Koteluk",
+                          "collab":  false,
+                          "spotify_id":  "5zucHzxIugHcae4R8kckjQ"
+                      },
+                      {
+                          "year":  2014,
+                          "title":  "Figure It Out",
+                          "artist":  "Royal Blood",
+                          "collab":  true,
+                          "spotify_id":  "3MjrueDQKVr6xDDseZwhEd"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2014_2",
+        "songs":  [
+                      {
+                          "year":  2014,
+                          "title":  "Przyjdzie taki dzień",
+                          "artist":  "Kasia Popowska",
+                          "collab":  false,
+                          "spotify_id":  "5Q3oNyzZfIon66HqXERAuP"
+                      },
+                      {
+                          "year":  2014,
+                          "title":  "Stolen Dance",
+                          "artist":  "Milky Chance",
+                          "collab":  true,
+                          "spotify_id":  "34xGLuxM0rkxhCVyMSqwJO"
+                      },
+                      {
+                          "year":  2014,
+                          "title":  "Chandelier",
+                          "artist":  "Sia",
+                          "collab":  false,
+                          "spotify_id":  "4VrWlk8IQxevMvERoX08iC"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2014_3",
+        "songs":  [
+                      {
+                          "year":  2014,
+                          "title":  "Uptown Funk",
+                          "artist":  "Mark Ronson feat. Bruno Mars",
+                          "collab":  true,
+                          "spotify_id":  "32OlwWuMpZ6b0aN2RZOeMS"
+                      },
+                      {
+                          "year":  2014,
+                          "title":  "Happy",
+                          "artist":  "Pharrell Williams",
+                          "collab":  false,
+                          "spotify_id":  "4JFXLI3xfNUg4rMCSOvqko"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2015_1",
+        "songs":  [
+                      {
+                          "year":  2015,
+                          "title":  "W dobrą stronę",
+                          "artist":  "Dawid Podsiadło",
+                          "collab":  false,
+                          "spotify_id":  "4vlcTHpj4rGBPHGrA1wf2l"
+                      },
+                      {
+                          "year":  2015,
+                          "title":  "King Kunta",
+                          "artist":  "Kendrick Lamar",
+                          "collab":  false,
+                          "spotify_id":  "0N3W5peJUQtI4eyR6GJT5O"
+                      },
+                      {
+                          "year":  2015,
+                          "title":  "Can\u0027t Feel My Face",
+                          "artist":  "The Weeknd",
+                          "collab":  false,
+                          "spotify_id":  "22VdIZQfgXJea34mQxlt81"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2015_2",
+        "songs":  [
+                      {
+                          "year":  2015,
+                          "title":  "Cirice",
+                          "artist":  "Ghost",
+                          "collab":  true,
+                          "spotify_id":  "5j3iBuHq6vv7VcBo4Y2QrK"
+                      },
+                      {
+                          "year":  2015,
+                          "title":  "Lean On",
+                          "artist":  "Major Lazer \u0026 DJ Snake feat. MØ",
+                          "collab":  true,
+                          "spotify_id":  "4UKJUbcuStnnxLeJmVJsSc"
+                      },
+                      {
+                          "year":  2015,
+                          "title":  "King",
+                          "artist":  "Years \u0026 Years",
+                          "collab":  true,
+                          "spotify_id":  "3AeicLnm55RqcXGBKYQolM"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2015_3",
+        "songs":  [
+                      {
+                          "year":  2015,
+                          "title":  "Sorry",
+                          "artist":  "Justin Bieber",
+                          "collab":  false,
+                          "spotify_id":  "09CtPGIpYB4BrO8qb1RGsF"
+                      },
+                      {
+                          "year":  2015,
+                          "title":  "Naucz mnie",
+                          "artist":  "Sarsa",
+                          "collab":  false,
+                          "spotify_id":  "2DiCpRfPgf6dW5uYQiHGO5"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2016_1",
+        "songs":  [
+                      {
+                          "year":  2016,
+                          "title":  "W głowie",
+                          "artist":  "Ania Dąbrowska",
+                          "collab":  false,
+                          "spotify_id":  "5xIwk3q4x3ptb6oedWlKf0"
+                      },
+                      {
+                          "year":  2016,
+                          "title":  "Human",
+                          "artist":  "Rag\u0027n\u0027Bone Man",
+                          "collab":  false,
+                          "spotify_id":  "29jRJ1UmzzISUh3CVjPdS1"
+                      },
+                      {
+                          "year":  2016,
+                          "title":  "Closer",
+                          "artist":  "The Chainsmokers feat. Halsey",
+                          "collab":  true,
+                          "spotify_id":  "7BKLCZ1jbUBVqRi2FVlTVw"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2016_2",
+        "songs":  [
+                      {
+                          "year":  2016,
+                          "title":  "Never Be Like You",
+                          "artist":  "Flume feat. Kai",
+                          "collab":  true,
+                          "spotify_id":  "476j7IDRIDRvv1Xu71EVc8"
+                      },
+                      {
+                          "year":  2016,
+                          "title":  "Cheap Thrills",
+                          "artist":  "Sia feat. Sean Paul",
+                          "collab":  true,
+                          "spotify_id":  "27SdWb2rFzO6GWiYDBTD9j"
+                      },
+                      {
+                          "year":  2016,
+                          "title":  "Heathens",
+                          "artist":  "Twenty One Pilots",
+                          "collab":  true,
+                          "spotify_id":  "6i0V12jOa3mr6uu4WYhUBr"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2016_3",
+        "songs":  [
+                      {
+                          "year":  2016,
+                          "title":  "Hardwired",
+                          "artist":  "Metallica",
+                          "collab":  true,
+                          "spotify_id":  "0QV3swr7L8MZr72lL2izV1"
+                      },
+                      {
+                          "year":  2016,
+                          "title":  "Deszcz na betonie",
+                          "artist":  "Taco Hemingway",
+                          "collab":  false,
+                          "spotify_id":  "2U0GOsTIyBO8gBIIn3evID"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2017_1",
+        "songs":  [
+                      {
+                          "year":  2017,
+                          "title":  "Cola",
+                          "artist":  "CamelPhat \u0026 Elderbrook",
+                          "collab":  true,
+                          "spotify_id":  "0aL5jEWqfIwNDB3tdzyzH4"
+                      },
+                      {
+                          "year":  2017,
+                          "title":  "Shape of You",
+                          "artist":  "Ed Sheeran",
+                          "collab":  false,
+                          "spotify_id":  "7qiZfU4dY1lWllzX7mPBI3"
+                      },
+                      {
+                          "year":  2017,
+                          "title":  "Dobry moment",
+                          "artist":  "Kortez",
+                          "collab":  false,
+                          "spotify_id":  "7KXirs6fb0RDI8Q4DK6naY"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2017_2",
+        "songs":  [
+                      {
+                          "year":  2017,
+                          "title":  "Malinowy chruśniak",
+                          "artist":  "Daria Zawiałow",
+                          "collab":  false,
+                          "spotify_id":  "5wY7ZogIkopqocAjGeyzPO"
+                      },
+                      {
+                          "year":  2017,
+                          "title":  "Believer",
+                          "artist":  "Imagine Dragons",
+                          "collab":  true,
+                          "spotify_id":  "0pqnGHJpmpxLKifKRmU6WP"
+                      },
+                      {
+                          "year":  2017,
+                          "title":  "Feel It Still",
+                          "artist":  "Portugal. The Man",
+                          "collab":  true,
+                          "spotify_id":  "6QgjcU0zLnzq5OrUoSZ3OK"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2017_3",
+        "songs":  [
+                      {
+                          "year":  2017,
+                          "title":  "New Rules",
+                          "artist":  "Dua Lipa",
+                          "collab":  false,
+                          "spotify_id":  "2ekn2ttSfGqwhhate0LSR0"
+                      },
+                      {
+                          "year":  2017,
+                          "title":  "HUMBLE.",
+                          "artist":  "Kendrick Lamar",
+                          "collab":  false,
+                          "spotify_id":  "7KXjTSCq5nL1LoYtL7XAwS"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2018_1",
+        "songs":  [
+                      {
+                          "year":  2018,
+                          "title":  "when the party\u0027s over",
+                          "artist":  "Billie Eilish",
+                          "collab":  false,
+                          "spotify_id":  "43zdsphuZLzwA9k4DJhU0I"
+                      },
+                      {
+                          "year":  2018,
+                          "title":  "Małomiasteczkowy",
+                          "artist":  "Dawid Podsiadło",
+                          "collab":  false,
+                          "spotify_id":  "77vLpSAMNzeYL4EBeZxWqI"
+                      },
+                      {
+                          "year":  2018,
+                          "title":  "Shallow",
+                          "artist":  "Lady Gaga \u0026 Bradley Cooper",
+                          "collab":  true,
+                          "spotify_id":  "2VxeLyX666F8uXCJ0dZF8B"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2018_2",
+        "songs":  [
+                      {
+                          "year":  2018,
+                          "title":  "MANTRA",
+                          "artist":  "Bring Me the Horizon",
+                          "collab":  true,
+                          "spotify_id":  "7dRj3sTBYkNbEx5kdNHriv"
+                      },
+                      {
+                          "year":  2018,
+                          "title":  "Losing It",
+                          "artist":  "FISHER",
+                          "collab":  false,
+                          "spotify_id":  "6ho0GyrWZN3mhi9zVRW7xi"
+                      },
+                      {
+                          "year":  2018,
+                          "title":  "Początek",
+                          "artist":  "Męskie Granie Orkiestra 2018",
+                          "collab":  true,
+                          "spotify_id":  "3XHiZ47wxyGiEJdBgvLHs8"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2018_3",
+        "songs":  [
+                      {
+                          "year":  2018,
+                          "title":  "One Kiss",
+                          "artist":  "Calvin Harris \u0026 Dua Lipa",
+                          "collab":  true,
+                          "spotify_id":  "7ef4DlsgrMEH11cDZd32M6"
+                      },
+                      {
+                          "year":  2018,
+                          "title":  "Shotgun",
+                          "artist":  "George Ezra",
+                          "collab":  false,
+                          "spotify_id":  "4ofwffwvvnbSkrMSCKQDaC"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2019_1",
+        "songs":  [
+                      {
+                          "year":  2019,
+                          "title":  "bad guy",
+                          "artist":  "Billie Eilish",
+                          "collab":  false,
+                          "spotify_id":  "2Fxmhks0bxGSBdJ92vM42m"
+                      },
+                      {
+                          "year":  2019,
+                          "title":  "Unsainted",
+                          "artist":  "Slipknot",
+                          "collab":  true,
+                          "spotify_id":  "5mpUKTdskZea0gStWzeHUZ"
+                      },
+                      {
+                          "year":  2019,
+                          "title":  "Dance Monkey",
+                          "artist":  "Tones and I",
+                          "collab":  false,
+                          "spotify_id":  "2XU0oxnq2qxCpomAAuJY8K"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2019_2",
+        "songs":  [
+                      {
+                          "year":  2019,
+                          "title":  "Hej Hej!",
+                          "artist":  "Daria Zawiałow",
+                          "collab":  false,
+                          "spotify_id":  "1Rn0B4zeGbcttEct0N1XpP"
+                      },
+                      {
+                          "year":  2019,
+                          "title":  "Vossi Bop",
+                          "artist":  "Stormzy",
+                          "collab":  false,
+                          "spotify_id":  "5DXKtoZLm31msT7tNGNHLG"
+                      },
+                      {
+                          "year":  2019,
+                          "title":  "Superhero",
+                          "artist":  "Viki Gabor",
+                          "collab":  false,
+                          "spotify_id":  "2ZE0aaMYGinDylqEYeHYW2"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2019_3",
+        "songs":  [
+                      {
+                          "year":  2019,
+                          "title":  "Don\u0027t Start Now",
+                          "artist":  "Dua Lipa",
+                          "collab":  false,
+                          "spotify_id":  "6WrI0LAC5M1Rw2MnX2ZvEg"
+                      },
+                      {
+                          "year":  2019,
+                          "title":  "Blinding Lights",
+                          "artist":  "The Weeknd",
+                          "collab":  false,
+                          "spotify_id":  "0VjIjW4GlUZAMYd2vXMi3b"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2020_1",
+        "songs":  [
+                      {
+                          "year":  2020,
+                          "title":  "Animals",
+                          "artist":  "Architects",
+                          "collab":  true,
+                          "spotify_id":  "5ofoB8PFmocBXFBEWVb6Vz"
+                      },
+                      {
+                          "year":  2020,
+                          "title":  "Midnight Sky",
+                          "artist":  "Miley Cyrus",
+                          "collab":  false,
+                          "spotify_id":  "4i2qxFEVVUi8yOYoxB8TCX"
+                      },
+                      {
+                          "year":  2020,
+                          "title":  "Szampan",
+                          "artist":  "Sanah",
+                          "collab":  false,
+                          "spotify_id":  "0xwpK0H2aL5YxREvcNw4Pe"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2020_2",
+        "songs":  [
+                      {
+                          "year":  2020,
+                          "title":  "Apricots",
+                          "artist":  "Bicep",
+                          "collab":  true,
+                          "spotify_id":  "73X9X7kDgsm4YeHpc8prf6"
+                      },
+                      {
+                          "year":  2020,
+                          "title":  "Świt",
+                          "artist":  "Męskie Granie Orkiestra 2020",
+                          "collab":  true,
+                          "spotify_id":  "6biFi1DYjUd4BkTzViVq4A"
+                      },
+                      {
+                          "year":  2020,
+                          "title":  "Save Your Tears",
+                          "artist":  "The Weeknd",
+                          "collab":  false,
+                          "spotify_id":  "5QO79kh1waicV47BqGRL3g"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2020_3",
+        "songs":  [
+                      {
+                          "year":  2020,
+                          "title":  "Physical",
+                          "artist":  "Dua Lipa",
+                          "collab":  false,
+                          "spotify_id":  "3AzjcOeAmA57TIOr9zF1ZW"
+                      },
+                      {
+                          "year":  2020,
+                          "title":  "Roses (Imanbek Remix)",
+                          "artist":  "SAINt JHN",
+                          "collab":  false,
+                          "spotify_id":  "47MhyGA0XUtF9lZJtny3Pd"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2021_1",
+        "songs":  [
+                      {
+                          "year":  2021,
+                          "title":  "Kaonashi",
+                          "artist":  "Daria Zawiałow",
+                          "collab":  false,
+                          "spotify_id":  "5LCbx9MoArujyWhx4QtxRs"
+                      },
+                      {
+                          "year":  2021,
+                          "title":  "MONTERO (Call Me By Your Name)",
+                          "artist":  "Lil Nas X",
+                          "collab":  false,
+                          "spotify_id":  "67BtfxlNbhBmCDR2L2l8qd"
+                      },
+                      {
+                          "year":  2021,
+                          "title":  "Fiołkowe Pole",
+                          "artist":  "Sobel, Piotrek Lewandowski",
+                          "collab":  true,
+                          "spotify_id":  "5bQFAKQF1mhcPPThw97kjw"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2021_2",
+        "songs":  [
+                      {
+                          "year":  2021,
+                          "title":  "Marea (We\u0027ve Lost Dancing)",
+                          "artist":  "Fred again..",
+                          "collab":  false,
+                          "spotify_id":  "1t0Jmqg1pKVBbxjQFZebeR"
+                      },
+                      {
+                          "year":  2021,
+                          "title":  "Złoto",
+                          "artist":  "Mrozu",
+                          "collab":  false,
+                          "spotify_id":  "5KmyYPBRBRSl3CNzfYnIyn"
+                      },
+                      {
+                          "year":  2021,
+                          "title":  "Stay",
+                          "artist":  "The Kid LAROI \u0026 Justin Bieber",
+                          "collab":  true,
+                          "spotify_id":  "5HCyWlXZPP0y6Gqq8TgA20"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2021_3",
+        "songs":  [
+                      {
+                          "year":  2021,
+                          "title":  "Heat Waves",
+                          "artist":  "Glass Animals",
+                          "collab":  true,
+                          "spotify_id":  "00pDdIwejrPXzci9bpYtcY"
+                      },
+                      {
+                          "year":  2021,
+                          "title":  "I Wanna Be Your Slave",
+                          "artist":  "Måneskin",
+                          "collab":  true,
+                          "spotify_id":  "4pt5fDVTg5GhEvEtlz9dKk"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2022_1",
+        "songs":  [
+                      {
+                          "year":  2022,
+                          "title":  "I\u0027m Good (Blue)",
+                          "artist":  "David Guetta \u0026 Bebe Rexha",
+                          "collab":  true,
+                          "spotify_id":  "4uUG5RXrOk84mYEfFvj3cK"
+                      },
+                      {
+                          "year":  2022,
+                          "title":  "As It Was",
+                          "artist":  "Harry Styles",
+                          "collab":  false,
+                          "spotify_id":  "4Dvkj6JhhA12EX05fT7y2e"
+                      },
+                      {
+                          "year":  2022,
+                          "title":  "Snap",
+                          "artist":  "Rosa Linn",
+                          "collab":  false,
+                          "spotify_id":  "5hx7w26Zi3zafMgvMTUqF6"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2022_2",
+        "songs":  [
+                      {
+                          "year":  2022,
+                          "title":  "Post",
+                          "artist":  "Dawid Podsiadło",
+                          "collab":  false,
+                          "spotify_id":  "7u3Nx6lqDYahtcAZ3T2XeY"
+                      },
+                      {
+                          "year":  2022,
+                          "title":  "Za daleko",
+                          "artist":  "Mrozu",
+                          "collab":  false,
+                          "spotify_id":  "6xOZxa5aOEdLvXSTMwDCjm"
+                      },
+                      {
+                          "year":  2022,
+                          "title":  "Unholy",
+                          "artist":  "Sam Smith \u0026 Kim Petras",
+                          "collab":  true,
+                          "spotify_id":  "3nqQXoyQOWXiESFLlDF1hG"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2022_3",
+        "songs":  [
+                      {
+                          "year":  2022,
+                          "title":  "Delilah (pull me out of this)",
+                          "artist":  "Fred again..",
+                          "collab":  false,
+                          "spotify_id":  "3YHOVyF4lBX2lL6MMTTHEj"
+                      },
+                      {
+                          "year":  2022,
+                          "title":  "Kill or Be Killed",
+                          "artist":  "Muse",
+                          "collab":  true,
+                          "spotify_id":  "4scqfHWE0J9dgdbjqstjS3"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2023_1",
+        "songs":  [
+                      {
+                          "year":  2023,
+                          "title":  "Fifi Hollywood",
+                          "artist":  "Daria Zawiałow",
+                          "collab":  false,
+                          "spotify_id":  "1dXz3W52yl5aRqW2nbc2kk"
+                      },
+                      {
+                          "year":  2023,
+                          "title":  "Od nowa",
+                          "artist":  "Kwiat Jabłoni",
+                          "collab":  true,
+                          "spotify_id":  "2hoQy05lPYcCySUSipQkoU"
+                      },
+                      {
+                          "year":  2023,
+                          "title":  "Supermoce",
+                          "artist":  "Męskie Granie Orkiestra 2023",
+                          "collab":  true,
+                          "spotify_id":  "4EqPIm07a55pJQRSZw2Z4X"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2023_2",
+        "songs":  [
+                      {
+                          "year":  2023,
+                          "title":  "Dance the Night",
+                          "artist":  "Dua Lipa",
+                          "collab":  false,
+                          "spotify_id":  "11C4y2Yz1XbHmaQwO06s9f"
+                      },
+                      {
+                          "year":  2023,
+                          "title":  "Flowers",
+                          "artist":  "Miley Cyrus",
+                          "collab":  false,
+                          "spotify_id":  "7DSAEUvxU8FajXtRloy8M0"
+                      },
+                      {
+                          "year":  2023,
+                          "title":  "Lose Control",
+                          "artist":  "Teddy Swims",
+                          "collab":  false,
+                          "spotify_id":  "6usohdchdzW9oML7VC4Uhk"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2023_3",
+        "songs":  [
+                      {
+                          "year":  2023,
+                          "title":  "Strangers",
+                          "artist":  "Kenya Grace",
+                          "collab":  false,
+                          "spotify_id":  "5mjYQaktjmjcMKcUIcqz4s"
+                      },
+                      {
+                          "year":  2023,
+                          "title":  "(It Goes Like) Nanana",
+                          "artist":  "Peggy Gou",
+                          "collab":  false,
+                          "spotify_id":  "5Hijdt7rmbj9fUJdXEs6Nz"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2024_1",
+        "songs":  [
+                      {
+                          "year":  2024,
+                          "title":  "Birds of a Feather",
+                          "artist":  "Billie Eilish",
+                          "collab":  false,
+                          "spotify_id":  "6dOtVTDdiauQNBQEDOtlAB"
+                      },
+                      {
+                          "year":  2024,
+                          "title":  "Too Sweet",
+                          "artist":  "Hozier",
+                          "collab":  false,
+                          "spotify_id":  "3HMY0r2BAdpasXMY8rseR0"
+                      },
+                      {
+                          "year":  2024,
+                          "title":  "Espresso",
+                          "artist":  "Sabrina Carpenter",
+                          "collab":  false,
+                          "spotify_id":  "2qSkIjg1o9h3YT9RAgYN75"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2024_2",
+        "songs":  [
+                      {
+                          "year":  2024,
+                          "title":  "Good Luck, Babe!",
+                          "artist":  "Chappell Roan",
+                          "collab":  false,
+                          "spotify_id":  "0WbMK4wrZ1wFSty9F7FCgu"
+                      },
+                      {
+                          "year":  2024,
+                          "title":  "Szum",
+                          "artist":  "Kaśka Sochacka",
+                          "collab":  false,
+                          "spotify_id":  "4dbp2q4IPbDvmDlECn3Xii"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2024_3",
+        "songs":  [
+                      {
+                          "year":  2024,
+                          "title":  "360",
+                          "artist":  "Charli xcx",
+                          "collab":  false,
+                          "spotify_id":  "4w2GLmK2wnioVnb5CPQeex"
+                      },
+                      {
+                          "year":  2024,
+                          "title":  "Pół na pół",
+                          "artist":  "Mrozu",
+                          "collab":  false,
+                          "spotify_id":  "4S8PXtXDPcHsJCyA6EnJAH"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2025_1",
+        "songs":  [
+                      {
+                          "year":  2025,
+                          "title":  "Ordinary",
+                          "artist":  "Alex Warren",
+                          "collab":  false,
+                          "spotify_id":  "6qqrTXSdwiJaq8SO0X2lSe"
+                      },
+                      {
+                          "year":  2025,
+                          "title":  "Manchild",
+                          "artist":  "Sabrina Carpenter",
+                          "collab":  false,
+                          "spotify_id":  "42UBPzRMh5yyz0EDPr6fr1"
+                      },
+                      {
+                          "year":  2025,
+                          "title":  "Never Enough",
+                          "artist":  "Turnstile",
+                          "collab":  true,
+                          "spotify_id":  "1zoXDi9AY4TF5JoUuCCTL6"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2025_2",
+        "songs":  [
+                      {
+                          "year":  2025,
+                          "title":  "Golden",
+                          "artist":  "HUNTR/X",
+                          "collab":  true,
+                          "spotify_id":  "5Cp75TUMrHF6c8xbhdligS"
+                      },
+                      {
+                          "year":  2025,
+                          "title":  "KOCHASZ?",
+                          "artist":  "Sobel, francis, Deemz",
+                          "collab":  true,
+                          "spotify_id":  "1d718gwJbujwNO9x9BzNfc"
+                      },
+                      {
+                          "year":  2025,
+                          "title":  "undressed",
+                          "artist":  "sombr",
+                          "collab":  false,
+                          "spotify_id":  "4AajxCEwGEsmHmT4H1TwjY"
+                      }
+                  ]
+    },
+    {
+        "qr_code_id":  "2025_3",
+        "songs":  [
+                      {
+                          "year":  2025,
+                          "title":  "Abracadabra",
+                          "artist":  "Lady Gaga",
+                          "collab":  false,
+                          "spotify_id":  "5ZLUm9eab8y3tqQ1OhQSHI"
+                      },
+                      {
+                          "year":  2025,
+                          "title":  "Sports car",
+                          "artist":  "Tate McRae",
+                          "collab":  false,
+                          "spotify_id":  "2zOmS55knKWSgScYPTNmGQ"
+                      },
+                      {
+                          "year":  2025,
+                          "title":  "Bartek",
+                          "artist":  "Sławomir",
+                          "collab":  true,
+                          "spotify_id":  "33JCmUo4VmdUXbXDEhtiho"
+                      }
+                  ]
+    }
+]
