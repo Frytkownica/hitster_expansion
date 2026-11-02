@@ -1,5 +1,13 @@
 # Hitster Expansion
 
+## Graj na telefonie
+
+Aplikacja jest przeznaczona do używania na telefonie — nie musisz pobierać
+repozytorium ani uruchamiać jej lokalnie.
+
+- **Android:** pobierz i zainstaluj [najnowszy APK z GitHub Releases](https://github.com/Frytkownica/hitster_expansion/releases/latest).
+- **iPhone:** użyj przeglądarki Firefox i otwórz [hitster_expansion](https://frytkownica.github.io/hitster_expansion/).
+
 Statyczna aplikacja webowa do grania w domowa wersje Hitstera z wlasnymi
 kartami QR i lokalna baza utworow.
 
@@ -67,23 +75,6 @@ QR dla powyzszej karty powinien zawierac:
 ```text
 hitsterexp:1965_1
 ```
-
-## Uruchomienie lokalne
-
-Najprosciej odpalic statyczny serwer w katalogu projektu:
-
-```bash
-python -m http.server 8000
-```
-
-Potem wejdz na:
-
-```text
-http://localhost:8000
-```
-
-Otwieranie `index.html` bez serwera moze nie zadzialac, bo aplikacja pobiera
-pliki JSON przez `fetch()`.
 
 ## Przeglad utworow paczki
 
