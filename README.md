@@ -85,6 +85,21 @@ http://localhost:8000
 Otwieranie `index.html` bez serwera moze nie zadzialac, bo aplikacja pobiera
 pliki JSON przez `fetch()`.
 
+## Przeglad utworow paczki
+
+Uruchom lokalny przeglad utworow, podajac plik JSON paczki:
+
+```bash
+python scripts/review_pack.py songs/standard.json
+```
+
+Bez argumentu program otworzy okno wyboru pliku. Przegladaj utwory przyciskami;
+Previous i Next automatycznie uruchamiaja podglad wybranego utworu.
+`Jump to year` przechodzi do pierwszego utworu z tego dokladnego roku. Widoczne
+sa wszystkie pola wybranego utworu oraz ID karty, bez listy pozostalych piosenek
+z tej karty. Przycisk `Play preview` uruchamia podglad przez ukryty odtwarzacz
+Spotify IFrame API, zgodnie ze strona aplikacji.
+
 ## Test
 
 ```bash

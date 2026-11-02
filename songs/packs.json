@@ -7,5 +7,32 @@
     "years_min": 1965,
     "years_max": 2025,
     "set": [1, 2, 3]
+  },
+  {
+    "name": "Polskie",
+    "file": "polskie.json",
+    "songs": 488,
+    "description": "Polskie piosenki",
+    "years_min": 1965,
+    "years_max": 2026,
+    "set": [1, 2, 3]
+  },
+  {
+    "name": "Rock&metal",
+    "file": "rock.json",
+    "songs": 488,
+    "description": "Classic Rock, Metal i Nu metal",
+    "years_min": 1965,
+    "years_max": 2026,
+    "set": [1, 2, 3]
+  },
+  {
+    "name": "Christmas",
+    "file": "christmas.json",
+    "songs": 488,
+    "description": "Piosenki Bożonarodzeniowe",
+    "years_min": 1965,
+    "years_max": 2025,
+    "set": [1, 2]
   }
 ]

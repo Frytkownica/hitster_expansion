@@ -104,7 +104,7 @@ input {
   width: min(100%, 540px);
   height: 100svh;
   margin: 0 auto;
-  padding: 24px 24px 28px;
+  padding: clamp(12px, 3svh, 24px) 24px clamp(16px, 3.5svh, 28px);
   overflow: hidden;
 }
 
@@ -125,7 +125,7 @@ input {
   align-items: center;
   justify-content: space-between;
   gap: clamp(1rem, 3vh, 2rem);
-  padding-bottom: max(56px, env(safe-area-inset-bottom));
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
 }
 
 .home-brand {
@@ -164,6 +164,7 @@ input {
 
 .speaker-wrap {
   flex: 1;
+  min-height: 0;
   width: 100%;
   display: grid;
   place-items: center;
@@ -171,7 +172,7 @@ input {
 
 .speaker {
   position: relative;
-  width: min(84vw, 390px);
+  width: min(84vw, 390px, 42svh);
   aspect-ratio: 1;
   border-radius: 50%;
   background: linear-gradient(225deg, var(--panel-white) 10%, var(--panel-white-soft) 25%, var(--panel-white-light) 60% );
@@ -275,7 +276,7 @@ input {
 
 .menu-button {
   position: fixed;
-  top: max(18px, env(safe-area-inset-top));
+  top: max(18px, calc(env(safe-area-inset-top) + 10px));
   right: max(18px, env(safe-area-inset-right));
   z-index: 5;
   display: grid;
@@ -304,6 +305,10 @@ input {
 
 .compact-brand {
   padding-top: 0;
+}
+
+.compact-brand .brand-subtitle {
+  margin-top: 0;
 }
 
 .packs-list {
@@ -357,10 +362,14 @@ input {
   flex: 1;
   display: grid;
   align-content: center;
-  gap: clamp(2rem, 7vh, 4rem);
+  gap: clamp(1rem, 3vh, 1.75rem);
   width: 100%;
   text-align: center;
   color: var(--panel-white-soft);
+}
+
+.pack-summary-title {
+  margin: 0;
 }
 
 .pack-summary p {
@@ -549,7 +558,7 @@ input {
 
 .turn-layout {
   justify-content: center;
-  gap: 56px;
+  gap: clamp(16px, 6vh, 56px);
   align-items: center;
 }
 
@@ -925,6 +934,113 @@ input {
 
 .hidden {
   display: none !important;
+}
+
+@media (max-height: 740px) {
+  .home-layout {
+    gap: 8px;
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  .home-brand {
+    padding-top: 10px;
+  }
+
+  .brand-hitster {
+    height: clamp(3.5rem, 12svh, 5.2rem);
+  }
+
+  .brand-subtitle {
+    margin-top: 4px;
+    font-size: clamp(1.45rem, 5vw, 2.2rem);
+  }
+
+  .speaker {
+    width: min(70vw, 38svh, 300px);
+  }
+
+  .cta-button {
+    min-height: 3.25rem;
+    padding: 0.75rem 1rem;
+    font-size: clamp(1rem, 5vw, 2rem);
+  }
+
+  .options-layout,
+  .pack-info-layout {
+    gap: 0.75rem;
+  }
+
+  .pack-option {
+    padding: 10px;
+  }
+
+  .turn-layout {
+    gap: clamp(12px, 3vh, 24px);
+  }
+
+  .resolve-layout {
+    gap: 0.6rem;
+    padding-top: 8px;
+    padding-bottom: 12px;
+  }
+
+  .resolve-copy {
+    height: min(44svh, 20rem);
+    gap: clamp(8px, 1vh, 14px);
+    padding-bottom: 8px;
+  }
+
+  .resolve-year {
+    height: clamp(4rem, 10svh, 6rem);
+  }
+
+  .resolve-footer {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-height: 950px) {
+  #screen-home .home-brand {
+    width: 100vw;
+    padding-top: clamp(3.5rem, 8vh, 4.5rem);
+  }
+
+  #screen-home .brand-hitster {
+    width: 97vw;
+    margin-inline: auto;
+  }
+
+  #screen-home .home-layout {
+    padding-bottom: calc(max(20px, env(safe-area-inset-bottom)) + 28px);
+  }
+
+  #screen-home .speaker-wrap {
+    width: 100vw;
+  }
+
+  #screen-home .speaker {
+    width: min(95vw, 52svh);
+  }
+}
+
+.top-action {
+  min-height: 44px;
+  margin: 32px 0 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--shadow-white-soft);
+  border-radius: 12px;
+}
+
+@media (max-height: 950px) {
+  #screen-options .screen-inner,
+  #screen-pack-info .screen-inner {
+    padding-bottom: calc(max(28px, env(safe-area-inset-bottom)) + 32px);
+  }
+
+  #screen-resolve .resolve-layout {
+    padding-top: calc(clamp(1.5rem, 4vh, 2.5rem) + 24px);
+    padding-bottom: calc(max(2rem, env(safe-area-inset-bottom)) + 32px);
+  }
 }
 
 @keyframes phone-turn {

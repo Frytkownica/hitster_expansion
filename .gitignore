@@ -2,6 +2,7 @@
 hitster_bingo_spotify.csv
 chrome-win/
 scripts/
+scripts/*
 node_modules/
 npm-debug.log*
 .npm/

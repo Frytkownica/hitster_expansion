@@ -2,7 +2,6 @@ const PREFIX = "hitsterexp:";
 const PACKS_FILE = "songs/packs.json";
 const SELECTED_PACKS_KEY = "hitsterexp:selected-packs";
 const TURN_TRANSITION_MS = 600;
-const PHONE_FLIP_THRESHOLD = 50;
 const TURN_FALLBACK_MS = 4500;
 const SPOTIFY_PLAYBACK_SETTLE_MS = 300;
 
@@ -58,6 +57,7 @@ let waitingForFlip = false;
 let orientationSignalSeen = false;
 let latestOrientationBeta = null;
 let latestOrientationGamma = null;
+let lastLoggedOrientationState = null;
 let spotifyIframeApi = null;
 let spotifyController = null;
 let pendingSpotifyUri = null;
@@ -168,6 +168,13 @@ window.addEventListener("deviceorientation", (event) => {
   latestOrientationBeta = beta;
   latestOrientationGamma = gamma;
   orientationSignalSeen = event.beta != null && event.gamma != null && Number.isFinite(beta) && Number.isFinite(gamma);
+  if (orientationSignalSeen) {
+    const state = isFaceDown(beta, gamma) ? "face-down" : "face-up-or-tilted";
+    if (state !== lastLoggedOrientationState) {
+      console.info(`[orientation] state=${state} beta=${beta.toFixed(1)} gamma=${gamma.toFixed(1)}`);
+      lastLoggedOrientationState = state;
+    }
+  }
   finishTurnIfReady();
 });
 
@@ -453,6 +460,7 @@ function showTurnScreen() {
   orientationSignalSeen = false;
   latestOrientationBeta = null;
   latestOrientationGamma = null;
+  lastLoggedOrientationState = null;
   clearTurnSensorError();
   turnReadyButton.disabled = false;
   turnReadyButton.textContent = "GOTOWE";
@@ -601,9 +609,14 @@ function isFaceDown(beta, gamma) {
     return false;
   }
 
-  beta = Math.abs(Number(beta));
-  gamma = Math.abs(Number(gamma));
-  return Number.isFinite(beta) && Number.isFinite(gamma) && beta >= 180 - PHONE_FLIP_THRESHOLD && gamma <= PHONE_FLIP_THRESHOLD;
+  beta = Number(beta);
+  gamma = Number(gamma);
+  if (!Number.isFinite(beta) || !Number.isFinite(gamma)) {
+    return false;
+  }
+
+  const screenNormalZ = Math.cos(beta * Math.PI / 180) * Math.cos(gamma * Math.PI / 180);
+  return screenNormalZ < -0.5;
 }
 
 function showTurnSensorError() {
