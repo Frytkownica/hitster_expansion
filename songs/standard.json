@@ -23,30 +23,16 @@
     "songs": [
       {
         "year": 1965,
-        "title": "My Generation",
-        "artist": "The Who",
+        "title": "I Got You Babe",
+        "artist": "Sonny & Cher",
         "collab": true,
-        "spotify_id": "2EMmHEhCZSMMEM85HTFJvj"
-      },
-      {
-        "year": 1965,
-        "title": "(I Can't Get No) Satisfaction",
-        "artist": "The Rolling Stones",
-        "collab": true,
-        "spotify_id": "2PzU4IB8Dr6mxV3lHuaG34"
+        "spotify_id": "4SGBuq37Ol4HJr7pQqFMKa"
       }
     ]
   },
   {
     "qr_code_id": "1965_3",
     "songs": [
-      {
-        "year": 1965,
-        "title": "I Got You Babe",
-        "artist": "Sonny & Cher",
-        "collab": true,
-        "spotify_id": "4SGBuq37Ol4HJr7pQqFMKa"
-      },
       {
         "year": 1965,
         "title": "Yesterday",
@@ -125,6 +111,12 @@
         "artist": "Scott McKenzie",
         "collab": false,
         "spotify_id": "6vcNJUWtUPB0hKC6VbZriY"
+      },
+      {
+        "title": "Judy In Disguise (With Glasses)",
+        "artist": "John Fred & His Playboy Band",
+        "collab": true,
+        "spotify_id": "3EVQmjvlYb4Bk20Qs89UyK"
       }
     ]
   },
@@ -157,10 +149,10 @@
     "songs": [
       {
         "year": 1968,
-        "title": "Hey Jude",
-        "artist": "The Beatles",
+        "title": "Chewy Chewy",
+        "artist": "Ohio Express",
         "collab": true,
-        "spotify_id": "1eT2CjXwFXNx6oY5ydvzKU"
+        "spotify_id": "1CgEzRUP0Y6XkdOM3CSygW"
       }
     ]
   },
@@ -193,10 +185,10 @@
     "songs": [
       {
         "year": 1969,
-        "title": "Gimme Shelter",
-        "artist": "The Rolling Stones",
-        "collab": true,
-        "spotify_id": "6H3kDe7CGoWYBabAeVWGiD"
+        "title": "Suspicious Minds",
+        "artist": "Elvis Presley",
+        "collab": false,
+        "spotify_id": "1H5IfYyIIAlgDX8zguUzns"
       }
     ]
   },
@@ -270,13 +262,6 @@
   {
     "qr_code_id": "1971_3",
     "songs": [
-      {
-        "year": 1971,
-        "title": "Stairway to Heaven",
-        "artist": "Led Zeppelin",
-        "collab": true,
-        "spotify_id": "5CQ30WqJwcep0pYcV4AMNc"
-      },
       {
         "year": 1971,
         "title": "Ain't no sunshine",
@@ -439,30 +424,16 @@
     "songs": [
       {
         "year": 1975,
-        "title": "Wish You Were Here",
-        "artist": "Pink Floyd",
+        "title": "No Woman, No Cry (Live)",
+        "artist": "Bob Marley & The Wailers",
         "collab": true,
-        "spotify_id": "6mFkJmJqdDVQ1REhVfGgd1"
-      },
-      {
-        "year": 1975,
-        "title": "Bohemian Rhapsody",
-        "artist": "Queen",
-        "collab": true,
-        "spotify_id": "2JiDi0qAXsPwhPqA2qaKGt"
+        "spotify_id": "423hwXFgoN8RYmqLoLuVvY"
       }
     ]
   },
   {
     "qr_code_id": "1975_3",
     "songs": [
-      {
-        "year": 1975,
-        "title": "No Woman, No Cry (Live)",
-        "artist": "Bob Marley & The Wailers",
-        "collab": true,
-        "spotify_id": "423hwXFgoN8RYmqLoLuVvY"
-      },
       {
         "year": 1975,
         "title": "That's the Way (I Like It)",
@@ -532,10 +503,17 @@
     "songs": [
       {
         "year": 1977,
-        "title": "We Will Rock You",
-        "artist": "Queen",
+        "title": "Cold as Ice",
+        "artist": "Foreigner",
         "collab": true,
-        "spotify_id": "2ELSVi4kwWOXgxiIC592tJ"
+        "spotify_id": "7vidktgNZFQylTgH1GEnMs"
+      },
+      {
+        "year": 1977,
+        "title": "Brick House",
+        "artist": "Commodores",
+        "collab": true,
+        "spotify_id": "5VJjhHyG8NZ5xdgG6uTb3P"
       }
     ]
   },
@@ -606,13 +584,6 @@
     "songs": [
       {
         "year": 1979,
-        "title": "Highway to Hell",
-        "artist": "AC/DC",
-        "collab": true,
-        "spotify_id": "2zYzyRzz6pRmhPzyfMEC8s"
-      },
-      {
-        "year": 1979,
         "title": "Another Brick in the Wall, Pt. 2",
         "artist": "Pink Floyd",
         "collab": true,
@@ -623,13 +594,6 @@
   {
     "qr_code_id": "1979_2",
     "songs": [
-      {
-        "year": 1979,
-        "title": "Cars",
-        "artist": "Gary Numan",
-        "collab": false,
-        "spotify_id": "4QQEzkxcONBthDLfzqIh9S"
-      },
       {
         "year": 1979,
         "title": "Video Killed the Radio Star",
@@ -648,13 +612,6 @@
         "artist": "The Sugarhill Gang",
         "collab": true,
         "spotify_id": "2XbwFs07dfm2MGQuYmRMZT"
-      },
-      {
-        "year": 1979,
-        "title": "London Calling",
-        "artist": "The Clash",
-        "collab": true,
-        "spotify_id": "124Y9LPRCAz3q2OP0iCvcJ"
       }
     ]
   },
@@ -715,6 +672,13 @@
         "artist": "Soft Cell",
         "collab": true,
         "spotify_id": "0cGG2EouYCEEC3xfa0tDFV"
+      },
+      {
+        "year": 1981,
+        "title": "Down Under",
+        "artist": "Men At Work",
+        "collab": true,
+        "spotify_id": "3ZZq9396zv8pcn5GYVhxUi"
       }
     ]
   },
@@ -723,10 +687,10 @@
     "songs": [
       {
         "year": 1981,
-        "title": "Should I Stay or Should I Go",
-        "artist": "The Clash",
+        "title": "The Tide Is High",
+        "artist": "Blondie",
         "collab": true,
-        "spotify_id": "39shmbIHICJ2Wxnk1fPSdz"
+        "spotify_id": "52Rp3xBJFYYdmpgzDy0Quf"
       }
     ]
   },
@@ -765,6 +729,13 @@
         "artist": "Billy Idol",
         "collab": false,
         "spotify_id": "24kNjskAjp7GBtP0MPEiC6"
+      },
+      {
+        "year": 1982,
+        "title": "Come On Eileen",
+        "artist": "Dexys Midnight Runners",
+        "collab": true,
+        "spotify_id": "3MrWxJaD2AT0W9DjWF64Vm"
       }
     ]
   },
@@ -1099,10 +1070,10 @@
     "songs": [
       {
         "year": 1989,
-        "title": "Personal Jesus",
-        "artist": "Depeche Mode",
+        "title": "Pump Up the Jam",
+        "artist": "Technotronic",
         "collab": true,
-        "spotify_id": "2wUlYDGGXlSvm2NkGj0Qio"
+        "spotify_id": "21qnJAMtzC6S5SESuqQLEK"
       }
     ]
   },
@@ -1127,13 +1098,6 @@
         "artist": "The B-52's",
         "collab": true,
         "spotify_id": "4W4wYHtsrgDiivRASVOINL"
-      },
-      {
-        "year": 1989,
-        "title": "Pump Up the Jam",
-        "artist": "Technotronic",
-        "collab": true,
-        "spotify_id": "21qnJAMtzC6S5SESuqQLEK"
       }
     ]
   },
@@ -1150,7 +1114,7 @@
       {
         "year": 1990,
         "title": "Nothing Compares 2 U",
-        "artist": "SinÃ©ad O'Connor",
+        "artist": "Sinéad O'Connor",
         "collab": false,
         "spotify_id": "5GHY1DFWKz3Prg2V0Iodqo"
       }
@@ -1159,13 +1123,6 @@
   {
     "qr_code_id": "1990_2",
     "songs": [
-      {
-        "year": 1990,
-        "title": "Enjoy the Silence",
-        "artist": "Depeche Mode",
-        "collab": true,
-        "spotify_id": "1JekRMGQ8iN4G1AAdh0SBa"
-      },
       {
         "year": 1990,
         "title": "The Power",
@@ -1218,13 +1175,6 @@
     "songs": [
       {
         "year": 1991,
-        "title": "Enter Sandman",
-        "artist": "Metallica",
-        "collab": true,
-        "spotify_id": "3DwQ7AH3xGD9h65ezslm6q"
-      },
-      {
-        "year": 1991,
         "title": "One",
         "artist": "U2",
         "collab": true,
@@ -1241,13 +1191,6 @@
         "artist": "Bryan Adams",
         "collab": false,
         "spotify_id": "1Eb90nmqTrxylKFhcUzW8P"
-      },
-      {
-        "year": 1991,
-        "title": "Smells Like Teen Spirit",
-        "artist": "Nirvana",
-        "collab": true,
-        "spotify_id": "4CeeEOM32jQcH3eN9Q2dGj"
       },
       {
         "year": 1991,
@@ -1610,10 +1553,10 @@
     "songs": [
       {
         "year": 1998,
-        "title": "Pretty Fly (For a White Guy)",
-        "artist": "The Offspring",
+        "title": "H*rny",
+        "artist": "Mousse T",
         "collab": true,
-        "spotify_id": "3SFXsFpeGmBTtQvKiwYMDA"
+        "spotify_id": "3PAB2wYt8Gg2q78jTRsnTC"
       },
       {
         "year": 1998,
@@ -1627,13 +1570,6 @@
   {
     "qr_code_id": "1998_3",
     "songs": [
-      {
-        "year": 1998,
-        "title": "H*rny",
-        "artist": "Mousse T",
-        "collab": true,
-        "spotify_id": "3PAB2wYt8Gg2q78jTRsnTC"
-      },
       {
         "year": 1998,
         "title": "it feels so good",
@@ -1771,13 +1707,6 @@
     "songs": [
       {
         "year": 2000,
-        "title": "In the End",
-        "artist": "Linkin Park",
-        "collab": true,
-        "spotify_id": "60a0Rd6pjrkxjPbaKzXjfq"
-      },
-      {
-        "year": 2000,
         "title": "Silence",
         "artist": "Delirium",
         "collab": true,
@@ -1887,13 +1816,6 @@
       },
       {
         "year": 2002,
-        "title": "No One Knows",
-        "artist": "Queens of the Stone Age",
-        "collab": true,
-        "spotify_id": "6y20BV5L33R8YXM0YuI38N"
-      },
-      {
-        "year": 2002,
         "title": "All the Things She Said",
         "artist": "t.A.T.u.",
         "collab": true,
@@ -1959,7 +1881,7 @@
       {
         "year": 2003,
         "title": "Crazy in Love",
-        "artist": "BeyoncÃ© feat. Jay-Z",
+        "artist": "Beyoncé feat. Jay-Z",
         "collab": true,
         "spotify_id": "5Vehnf0vRkgiLStRmu3Jy6"
       },
@@ -2052,13 +1974,6 @@
         "artist": "Gwen Stefani",
         "collab": false,
         "spotify_id": "0ny5zITdmyNwyTPVzRGscU"
-      },
-      {
-        "year": 2004,
-        "title": "Somebody Told Me",
-        "artist": "The Killers",
-        "collab": true,
-        "spotify_id": "2ZiTTTVLbqEy1APLw2yOhp"
       },
       {
         "year": 2004,
@@ -2692,7 +2607,7 @@
       {
         "year": 2015,
         "title": "Lean On",
-        "artist": "Major Lazer & DJ Snake feat. MÃ˜",
+        "artist": "Major Lazer & DJ Snake feat. MØ",
         "collab": true,
         "spotify_id": "4UKJUbcuStnnxLeJmVJsSc"
       }
